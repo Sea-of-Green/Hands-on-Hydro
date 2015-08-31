@@ -4,8 +4,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
 var csso = require('gulp-csso');
 var typogr = require('gulp-typogr');
+var concat = require('gulp-concat');
 
-gulp.task('default', ['min-css', 'typo']);
+gulp.task('default', ['build-theme']);
 
 gulp.task('sass', function() {
   return gulp.src('./src/stylesheets/*.scss')
@@ -30,10 +31,15 @@ gulp.task('typo', function() {
     .pipe(typogr({
       only: ['amp', 'widont', 'smartypants']
     }))
+    .pipe(gulp.dest('./dist/html/'));
+});
+
+gulp.task('build-theme', ['min-css', 'typo'], function() {
+  return gulp.src(['./dist/html/head.html', './dist/css/main.min.css', './dist/html/svg.html', './dist/html/body.html'])
+    .pipe(concat('theme.html'))
     .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./src/stylesheets/*.scss', './src/stylesheets/**/*.scss'], ['min-css']);
-  gulp.watch('./src/*.html', ['typo']);
+  gulp.watch(['./src/stylesheets/*.scss', './src/stylesheets/**/*.scss', './src/*.html'], ['build-theme']);
 });

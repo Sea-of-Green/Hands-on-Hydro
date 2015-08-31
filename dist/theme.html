@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{block:PostTitle}{PostTitle} | {/block:PostTitle}{Title}</title>
+
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="{MetaDescription}" />
+    <meta name="keywords" content="gardening, hydroponics, soil, hydro, garden, gardens, hid, lighting, coco, coco coir, grow, growing, hydroponic" />
+    <meta name="theme-color" content="#005c82" />
+
+    <!-- Options -->
+    <meta name="if:Show Archive" content="1" />
+    <meta name="if:Show Random" content="0" />
+    <meta name="if:Show RSS" content="0" />
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="icon" type="image/png" href="{PortraitURL-16}" sizes="16x16" />
+    <link rel="icon" type="image/png" href="{PortraitURL-128}" sizes="128x128" />
+
+    <!-- Stylesheets -->
+    <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//sea-of-green.com/fonts/overlook-base64.css">
+    <style type="text/css">
+
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0}mark{background:#ff0;color:#000}sub,sup{font-size:75%;line-height:0}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button{font:inherit;margin:0}input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}body{width:100%;height:100vh;margin:0;padding:0;overflow-x:hidden;overflow-y:auto}img{max-height:90vh;width:auto;max-width:100%}body{font-family:"Droid Serif","DroidSerif","Georgia","Cambria","Times New Roman","Times",serif;font-weight:400;font-size:1rem;line-height:1.75rem;color:#212620}body,h1{font-style:normal}h1{font-family:"Overlook","ATC Overlook","ATCOverlook","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;font-weight:700;font-size:2.36859rem;line-height:3.5rem;text-transform:capitalize;color:#0091b2;letter-spacing:-.025em;margin-top:1.75rem;margin-bottom:1.75rem}@media (min-width:40rem){h1{font-size:2.82715rem}}h2{font-family:"Overlook","ATC Overlook","ATCOverlook","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;font-weight:700;font-style:normal;font-size:1.77689rem;line-height:3.5rem;text-transform:capitalize;letter-spacing:-.025em;margin-top:1.75rem;margin-bottom:1.75rem}@media (min-width:40rem){h2{font-size:1.9994rem}}h3{font-family:"Overlook","ATC Overlook","ATCOverlook","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;font-weight:500;font-style:normal;font-size:1.333rem;line-height:1.75rem;letter-spacing:.01em;text-transform:capitalize;margin-top:1.75rem;margin-bottom:1.75rem}@media (min-width:40rem){h3{font-size:1.414rem}}h4,h5,h6{font-family:"Overlook","ATC Overlook","ATCOverlook","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;font-weight:500;font-style:normal;font-size:1rem;line-height:1.75rem;margin-top:1.75rem;margin-bottom:1.75rem}@media (min-width:40rem){h4,h5,h6{font-size:1rem}}h4{text-transform:capitalize}h5,h6{text-transform:uppercase}h6{letter-spacing:.3em}p,ul,ol,pre,table,blockquote{margin-top:1.75rem;margin-bottom:1.75rem}hr{border:0 hidden;margin:-1px auto;height:2px;background:#0091b2;width:95%}ul ul,ol ol,ul ol,ol ul{margin-top:0;margin-bottom:0}b,strong,em,code{line-height:1}sup{top:-.4em}sup,sub{vertical-align:baseline;position:relative}sub{top:.4em}small{font-size:.75019rem;line-height:.875rem}@media (min-width:40rem){small{font-size:.70721rem}}code{margin:0 1px;padding:2px 3px}code,pre{background:#e5e1db;border-radius:3px}pre{padding:0 1rem;width:100%;overflow-x:auto}pre code{margin:0;padding:0;background:0 0}blockquote{padding:.5rem 1rem;border-left:5px solid #e5e1db}blockquote p{font-style:italic}blockquote p em{font-style:normal}blockquote p:first-of-type{margin-top:0}blockquote p:first-of-type:before{content:"\201C";font-size:2.36859rem;line-height:0;margin:0 2.75rem 0 -3.8rem;vertical-align:-.71058rem;color:#e5e1db}blockquote p:last-of-type{margin-bottom:0}blockquote cite,blockquote+cite{text-align:right;font-style:normal;display:block}blockquote cite:before,blockquote+cite:before{content:"\2014\0020"}a{text-decoration:none;color:#0091b2}a:visited{color:#aea198}a:hover,a:active,a:focus{color:#0091b2;border-bottom:.1em solid currentColor}nav,footer{width:100%}footer{font-family:"Overlook","ATC Overlook","ATCOverlook","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;font-weight:400;font-style:normal;margin-top:1rem;padding:1rem 0 1.333rem;background:#0091b2;background:-webkit-linear-gradient(top,#0091b2,#005c82);background:linear-gradient(to bottom,#0091b2,#005c82)}footer,footer a{color:#fff}footer a:visited{color:#fff}footer a:hover,footer a:active,footer a:focus{color:#76c3d4;border:none}footer ul{list-style-type:none;margin-left:0;padding-left:0}.footer__content{max-width:55rem;margin-left:auto;margin-right:auto;padding:0 1rem}.footer__content::after{clear:both;content:"";display:table}.footer__lists{text-align:center}@media (min-width:30rem){.footer__lists{display:block;text-align:left}.footer__lists::after{clear:both;content:"";display:table}}@media (min-width:30rem){.footer__list{float:left;display:block;margin-right:2.35765%;width:31.76157%}.footer__list:last-child{margin-right:0}.footer__list:nth-child(3n){margin-right:0}.footer__list:nth-child(3n+1){clear:left}}.footer__social{margin:3.5rem 0}@media (min-width:30rem){.footer__social{margin:1.75rem 0}}@media (min-width:40rem){.footer__social{display:block}.footer__social::after{clear:both;content:"";display:table}}.footer__social-icons{font-size:1.333rem;text-align:center}@media (min-width:40rem){.footer__social-icons{float:left;display:block;margin-right:2.35765%;width:48.82117%;text-align:left}.footer__social-icons:last-child{margin-right:0}}.footer__social-icons li{display:inline-block;margin-right:1.77689rem}.footer__social-icons li:last-of-type{margin-right:0}@media (min-width:40rem){.footer__newsletter-signup{float:left;display:block;width:48.82117%;margin-right:0}.footer__newsletter-signup:last-child{margin-right:0}}.footer__copyright{text-align:center}@media (min-width:30rem){.footer__copyright{text-align:left}}.btn,button{font-family:"Overlook","ATC Overlook","ATCOverlook","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;font-weight:400;font-style:normal;padding:.75rem 1.75rem;background:#0091b2;background:-webkit-linear-gradient(top,#0091b2,#0091b2);background:linear-gradient(to bottom,#0091b2,#0091b2);border-radius:7px;border:1px solid;color:#fff;border-color:#005c82}.btn:after,button:after{font-family:"Font Awesome",FontAwesome;font-weight:400;font-style:normal;content:'\f0da';padding-left:1rem}.btn:hover,button:hover,.btn:active,button:active,.btn:focus,button:focus{background:#007197;background:-webkit-linear-gradient(top,#0091b2,#005c82);background:linear-gradient(to bottom,#0091b2,#005c82)}.btn:active,button:active{background:#005c82;background:-webkit-linear-gradient(top,#005c82,#005c82);background:linear-gradient(to bottom,#005c82,#005c82)}.btn--white{background:#fff;background:-webkit-linear-gradient(top,#fff,#fff);background:linear-gradient(to bottom,#fff,#fff);color:#0091b2;border-color:#e5e1db}.btn--white:hover,.btn--white:active,.btn--white:focus{background:#e5e1db;background:-webkit-linear-gradient(top,#fff,#e5e1db);background:linear-gradient(to bottom,#fff,#e5e1db)}.btn--white:active{background:#e5e1db;background:-webkit-linear-gradient(top,#e5e1db,#e5e1db);background:linear-gradient(to bottom,#e5e1db,#e5e1db)}.btn--success{background:#77bc1f;background:-webkit-linear-gradient(top,#77bc1f,#77bc1f);background:linear-gradient(to bottom,#77bc1f,#77bc1f);color:#fff;border-color:#648b1a}.btn--success:hover,.btn--success:active,.btn--success:focus{background:#62a60a;background:-webkit-linear-gradient(top,#77bc1f,#648b1a);background:linear-gradient(to bottom,#77bc1f,#648b1a)}.btn--success:active{background:#648b1a;background:-webkit-linear-gradient(top,#648b1a,#648b1a);background:linear-gradient(to bottom,#648b1a,#648b1a)}.btn--warning{background:#dba900;background:-webkit-linear-gradient(top,#dba900,#dba900);background:linear-gradient(to bottom,#dba900,#dba900);color:#fff;border-color:#a88200}.btn--warning:hover,.btn--warning:active,.btn--warning:focus{background:#c29500;background:-webkit-linear-gradient(top,#dba900,#a88200);background:linear-gradient(to bottom,#dba900,#a88200)}.btn--warning:active{background:#a88200;background:-webkit-linear-gradient(top,#a88200,#a88200);background:linear-gradient(to bottom,#a88200,#a88200)}.btn--fail{background:#ff4337;background:-webkit-linear-gradient(top,#ff4337,#ff4337);background:linear-gradient(to bottom,#ff4337,#ff4337);color:#fff;border-color:#d00c00}.btn--fail:hover,.btn--fail:active,.btn--fail:focus{background:#ff1304;background:-webkit-linear-gradient(top,#ff4337,#d00c00);background:linear-gradient(to bottom,#ff4337,#d00c00)}.btn--fail:active{background:#d00c00;background:-webkit-linear-gradient(top,#d00c00,#d00c00);background:linear-gradient(to bottom,#d00c00,#d00c00)}.input-bar{max-width:55rem;margin:1rem auto}.input-bar::after{clear:both;content:"";display:table}.input-bar input{float:left;width:calc(100% - 60px);height:2.75rem;padding:.75rem 1rem;border-radius:7px;border:1px solid #aea198;border-right:none;border-top-right-radius:0;border-bottom-right-radius:0;background:#e5e1db;color:#60504c}.input-bar input::-webkit-input-placeholder{color:#aea198}.input-bar input::-moz-placeholder{color:#aea198}.input-bar input:-ms-input-placeholder{color:#aea198}.input-bar input::placeholder{color:#aea198}.input-bar button{float:left;width:60px;height:2.75rem;padding:.3rem 1.1rem .2rem .05rem;border-radius:7px;border:1px solid #aea198;border-top-left-radius:0;border-bottom-left-radius:0;background:#e5e1db;background:-webkit-linear-gradient(top,#e5e1db,#e5e1db);background:linear-gradient(to bottom,#e5e1db,#e5e1db);color:#aea198}.input-bar button:after{font-family:"Font Awesome",FontAwesome;font-weight:400;font-style:normal;content:'\f0da';font-size:1.333rem}.input-bar button:hover,.input-bar button:active,.input-bar button:focus{color:#60504c;background:#c1b8af;background:-webkit-linear-gradient(top,#e5e1db,#aea198);background:linear-gradient(to bottom,#e5e1db,#aea198)}.input-bar button:active{background:#aea198;background:-webkit-linear-gradient(top,#aea198,#aea198);background:linear-gradient(to bottom,#aea198,#aea198)}.input-bar--blue input{border-color:#0091b2;background:#76c3d4;color:#005c82}.input-bar--blue input::-webkit-input-placeholder{color:#0091b2}.input-bar--blue input::-moz-placeholder{color:#0091b2}.input-bar--blue input:-ms-input-placeholder{color:#0091b2}.input-bar--blue input::placeholder{color:#0091b2}.input-bar--blue button{border-color:#0091b2;background:#76c3d4;background:-webkit-linear-gradient(top,#76c3d4,#76c3d4);background:linear-gradient(to bottom,#76c3d4,#76c3d4);color:#0091b2}.input-bar--blue button:hover,.input-bar--blue button:active,.input-bar--blue button:focus{color:#005c82;background:#3ab0c8;background:-webkit-linear-gradient(top,#76c3d4,#0091b2);background:linear-gradient(to bottom,#76c3d4,#0091b2)}.input-bar--blue button:active{background:#0091b2;background:-webkit-linear-gradient(top,#0091b2,#0091b2);background:linear-gradient(to bottom,#0091b2,#0091b2)}.input-bar--success input{border-color:#77bc1f;background:#b7dc78;color:#648b1a}.input-bar--success input::-webkit-input-placeholder{color:#77bc1f}.input-bar--success input::-moz-placeholder{color:#77bc1f}.input-bar--success input:-ms-input-placeholder{color:#77bc1f}.input-bar--success input::placeholder{color:#77bc1f}.input-bar--success button{border-color:#77bc1f;background:#b7dc78;background:-webkit-linear-gradient(top,#b7dc78,#b7dc78);background:linear-gradient(to bottom,#b7dc78,#b7dc78);color:#77bc1f}.input-bar--success button:after{content:'\f00c'}.input-bar--success button:hover,.input-bar--success button:active,.input-bar--success button:focus{color:#648b1a;background:#a3d55d;background:-webkit-linear-gradient(top,#b7dc78,#77bc1f);background:linear-gradient(to bottom,#b7dc78,#77bc1f)}.input-bar--success button:active{background:#77bc1f;background:-webkit-linear-gradient(top,#77bc1f,#77bc1f);background:linear-gradient(to bottom,#77bc1f,#77bc1f)}.input-bar--warning input{border-color:#dba900;background:#ffdf75;color:#a88200}.input-bar--warning input::-webkit-input-placeholder{color:#dba900}.input-bar--warning input::-moz-placeholder{color:#dba900}.input-bar--warning input:-ms-input-placeholder{color:#dba900}.input-bar--warning input::placeholder{color:#dba900}.input-bar--warning button{border-color:#dba900;background:#ffdf75;background:-webkit-linear-gradient(top,#ffdf75,#ffdf75);background:linear-gradient(to bottom,#ffdf75,#ffdf75);color:#a88200}.input-bar--warning button:after{content:'\f12a'}.input-bar--warning button:hover,.input-bar--warning button:active,.input-bar--warning button:focus{color:#a88200;background:#ffc80f;background:-webkit-linear-gradient(top,#ffdf75,#dba900);background:linear-gradient(to bottom,#ffdf75,#dba900)}.input-bar--warning button:active{background:#dba900;background:-webkit-linear-gradient(top,#dba900,#dba900);background:linear-gradient(to bottom,#dba900,#dba900)}.input-bar--fail input{border-color:#ff4337;background:#ffbbb6;color:#d00c00}.input-bar--fail input::-webkit-input-placeholder{color:#ff4337}.input-bar--fail input::-moz-placeholder{color:#ff4337}.input-bar--fail input:-ms-input-placeholder{color:#ff4337}.input-bar--fail input::placeholder{color:#ff4337}.input-bar--fail button{border-color:#ff4337;background:#ffbbb6;background:-webkit-linear-gradient(top,#ffbbb6,#ffbbb6);background:linear-gradient(to bottom,#ffbbb6,#ffbbb6);color:#ff4337}.input-bar--fail button:after{content:'\f071'}.input-bar--fail button:hover,.input-bar--fail button:active,.input-bar--fail button:focus{color:#d00c00;background:#ff736a;background:-webkit-linear-gradient(top,#ffbbb6,#ff4337);background:linear-gradient(to bottom,#ffbbb6,#ff4337)}.input-bar--fail button:active{background:#ff4337;background:-webkit-linear-gradient(top,#ff4337,#ff4337);background:linear-gradient(to bottom,#ff4337,#ff4337)}.input-bar--search button:after{content:'\f002'}.input-bar--email button:after{content:'\f0e0'}.input-bar--send button:after{content:'\f1d8'}main{max-width:55rem;margin-left:auto;margin-right:auto;padding:0 1rem}main::after{clear:both;content:"";display:table}
+    </style>
+  </head>
+  <body>
+
+    <!-- SVG Defs -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <symbol id="hoh-logo" x="0" y="0" viewBox="0 0 429.1 153.9" preserveAspectRatio="xMidYMid meet">
+        <title>Hands-on Hydro Logotype</title>
+        <desc>Hands-on Hydro&#8217;s logotype in yellow.</desc>
+        <g id="type" fill="#ffdb00">
+          <path d="M114.2 84.1l-11.7 28.4L92 84.1H75.2l19.1 48.1c-3.7 10.2-6.3 11.2-14.3 7.7l-3.9 11.5c12.7 4.9 24 3.8 31.5-14.8l22.2-52.6H114.2z"/>
+          <path d="M94.3 47.5c-12.7 0-17.9 8.4-17.9 16.5 0 8.6 6.6 16.8 18 16.8 6.3 0 11.3-2.8 14-6.2 0.2 1.7 0.7 3.4 1.3 4.4H123V46.5c0-9.1-4.5-16.5-19.2-16.5 -10.5 0-19.3 3-23.9 5.3l5.1 10.1c5.4-3 10.9-3.9 14.9-3.9 4.3 0 8 0.6 8 7.7v1C104 48.5 99 47.5 94.3 47.5zM108 65.7c-3 2.8-8 3.4-10.2 3.4 -3.1 0-6.1-1.3-6.1-6 0-4.4 3.4-6.2 6-6.2 4.2 0 8.3 1.3 10.3 2.4V65.7z"/>
+          <path d="M146 48.9c9-7.2 18-7.8 18 3.2v18.9h16V47.4c0-10-5.5-17.5-16.5-17.5 -6.6 0-13.5 3.3-17.4 7.6 -0.3-3.1-0.8-5.5-1.3-6.5H131v48h15V48.9z"/>
+          <polygon points="55 74.1 55 79.2 55 91.1 28 91.1 28 79.2 28 74.1 12 74.1 12 79.2 12 132.1 28 132.1 28 105.1 55 105.1 55 132.1 71 132.1 71 79.2 71 74.1 "/>
+          <polygon points="28 71.1 28 52.1 55 52.1 55 71.1 71 71.1 71 12.1 55 12.1 55 38.1 28 38.1 28 12.1 12 12.1 12 71.1 "/>
+          <path d="M164 74.1v5.1 11.3c-4-4.9-9.3-7.3-15.2-7.3 -14.1 0-20.9 10.8-20.9 25.3 0 14.6 7 25.4 21.1 25.4 5.9 0 11-2.5 15.4-7.2 0.1 2 0.5 3.2 1.2 5.2H180V79.2v-5.1H164zM164 113.9c-2 4.2-6.6 6.2-10.9 6.2 -5.6 0-8.9-4.1-8.9-11.5s3.3-11.5 8.9-11.5c4.2 0 8.9 2 10.9 6.2V113.9z"/>
+          <rect x="284" y="49.1" width="24" height="13"/>
+          <path d="M338.5 30.2c-13.8 0-24.5 8.9-24.5 25.3 0 15 9 25.4 24.5 25.4 15.4 0 24.4-10.5 24.4-25.4C362.9 40.5 353.9 30.2 338.5 30.2zM338.5 68.1c-6.3 0-9.1-5.6-9.1-12.6 0-7 2.8-12.4 9.1-12.4 6.2 0 9 5.4 9 12.4C347.6 62.5 344.8 68.1 338.5 68.1z"/>
+          <path d="M400.7 30c-6.6 0-13.4 3.3-17.3 7.6 -0.3-3.1-0.7-5.5-1.2-6.5H368v48h16V48.9c8-7.2 18-7.8 18 3.2v26.9h15V47.4C417 37.5 411.7 30 400.7 30z"/>
+          <path d="M201.2 89.4c-0.3-2.7-0.7-4.3-1.1-5.3H186v48h16v-31.8c4-4.7 9.7-5.2 13.9-2.2l4-12.5C213.2 81 206.6 84.2 201.2 89.4z"/>
+          <path d="M205.4 80.9c5.9 0 11-2.4 15.4-7.1 0.1 2 0.5 3.3 1.2 5.3h14v-69h-15v27.4c-5-4.9-9.6-7.3-15.5-7.3 -14.1 0-21.1 10.8-21.1 25.3C184.5 70.1 191.3 80.9 205.4 80.9zM209.9 44c4.2 0 8.2 2 11.2 6.2v10.6c-3 4.2-7 6.2-11.2 6.2 -5.6 0-9-4.1-9-11.5S204.3 44 209.9 44z"/>
+          <path d="M244.3 83.2c-13.8 0-24.5 8.9-24.5 25.3 0 15 9 25.4 24.5 25.4 15.4 0 24.4-10.5 24.4-25.4C268.7 93.6 259.7 83.2 244.3 83.2zM244.3 121.1c-6.3 0-9.1-5.6-9.1-12.6 0-7 2.8-12.4 9.1-12.4 6.2 0 9 5.4 9 12.4C253.3 115.6 250.5 121.1 244.3 121.1z"/>
+          <path d="M262 47.6c-1.1-0.3-5.3-1.2-5.3-4 0-1.6 1.1-2.4 4-2.4 2.8 0 8 1.3 11.9 3.7l4.2-10.4c-4.5-2.7-12.1-4.5-18-4.5 -9.5 0-17.9 4.9-17.9 14.5 0 8 5.5 11.5 13.2 13.6 3.6 1 9.3 1.9 9.3 6.1 0 3.4-3.7 3.9-6.2 3.9 -3.9 0-8-2.1-10.7-4.7l-6.2 9.8c3 3.4 10.1 7.2 19.4 7.2 9.1 0 19.6-5.2 19.6-16.2C279.5 54.8 273 50.6 262 47.6z"/>
+        </g>
+      </symbol>
+      <symbol id="hoh-logo__attribution" x="0" y="0" viewBox="0 0 271.9 33.3" preserveAspectRatio="xMidYMid meet">
+        <title>Hands-on Hydro Attribution</title>
+        <desc>&#8217;by Sea of Green&#8217;. To be placed under the HoH logo in the header.</desc>
+        <g id="hoh-logo__attribution__by" fill="#0091b2">
+          <path d="M3.5 13.5c1-1.1 2.2-1.7 3.5-1.7 3.2 0 4.8 2.5 4.8 5.8 0 3.3-1.6 5.8-4.8 5.8 -1.3 0-2.5-0.5-3.5-1.6 0 0.4-0.1 0.8-0.3 1.2H0V7.2h3.5V13.5zM3.5 18.8c0.6 1 1.6 1.4 2.5 1.4 1.5 0 2.1-1.2 2.1-2.6 0-1.5-0.6-2.6-2.1-2.6 -1 0-2 0.5-2.5 1.4V18.8z"/>
+          <path d="M19.6 24.1c-1.7 4.2-4.3 4.5-7.2 3.4l0.9-2.6c1.8 0.8 2.4 0.6 3.3-1.8l-4.4-11H16l2.4 6.5 2.7-6.5h3.6L19.6 24.1z"/>
+        </g>
+        <g id="hoh-logo__attribution__sog-logo">
+          <g id="hoh-logo__attribution__sog-logo__icon">
+            <path fill="#0091b2" d="M47 19.3c-0.1 0-0.2 0.1-0.2 0.2 0.1 5.2 4.4 9.3 9.6 9.3s9.4-4.1 9.6-9.3c0-0.1-0.1-0.2-0.2-0.2H47z"/>
+            <path fill="#77bc1f" d="M65.8 7.4v9.3c0 0.1-0.1 0.2-0.2 0.2H47c-0.1 0-0.2-0.1-0.2-0.2V7.4c0-0.2 0.3-0.3 0.4-0.2l9 6.5c0.1 0.1 0.2 0.1 0.3 0l9-6.5C65.6 7 65.8 7.1 65.8 7.4z"/>
+            <circle fill="#ffdb00" cx="56.3" cy="4.8" r="4.8"/>
+          </g>
+          <g id="hoh-logo__attribution__sog-logo__logotype" fill="#0091b2">
+            <path d="M93 14.7c-1.4-1.4-3.1-1.8-4.3-1.8 -1.3 0-1.7 0.6-1.7 1.2 0 0.6 0.4 1 1.3 1.3l2.9 0.9c3.5 1.2 4.7 3.1 4.7 5.3 0 2.5-2.1 5.5-6.8 5.5 -3.8 0-6.2-1.5-7.6-2.7l2.6-3.4c1.2 1.2 3.5 2.1 5.1 2.1 1.2 0 1.9-0.6 1.9-1.3 0-0.9-0.6-1.2-2-1.7l-2.9-0.9c-2.8-0.9-4-2.8-4-5 0-2.8 2.6-5.3 6.7-5.3 2.3 0 4.9 0.7 7 2.6L93 14.7z"/>
+            <path d="M115 19.5h-12.8c0.3 1.9 1.8 3.5 4 3.5 1.4 0 2.8-0.6 3.5-1.8l5.1 0.5c-1.5 3.7-4.8 5.4-8.6 5.4 -5.2 0-9-3.8-9-9.1s3.8-9.1 9-9.1c4.7 0 9 3.1 9 10.3V19.5zM102.1 16.2h7.7c-0.3-1.7-1.7-3.2-3.8-3.2C103.9 13.1 102.4 14.4 102.1 16.2z"/>
+            <path d="M127.3 15.2c0-1.2-1-2-2.9-2 -1.7 0-3.9 0.9-5.2 1.6l-1.9-3.7c0 0 3.2-2.1 7.4-2.1 3.9 0 7.5 1.8 7.5 6.4v11.3h-4.9v-1.6c-0.9 1.4-2.9 2.1-4.8 2.1 -3.7 0-6-2.6-6-5.4 0-3.3 2.4-5.3 6.2-5.3h3.4c0.8 0 1.2-0.4 1.2-1V15.2zM127.3 20.5v-1.2c-0.3 0.3-0.8 0.4-1.5 0.4h-1.8c-1.5 0-2.4 0.7-2.4 1.9 0 1.2 0.9 2 2.4 2C125.7 23.6 127.3 22.7 127.3 20.5z"/>
+            <path d="M142.9 18.1c0-5.3 4.1-9.1 9.2-9.1 5.1 0 9.2 3.8 9.2 9.1s-4.1 9.1-9.2 9.1C147 27.1 142.9 23.3 142.9 18.1zM147.8 18.1c0 2.7 1.8 4.7 4.3 4.7 2.5 0 4.3-2 4.3-4.7 0-2.7-1.8-4.7-4.3-4.7C149.6 13.4 147.8 15.4 147.8 18.1z"/>
+            <path d="M164.6 4.6c0-3.4 2.3-4.6 4.9-4.6 1.3 0 3.6 0.2 3.6 0.2v4.5c0 0-1.5-0.2-2-0.2 -0.9 0-1.5 0.2-1.5 1.4v3.5h3.3v4.1h-3.3v13.1h-4.9V13.6h-2.7V9.4h2.7V4.6z"/>
+            <path d="M202.4 9.4V28c0 2.7-1.4 5.3-5.5 5.3h-7.5v-4.1h6.3c0.9 0 1.8-0.2 1.8-1.5v-3.3c-0.8 1.4-2.9 2.6-5.3 2.6 -4.7 0-8.3-3.5-8.3-8.9 0-5.4 3.6-9 8.2-9 2.6 0 4.6 1.2 5.5 2.7 0-0.2-0.1-0.5-0.1-1.4V9.4H202.4zM193.2 22.7c2.6 0 4.4-1.9 4.4-4.7 0-2.8-1.8-4.7-4.4-4.7 -2.6 0-4.3 1.9-4.3 4.7C188.9 20.7 190.7 22.7 193.2 22.7z"/>
+            <path d="M215.5 14.3h-2.1c-2.5 0-3.6 1.2-3.6 4.2v8.2h-4.9V9.4h4.7v2.7c0.7-1.8 2.3-3 4.5-3 0.5 0 0.9 0 1.4 0.2V14.3z"/>
+            <path d="M234.3 19.5h-12.8c0.3 1.9 1.8 3.5 4 3.5 1.4 0 2.8-0.6 3.5-1.8l5.1 0.5c-1.5 3.7-4.8 5.4-8.6 5.4 -5.2 0-9-3.8-9-9.1s3.8-9.1 9-9.1c4.7 0 9 3.1 9 10.3V19.5zM221.3 16.2h7.7c-0.3-1.7-1.7-3.2-3.8-3.2C223.2 13.1 221.7 14.4 221.3 16.2z"/>
+            <path d="M253.7 19.5h-12.8c0.3 1.9 1.8 3.5 4 3.5 1.4 0 2.8-0.6 3.5-1.8l5.1 0.5c-1.5 3.7-4.8 5.4-8.6 5.4 -5.2 0-9-3.8-9-9.1s3.8-9.1 9-9.1c4.7 0 9 3.1 9 10.3V19.5zM240.7 16.2h7.7c-0.3-1.7-1.7-3.2-3.8-3.2C242.6 13.1 241.1 14.4 240.7 16.2z"/>
+            <path d="M265.5 9c3.7 0 6.4 2.4 6.4 6.4v11.3H267v-10c0-2.2-1.4-3.1-2.9-3.1 -1.4 0-2.7 0.8-3.7 2v11.2h-4.9V9.4h4.8v0.7c0 0.6-0.1 1.4-0.1 1.4C261.6 9.9 263.5 9 265.5 9z"/>
+          </g>
+        </g>
+      </symbol>
+    </svg>
+
+    <!-- Navigation -->
+    <nav role="navigation" class="nav">
+      <div class="nav__button">
+        <i class="fa fa-fw fa-navicon"></i>
+      </div>
+      <div class="nav__content">
+
+        <div class="nav__links">
+          <ul>
+            <li><a href="//sea-of-green.com/">Shop</a></li>
+            {block:HasPages}
+              {block:Pages}
+                <li><a href="{URL}">{Label}</a></li>
+              {/block:Pages}
+            {/bock:HasPages}
+            {block:AskEnabled}
+              <li><a href="/ask">Ask</a></li>
+            {/block:AskEnabled}
+            {block:SubmissionsEnabled}
+              <li><a href="/submit">Submit</a></li>
+            {/block:SubmissionsEnabled}
+            {block:IfShowArchive}
+              <li><a href="/archive">Archive</a></li>
+            {/block:IfShowArchive}
+            {block:IfShowRandom}
+              <li><a href="/random">Random</a></li>
+            {/block:IfShowRandom}
+            {block:IfShowRSS}
+              <li><a href="{RSS}">RSS</a></li>
+            {/block:IfShowRSS}
+          </ul>
+        </div>
+
+        <form action="/search" method="get" class="input-bar input-bar--search nav__search">
+          <input type="text" name="q" value="{SearchQuery}" placeholder="Search Posts" />
+          <button type="submit" value="" />
+        </form>
+
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__background"></div>
+      <div class="header__content">
+        <a href="{BlogURL}">
+          <svg role="img" class="header__logo">
+            <use xlink:href="#hoh-logo"></use>
+          </svg>
+        </a>
+        <a href="//sea-of-green.com/">
+          <svg role="img" class="header__attribution">
+            <use xlink:href="#hoh-logo__attribution"></use>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main role="content">
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer__content">
+        <div class="footer__lists">
+          <div class="footer__list">
+            <h3>Hands-on Hydro</h3>
+            <ul>
+              {block:HasPages}
+                {block:Pages}
+                  <li><a href="{URL}">{Label}</a></li>
+                {/block:Pages}
+              {/bock:HasPages}
+              {block:AskEnabled}
+                <li><a href="/ask">Ask</a></li>
+              {/block:AskEnabled}
+              {block:SubmissionsEnabled}
+                <li><a href="/submit">Submit</a></li>
+              {/block:SubmissionsEnabled}
+              {block:IfShowArchive}
+                <li><a href="/archive">Archive</a></li>
+              {/block:IfShowArchive}
+              {block:IfShowRandom}
+                <li><a href="/random">Random</a></li>
+              {/block:IfShowRandom}
+              {block:IfShowRSS}
+                <li><a href="{RSS}">RSS</a></li>
+              {/block:IfShowRSS}
+            </ul>
+          </div>
+          <div class="footer__list">
+            <h3>Shop</h3>
+            <ul>
+              <li><a href="//sea-of-green.com/">Store Home</a></li>
+              <li><a href="//sea-of-green.com/index.html?dispatch=products.search">Search</a></li>
+              <li><a href="//sea-of-green.com/">Featured Products</a></li>
+              <li><a href="//sea-of-green.com/new-products.html">New Arrivals</a></li>
+              <li><a href="//sea-of-green.com/">Good Deals</a></li>
+            </ul>
+          </div>
+          <div class="footer__list">
+            <h3>About Us</h3>
+            <ul>
+              <li><a href="//sea-of-green.com/locations.html">Locations</a></li>
+              <li><a href="//sea-of-green.com/shipping-policy.html">Shipping <span class="amp">&amp;</span> Return&nbsp;Policy</a></li>
+              <li><a href="//sea-of-green.com/faqs.html">FAQ</a></li>
+              <li><a href="//sea-of-green.com/privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="//sea-of-green.com/terms-and-conditions.html">Terms <span class="amp">&amp;</span> Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__social">
+          <ul class="footer__social-icons">
+            <li><a href="//facebook.com/pages/Sea-Of-Green-Hydrogardens-Urban-Garden-Store/310918543121"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="//twitter.com/seaofgreenhydro"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="//instagram.com/seaofgreenhydro"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="//youtube.com/user/SeaOfGreenHydro"><i class="fa fa-youtube-play"></i></a></li>
+            <li><a href="//plus.google.com/u/0/+Seaofgreenhydro/posts"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="//handsonhydro.tumblr.com"><i class="fa fa-tumblr"></i></a></li>
+          </ul>
+          <form class="footer__newsletter-signup input-bar input-bar--blue input-bar--email" action="javascript:newsletterSignup()">
+            <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" />
+            <button type="submit"></button>
+          </form>
+        </div>
+        <div class="footer__info">
+          <p class="footer__copyright">&copy; 1992 &#8211; <span id="footer__copyright-year"></span> Sea of Green&nbsp;Hydrogardens</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+      // Send newsletter signup to Mailchimp
+      function newsletterSignup() {
+        var email = $("#footer__newsletter-signup-input").value;
+        var link = "http://sea-of-green.us7.list-manage2.com/subscribe?u=fdddde00588b5c6e72568d831&id=878c26efbd&MERGE0=";
+        window.location.replace(link+email);
+      }
+
+      // Add Year to Copyright
+      var year = new Date().getFullYear();
+      $("#footer__copyright-year").text(year);
+
+      // Add 'utm_source=hands-on-hydro' to external links
+      // link: https://css-tricks.com/snippets/jquery/target-only-external-links/
+      var ref = "utm_source=hands-on-hydro";
+      $('a').each(function() {
+        var a = new RegExp('/' + window.location.host + '/');
+        if (!a.test(this.href)) {
+          var link = this.href;
+          if (link.search("/?") != -1 && link.search("=") != -1) {
+            this.href += '&' + ref;
+          } else {
+            this.href += '?' + ref;
+          }
+        }
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,163 @@
+    <!-- Navigation -->
+    <nav role="navigation" class="nav">
+      <div class="nav__button">
+        <i class="fa fa-fw fa-navicon"></i>
+      </div>
+      <div class="nav__content">
+
+        <div class="nav__links">
+          <ul>
+            <li><a href="//sea-of-green.com/">Shop</a></li>
+            {block:HasPages}
+              {block:Pages}
+                <li><a href="{URL}">{Label}</a></li>
+              {/block:Pages}
+            {/bock:HasPages}
+            {block:AskEnabled}
+              <li><a href="/ask">Ask</a></li>
+            {/block:AskEnabled}
+            {block:SubmissionsEnabled}
+              <li><a href="/submit">Submit</a></li>
+            {/block:SubmissionsEnabled}
+            {block:IfShowArchive}
+              <li><a href="/archive">Archive</a></li>
+            {/block:IfShowArchive}
+            {block:IfShowRandom}
+              <li><a href="/random">Random</a></li>
+            {/block:IfShowRandom}
+            {block:IfShowRSS}
+              <li><a href="{RSS}">RSS</a></li>
+            {/block:IfShowRSS}
+          </ul>
+        </div>
+
+        <form action="/search" method="get" class="input-bar input-bar--search nav__search">
+          <input type="text" name="q" value="{SearchQuery}" placeholder="Search Posts" />
+          <button type="submit" value="" />
+        </form>
+
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__background"></div>
+      <div class="header__content">
+        <a href="{BlogURL}">
+          <svg role="img" class="header__logo">
+            <use xlink:href="#hoh-logo"></use>
+          </svg>
+        </a>
+        <a href="//sea-of-green.com/">
+          <svg role="img" class="header__attribution">
+            <use xlink:href="#hoh-logo__attribution"></use>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main role="content">
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer__content">
+        <div class="footer__lists">
+          <div class="footer__list">
+            <h3>Hands-on Hydro</h3>
+            <ul>
+              {block:HasPages}
+                {block:Pages}
+                  <li><a href="{URL}">{Label}</a></li>
+                {/block:Pages}
+              {/bock:HasPages}
+              {block:AskEnabled}
+                <li><a href="/ask">Ask</a></li>
+              {/block:AskEnabled}
+              {block:SubmissionsEnabled}
+                <li><a href="/submit">Submit</a></li>
+              {/block:SubmissionsEnabled}
+              {block:IfShowArchive}
+                <li><a href="/archive">Archive</a></li>
+              {/block:IfShowArchive}
+              {block:IfShowRandom}
+                <li><a href="/random">Random</a></li>
+              {/block:IfShowRandom}
+              {block:IfShowRSS}
+                <li><a href="{RSS}">RSS</a></li>
+              {/block:IfShowRSS}
+            </ul>
+          </div>
+          <div class="footer__list">
+            <h3>Shop</h3>
+            <ul>
+              <li><a href="//sea-of-green.com/">Store Home</a></li>
+              <li><a href="//sea-of-green.com/index.html?dispatch=products.search">Search</a></li>
+              <li><a href="//sea-of-green.com/">Featured Products</a></li>
+              <li><a href="//sea-of-green.com/new-products.html">New Arrivals</a></li>
+              <li><a href="//sea-of-green.com/">Good Deals</a></li>
+            </ul>
+          </div>
+          <div class="footer__list">
+            <h3>About Us</h3>
+            <ul>
+              <li><a href="//sea-of-green.com/locations.html">Locations</a></li>
+              <li><a href="//sea-of-green.com/shipping-policy.html">Shipping & Return Policy</a></li>
+              <li><a href="//sea-of-green.com/faqs.html">FAQ</a></li>
+              <li><a href="//sea-of-green.com/privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="//sea-of-green.com/terms-and-conditions.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__social">
+          <ul class="footer__social-icons">
+            <li><a href="//facebook.com/pages/Sea-Of-Green-Hydrogardens-Urban-Garden-Store/310918543121"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="//twitter.com/seaofgreenhydro"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="//instagram.com/seaofgreenhydro"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="//youtube.com/user/SeaOfGreenHydro"><i class="fa fa-youtube-play"></i></a></li>
+            <li><a href="//plus.google.com/u/0/+Seaofgreenhydro/posts"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="//handsonhydro.tumblr.com"><i class="fa fa-tumblr"></i></a></li>
+          </ul>
+          <form class="footer__newsletter-signup input-bar input-bar--blue input-bar--email" action="javascript:newsletterSignup()">
+            <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" />
+            <button type="submit"></button>
+          </form>
+        </div>
+        <div class="footer__info">
+          <p class="footer__copyright">&copy; 1992 -- <span id="footer__copyright-year"></span> Sea of Green Hydrogardens</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+      // Send newsletter signup to Mailchimp
+      function newsletterSignup() {
+        var email = $("#footer__newsletter-signup-input").value;
+        var link = "http://sea-of-green.us7.list-manage2.com/subscribe?u=fdddde00588b5c6e72568d831&id=878c26efbd&MERGE0=";
+        window.location.replace(link+email);
+      }
+
+      // Add Year to Copyright
+      var year = new Date().getFullYear();
+      $("#footer__copyright-year").text(year);
+
+      // Add 'utm_source=hands-on-hydro' to external links
+      // link: https://css-tricks.com/snippets/jquery/target-only-external-links/
+      var ref = "utm_source=hands-on-hydro";
+      $('a').each(function() {
+        var a = new RegExp('/' + window.location.host + '/');
+        if (!a.test(this.href)) {
+          var link = this.href;
+          if (link.search("/?") != -1 && link.search("=") != -1) {
+            this.href += '&' + ref;
+          } else {
+            this.href += '?' + ref;
+          }
+        }
+      });
+    </script>
+
+  </body>
+</html>
