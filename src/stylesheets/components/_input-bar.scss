@@ -12,11 +12,12 @@
 //   <input type="email" placeholder="Sign Up for Our Newsletter" />
 //   <button></button>
 // </form>
-// http://codepen.io/lowmess/full/waRoeB/
+// link: http://codepen.io/lowmess/full/waRoeB/
 
 
 .input-bar {
   @include clearfix;
+  @include font(heading);
 
   //width: 100%;
   max-width: $measure;

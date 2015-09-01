@@ -9,7 +9,7 @@
 // General footer styles
 footer {
   @include fill-parent;
-  @include font(heading-text);
+  @include font(heading);
 
   margin-top: $gutter;
   padding: $gutter 0 $h3-font-size 0;

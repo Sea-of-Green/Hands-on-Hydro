@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// This file contains styles for the pagination component.
+// -----------------------------------------------------------------------------
+
+.pagination {
+  @include outer-container;
+  @include row;
+  @include font(heading);
+  text-align: center;
+  &__previous {
+    margin-right: $gutter;
+  }
+  &__jump {
+    color: $gray;
+    margin-right: $gutter;
+    font-size: $h2-font-size;
+  }
+  &__current {
+    color: $blue;
+    margin-right: $gutter;
+    font-size: $h2-font-size;
+    &:visited {
+      color: $blue;
+    }
+  }
+  &__next {
+    margin-right: 0;
+  }
+}

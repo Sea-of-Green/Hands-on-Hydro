@@ -86,7 +86,7 @@ $base-line-height: 1.75rem;
 
 $h1-line-height: $base-line-height * 2;
 
-$h2-line-height: $base-line-height * 2;
+$h2-line-height: $base-line-height * 1.5;
 
 $h3-line-height: $base-line-height;
 
@@ -132,7 +132,7 @@ $breakpoints: (
 // A running list of z-indexii. Used with @function z.
 
 $zindex: (
-  background: 0,
+  header__background: -1,
   nav: 1000
 );
 
@@ -143,17 +143,17 @@ $zindex: (
 
 $font-stack:
 
-  (group: heading-text, id: regular, font: $heading-text, weight: 400, style: normal),
-  (group: heading-text, id: regular-italic, font: $heading-text, weight: 400, style: italic),
-  (group: heading-text, id: medium, font: $heading-text, weight: 500, style: normal),
-  (group: heading-text, id: medium-italic, font: $heading-text, weight: 500, style: italic),
-  (group: heading-text, id: bold, font: $heading-text, weight: 700, style: normal),
-  (group: heading-text, id: bold-italic, font: $heading-text, weight: 700, style: italic),
+  (group: heading, id: regular, font: $heading-text, weight: 400, style: normal),
+  (group: heading, id: regular-italic, font: $heading-text, weight: 400, style: italic),
+  (group: heading, id: medium, font: $heading-text, weight: 500, style: normal),
+  (group: heading, id: medium-italic, font: $heading-text, weight: 500, style: italic),
+  (group: heading, id: bold, font: $heading-text, weight: 700, style: normal),
+  (group: heading, id: bold-italic, font: $heading-text, weight: 700, style: italic),
 
-  (group: body-text, id: regular, font: $body-text, weight: 400, style: normal),
-  (group: body-text, id: regular-italic, font: $body-text, weight: 400, style: italic),
-  (group: body-text, id: bold, font: $body-text, weight: 700, style: normal),
-  (group: body-text, id: bold-italic, font: $body-text, weight: 700, style: italic),
+  (group: body, id: regular, font: $body-text, weight: 400, style: normal),
+  (group: body, id: regular-italic, font: $body-text, weight: 400, style: italic),
+  (group: body, id: bold, font: $body-text, weight: 700, style: normal),
+  (group: body, id: bold-italic, font: $body-text, weight: 700, style: italic),
 
   (group: monospace, id: regular, font: $monospace, weight: 400, style: normal),
   (group: monospace, id: regular-italic, font: $monospace, weight: 400, style: italic),

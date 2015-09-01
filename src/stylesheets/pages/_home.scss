@@ -2,6 +2,9 @@
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
 
+.hide {
+  display: none;
+}
 main {
   @include outer-container;
   padding: 0 $gutter;

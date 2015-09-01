@@ -1,12 +1,13 @@
 // -----------------------------------------------------------------------------
 // This file contains typographic styles.
 // -----------------------------------------------------------------------------
+// link: http://codepen.io/lowmess/full/ZbzbMY
 
 // BODY TEXT & HEADERS
 // ===================
 
 body {
-  @include font(body-text);
+  @include font(body);
 
   font-size: $base-font-size;
   line-height: $base-line-height;
@@ -15,7 +16,7 @@ body {
 }
 
 h1 {
-  @include font(heading-text, bold);
+  @include font(heading, bold);
 
   font-size: $h1-font-size;
   line-height: $h1-line-height;
@@ -32,7 +33,7 @@ h1 {
   margin-bottom: $base-line-height;
 }
 h2 {
-  @include font(heading-text, bold);
+  @include font(heading, bold);
 
   font-size: $h2-font-size;
   line-height: $h2-line-height;
@@ -48,7 +49,7 @@ h2 {
   margin-bottom: $base-line-height;
 }
 h3 {
-  @include font(heading-text, medium);
+  @include font(heading, medium);
 
   font-size: $h3-font-size;
   line-height: $h3-line-height;
@@ -64,7 +65,7 @@ h3 {
   margin-bottom: $base-line-height;
 }
 h4, h5, h6 {
-  @include font(heading-text, medium);
+  @include font(heading, medium);
 
   font-size: $h4-font-size;
   line-height: $h4-line-height;
@@ -203,5 +204,9 @@ a {
   @include on-event {
     color: $blue;
     border-bottom: 0.1em solid currentColor;
+  }
+
+  &:active {
+    color: $blue-5;
   }
 }

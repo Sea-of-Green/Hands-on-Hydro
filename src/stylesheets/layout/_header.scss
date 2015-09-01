@@ -1,0 +1,38 @@
+// -----------------------------------------------------------------------------
+// This file contains styles for the pagination component.
+// -----------------------------------------------------------------------------
+
+.header {
+  a:hover {
+    border: none;
+  }
+  &__background {
+    @include fill-parent;
+    @include position(absolute, calc(2.75rem + #{$gutter * 2}) 0 0 null);
+
+    height: 150px;
+    z-index: z(header__background);
+
+    background: $blue;
+  }
+  &__content {
+    @include outer-container;
+    @include pad;
+
+    padding-top: 10px;
+  }
+  &__logo {
+    @include row;
+
+    height: 150px;
+    width: auto;
+  }
+  &__attribution {
+    @include row;
+
+    height: 40px;
+    width: auto;
+
+    padding-top: 0.5rem;
+  }
+}

@@ -2,6 +2,50 @@
 // This file contains styles that are specific to the navigation.
 // -----------------------------------------------------------------------------
 
-nav {
+.nav {
   @include fill-parent;
+  @include font(heading);
+
+  a:visited {
+    color: $blue;
+  }
+
+  &__button {
+    display: none;
+  }
+
+  &__content {
+    @include outer-container;
+    @include row;
+    @include pad;
+
+    padding-top: 0;
+    height: calc(2.75rem + #{$gutter * 2});
+  }
+
+  &__links {
+    @include span-columns(6);
+
+    list-style-type: none;
+
+    margin-top: 1.5rem;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      margin: 0;
+      padding: 0;
+      margin-right: $gutter;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__search {
+    @include span-columns(6);
+    @include omega;
+  }
 }

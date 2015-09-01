@@ -1,35 +1,35 @@
     <!-- Navigation -->
     <nav role="navigation" class="nav">
+
       <div class="nav__button">
         <i class="fa fa-fw fa-navicon"></i>
       </div>
+
       <div class="nav__content">
 
-        <div class="nav__links">
-          <ul>
-            <li><a href="//sea-of-green.com/">Shop</a></li>
-            {block:HasPages}
-              {block:Pages}
-                <li><a href="{URL}">{Label}</a></li>
-              {/block:Pages}
-            {/bock:HasPages}
-            {block:AskEnabled}
-              <li><a href="/ask">Ask</a></li>
-            {/block:AskEnabled}
-            {block:SubmissionsEnabled}
-              <li><a href="/submit">Submit</a></li>
-            {/block:SubmissionsEnabled}
-            {block:IfShowArchive}
-              <li><a href="/archive">Archive</a></li>
-            {/block:IfShowArchive}
-            {block:IfShowRandom}
-              <li><a href="/random">Random</a></li>
-            {/block:IfShowRandom}
-            {block:IfShowRSS}
-              <li><a href="{RSS}">RSS</a></li>
-            {/block:IfShowRSS}
-          </ul>
-        </div>
+        <ul class="nav__links">
+          <li><a href="//sea-of-green.com/">Shop</a></li>
+          {block:HasPages}
+            {block:Pages}
+              <li><a href="{URL}">{Label}</a></li>
+            {/block:Pages}
+          {/block:HasPages}
+          {block:AskEnabled}
+            <li><a href="/ask">Ask</a></li>
+          {/block:AskEnabled}
+          {block:SubmissionsEnabled}
+            <li><a href="/submit">Submit</a></li>
+          {/block:SubmissionsEnabled}
+          {block:IfShowArchive}
+            <li><a href="/archive">Archive</a></li>
+          {/block:IfShowArchive}
+          {block:IfShowRandom}
+            <li><a href="/random">Random</a></li>
+          {/block:IfShowRandom}
+          {block:IfShowRSS}
+            <li><a href="{RSS}">RSS</a></li>
+          {/block:IfShowRSS}
+        </ul>
 
         <form action="/search" method="get" class="input-bar input-bar--search nav__search">
           <input type="text" name="q" value="{SearchQuery}" placeholder="Search Posts" />
@@ -44,12 +44,12 @@
       <div class="header__background"></div>
       <div class="header__content">
         <a href="{BlogURL}">
-          <svg role="img" class="header__logo">
+          <svg role="img" class="header__logo" viewBox="0 0 405 143.8">
             <use xlink:href="#hoh-logo"></use>
           </svg>
         </a>
         <a href="//sea-of-green.com/">
-          <svg role="img" class="header__attribution">
+          <svg role="img" class="header__attribution" viewBox="0 0 271.9 33.3">
             <use xlink:href="#hoh-logo__attribution"></use>
           </svg>
         </a>
@@ -59,6 +59,25 @@
     <!-- Content -->
     <main role="content">
     </main>
+
+    <!-- Pagination -->
+      <div class="pagination">
+        {block:PreviousPage}
+          <a href="{PreviousPage}" class="pagination__previous btn btn--white btn--reverse">Newer</a>
+        {/block:PreviousPage}
+        {block:JumpPagination length=5}
+          {block:CurrentPage}
+            <span class="pagination__current">{PageNumber}</span>
+          {/block:CurrentPage}
+          {block:JumpPage}
+            <a class="pagination__jump" href="{URL}">{PageNumber}</a>
+          {/block:JumpPage}
+        {/block:JumpPagination}
+        {block:NextPage}
+          <a href="{NextPage}" class="pagination__next btn btn--white btn--reverse">Older</a>
+        {/block:NextPage}
+      </div>
+    {/block:Pagination}
 
     <!-- Footer -->
     <footer>
@@ -71,7 +90,7 @@
                 {block:Pages}
                   <li><a href="{URL}">{Label}</a></li>
                 {/block:Pages}
-              {/bock:HasPages}
+              {/block:HasPages}
               {block:AskEnabled}
                 <li><a href="/ask">Ask</a></li>
               {/block:AskEnabled}
@@ -112,12 +131,12 @@
         </div>
         <div class="footer__social">
           <ul class="footer__social-icons">
-            <li><a href="//facebook.com/pages/Sea-Of-Green-Hydrogardens-Urban-Garden-Store/310918543121"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="//twitter.com/seaofgreenhydro"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="//instagram.com/seaofgreenhydro"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="//youtube.com/user/SeaOfGreenHydro"><i class="fa fa-youtube-play"></i></a></li>
-            <li><a href="//plus.google.com/u/0/+Seaofgreenhydro/posts"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="//handsonhydro.tumblr.com"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="{FacebookURL}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{TwitterURL}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="{InstagramURL}"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="{YouTubeURL}"><i class="fa fa-youtube-play"></i></a></li>
+            <li><a href="{GooglePlusURL}"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="{TumblrURL}"><i class="fa fa-tumblr"></i></a></li>
           </ul>
           <form class="footer__newsletter-signup input-bar input-bar--blue input-bar--email" action="javascript:newsletterSignup()">
             <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" />
@@ -131,10 +150,11 @@
     </footer>
 
     <!-- Scripts -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
       // Send newsletter signup to Mailchimp
       function newsletterSignup() {
-        var email = $("#footer__newsletter-signup-input").value;
+        var email = $("#footer__newsletter-signup-input").val();
         var link = "http://sea-of-green.us7.list-manage2.com/subscribe?u=fdddde00588b5c6e72568d831&id=878c26efbd&MERGE0=";
         window.location.replace(link+email);
       }

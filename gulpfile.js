@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var merge = require('merge-stream');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
@@ -9,21 +10,21 @@ var concat = require('gulp-concat');
 gulp.task('default', ['build-theme']);
 
 gulp.task('sass', function() {
-  return gulp.src('./src/stylesheets/*.scss')
+  var nested = gulp.src('./src/stylesheets/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(sass({outputStyle: 'expanded'}))
+    .pipe(sass({outputStyle: 'nested'}))
     .pipe(autoprefixer())
     .pipe(gulp.dest('./src/css'));
-});
-
-gulp.task('min-css', ['sass'], function() {
-  return gulp.src('./src/css/*.css')
+  var compressed = gulp.src('./src/stylesheets/*.scss')
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(csso())
     .pipe(rename(function(path) {
       path.basename += '.min';
       path.extname = '.css';
     }))
-    .pipe(csso())
     .pipe(gulp.dest('./dist/css'));
+  return merge(nested, compressed);
 });
 
 gulp.task('typo', function() {
@@ -34,7 +35,7 @@ gulp.task('typo', function() {
     .pipe(gulp.dest('./dist/html/'));
 });
 
-gulp.task('build-theme', ['min-css', 'typo'], function() {
+gulp.task('build-theme', ['sass', 'typo'], function() {
   return gulp.src(['./dist/html/head.html', './dist/css/main.min.css', './dist/html/svg.html', './dist/html/body.html'])
     .pipe(concat('theme.html'))
     .pipe(gulp.dest('./dist/'));
