@@ -374,11 +374,6 @@ body {
   overflow-x: hidden;
   overflow-y: auto; }
 
-img {
-  max-height: 90vh;
-  width: auto;
-  max-width: 100%; }
-
 body {
   font-family: "Droid Serif", "DroidSerif", "Georgia", "Cambria", "Times New Roman", "Times", serif;
   font-weight: 400;
@@ -657,7 +652,8 @@ a:active {
   display: block;
   height: 40px;
   width: auto;
-  padding-top: 0.5rem; }
+  padding-top: 0.5rem;
+  margin-bottom: 3.5rem; }
 
 .header__attribution::after {
   clear: both;
@@ -702,6 +698,35 @@ a:active {
 
 .pagination__next {
   margin-right: 0; }
+
+.post-pagination {
+  max-width: 55rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center; }
+
+.post-pagination::after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.post-pagination::after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.post-pagination__previous {
+  margin-right: 1rem; }
+
+.post-pagination__previous:last-of-type {
+  margin-right: 0; }
+
+.post-pagination__next {
+  margin-left: 1rem; }
+
+.post-pagination__next:last-of-type {
+  margin-left: 0; }
 
 footer {
   width: 100%;
@@ -832,7 +857,8 @@ footer ul {
   border-radius: 7px;
   border: 1px solid;
   color: #ffffff;
-  border-color: #005c82; }
+  border-color: #005c82;
+  cursor: pointer; }
 
 .btn:after, button:after {
   font-family: "Font Awesome", FontAwesome;
@@ -1000,7 +1026,8 @@ button:active,
   background: #e5e1db;
   background: -webkit-linear-gradient(top, #e5e1db, #e5e1db);
   background: linear-gradient(to bottom, #e5e1db, #e5e1db);
-  color: #aea198; }
+  color: #aea198;
+  cursor: pointer; }
 
 .input-bar button:after {
   font-family: "Font Awesome", FontAwesome;
@@ -1201,3 +1228,53 @@ main::after {
   clear: both;
   content: "";
   display: table; }
+
+.post {
+  display: block; }
+
+.post::after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.more-btn {
+  text-align: center; }
+
+.more-btn:before {
+  position: relative;
+  top: -2.75rem;
+  content: '';
+  width: 100%;
+  height: 5.25rem;
+  margin: 0 auto;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), white);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white); }
+
+.photo {
+  margin: 0; }
+
+.photo__photo {
+  max-height: 90vh;
+  width: auto;
+  max-width: 100%; }
+
+.photoset__sizer, .photoset__photo {
+  width: 50%; }
+
+@media (min-width: 30rem) {
+  .photoset__sizer, .photoset__photo {
+    width: 33.33333%; } }
+
+@media (min-width: 40rem) {
+  .photoset__sizer, .photoset__photo {
+    width: 25%; } }
+
+@media (min-width: 120rem) {
+  .photoset__sizer, .photoset__photo {
+    width: 20%; } }
+
+.photoset__gutter-sizer {
+  width: 1rem; }
+
+.photoset__photo {
+  margin-bottom: 1rem; }

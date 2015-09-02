@@ -1,0 +1,90 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to a post page.
+// -----------------------------------------------------------------------------
+
+.post {
+  @include row;
+}
+
+.more-btn {
+  text-align: center;
+
+  &:before {
+    @include position(relative, -2.75rem null null null);
+
+    content: '';
+
+    width: 100%;
+    height: $base-line-height * 3;
+
+    margin: 0 auto;
+
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  }
+}
+
+.text {
+
+}
+
+.photo {
+  margin: 0;
+
+  &__photo{
+    max-height: 90vh;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+.panorama {
+
+}
+
+.photoset {
+
+  &__sizer, &__photo {
+    width: percentage(1/2);
+    @include respond-to(small) {
+      width: percentage(1/3);
+    }
+    @include respond-to(medium) {
+      width: percentage(1/4);
+    }
+    @include respond-to(huge) {
+      width: percentage(1/5);
+    }
+  }
+
+  &__gutter-sizer {
+    width: $gutter;
+  }
+
+  &__photo {
+    margin-bottom: $gutter;
+  }
+}
+
+.quote {
+
+}
+
+.link {
+
+}
+
+.chat {
+
+}
+
+.audio {
+
+}
+
+.video {
+
+}
+
+.answer {
+
+}

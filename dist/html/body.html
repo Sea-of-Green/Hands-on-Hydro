@@ -32,7 +32,7 @@
         </ul>
 
         <form action="/search" method="get" class="input-bar input-bar--search nav__search">
-          <input type="text" name="q" value="{SearchQuery}" placeholder="Search Posts" />
+          <input type="text" name="q" value="{SearchQuery}" placeholder="Search" />
           <button type="submit" value="" />
         </form>
 
@@ -58,9 +58,130 @@
 
     <!-- Content -->
     <main role="content">
+      <!-- Posts (index) -->
+      {block:Posts}
+
+        <!-- Text Posts -->
+        {block:Text}
+          <article class="text post">
+            {block:Title}
+              <h2><a href="{permalink}">{Title}</a></h2>
+            {/block:Title}
+            {Body}
+            {block:More}
+              <br />
+              <a href="{Permalink}" class="text__more-btn more-btn btn btn--white">Read More</a></div>
+            {/block:More}
+          {/block:Text}
+        </article>
+
+        <!-- Photo posts -->
+        {block:Photo}
+          <article class="post">
+            <figure class="photo">
+              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo"
+                srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                sizes="(min-width: 30rem) 500px, 100vw" />
+              {block:Caption}
+                <figcaption>{Caption}</figcaption>
+              {/block:Caption}
+            </figure>
+          </article>
+        {/block:Photo}
+
+        <!-- Panorama posts -->
+        {block:Panorama}
+          <article class="post">
+            <figure class="panorama">
+
+            </figure>
+          </article>
+        {/block:Panorama}
+
+        <!-- Photoset posts -->
+        {block:Photoset}
+          <article class="post">
+            <figure class="photoset">
+              <div class="photoset__sizer"></div>
+              <div class="photoset__gutter-sizer"></div>
+              {block:Photos}
+                {block:Photo}
+                  {block:LinkURL}
+                    <a href="">
+                  {/block:LinkURL}
+                  <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo"
+                    srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                    sizes="(min-width: 30rem) 500px, 100vw" />
+                  {block:LinkURL}
+                    </a>
+                  {/block:LinkURL}
+                {/block:Photo}
+              {/block:Photos}
+              {block:Caption}
+                <figcaption>{Caption}</figcaption>
+              {/block:Caption}
+            </figure>
+          </article>
+        {/block:Photoset}
+
+        <!-- Quote posts -->
+        {block:Quote}
+          <article class="post">
+
+          </article>
+        {/block:Quote}
+
+        <!-- Link posts -->
+        {block:Link}
+          <article class="post">
+
+          </article>
+        {/block:Link}
+
+        <!-- Chat posts -->
+        {block:Chat}
+          <article class="post">
+
+          </article>
+        {/block:Chat}
+
+        <!-- Audio posts -->
+        {block:Audio}
+          <article class="post">
+
+          </article>
+        {/block:Audio}
+
+        <!-- Video posts -->
+        {block:Video}
+          <article class="post">
+
+          </article>
+        {/block:Video}
+
+        <!-- Answer posts -->
+        {block:Answer}
+          <article class="post answer">
+            <h4>{Asker} asks:</h4>
+            <blockquote class="answer__question">
+              {Question}
+            </blockquote>
+            <hr />
+            {block:Answerer}
+              <h4>{Answerer} says:</h4>
+            {/block:Answerer}
+            {Answer}
+            {block:More}
+              <br />
+              <a href="{Permalink}" class="text__more-btn more-btn btn btn--white">Read More</a></div>
+            {/block:More}
+          </article>
+        {/block:Answer}
+
+      {/block:Posts}
     </main>
 
-    <!-- Pagination -->
+    <!-- Index Pagination -->
       <div class="pagination">
         {block:PreviousPage}
           <a href="{PreviousPage}" class="pagination__previous btn btn--white btn--reverse">Newer</a>
@@ -78,6 +199,16 @@
         {/block:NextPage}
       </div>
     {/block:Pagination}
+
+    <!-- Post Pagination -->
+    {block:PermalinkPagination}
+      {block:PreviousPost}
+        <a class="post-pagination__previous btn btn--white btn--reverse" href="{PreviousPost}">Previous Post</a>
+      {/block:PreviousPost}
+      {block:NextPost}
+        <a class="post-pagination__next btn btn--white" href="{NextPost}">Next Post</a>
+      {/block:NextPost}
+    {/block:PermalinkPagination}
 
     <!-- Footer -->
     <footer>
@@ -150,32 +281,65 @@
     </footer>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
     <script type="text/javascript">
       // Send newsletter signup to Mailchimp
       function newsletterSignup() {
-        var email = $("#footer__newsletter-signup-input").val();
+        var email = document.getElementById('footer__newsletter-signup-input').value;
         var link = "http://sea-of-green.us7.list-manage2.com/subscribe?u=fdddde00588b5c6e72568d831&id=878c26efbd&MERGE0=";
         window.location.replace(link+email);
       }
 
       // Add Year to Copyright
       var year = new Date().getFullYear();
-      $("#footer__copyright-year").text(year);
+      document.getElementById('footer__copyright-year').innerHTML = year;
 
       // Add 'utm_source=hands-on-hydro' to external links
       // link: https://css-tricks.com/snippets/jquery/target-only-external-links/
       var ref = "utm_source=hands-on-hydro";
-      $('a').each(function() {
+
+      // Add 'utm_source=hands-on-hydro' to external links
+      var ref = "utm_source=hands-on-hydro";
+      var links = document.getElementsByTagName('a');
+      for (i = 0; i < links.length; i++) {
         var a = new RegExp('/' + window.location.host + '/');
-        if (!a.test(this.href)) {
-          var link = this.href;
-          if (link.search("/?") != -1 && link.search("=") != -1) {
-            this.href += '&' + ref;
+        if (!a.test(links[i].href) && links[i].href.search("handsonhydro") == -1) {
+
+          var link = links[i].href;
+
+          if (link.search("#") != -1) {
+
+            var linkParts = link.split("#"),
+                anchor = linkParts.pop(),
+                linkParts = linkParts.pop(),
+                link = linkParts.toString().replace(",", "");
+
+            if (link.search("/?") != -1 && link.search("=") != -1) {
+              links[i].href = link + '&' + ref + "#" + anchor;
+            } else {
+              links[i].href = link + '?' + ref + "#" + anchor;
+            }
+
           } else {
-            this.href += '?' + ref;
+
+            if (link.search("/?") != -1 && link.search("=") != -1) {
+              links[i].href += '&' + ref;
+            } else {
+              links[i].href += '?' + ref;
+            }
+
           }
         }
+      }
+
+      // Masonry for Photosets
+      var elem = document.querySelector('.photoset');
+      var msnry = new Masonry( elem, {
+        // options
+        columnWidth: '.photoset__sizer',
+        itemSelector: '.photoset__photo',
+        gutter: '.photoset__gutter-sizer',
+        percentPosition: true
       });
     </script>
 

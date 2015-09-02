@@ -24,10 +24,3 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
-
-// <img> sanitization
-img {
-  max-height: 90vh;
-  width: auto;
-  max-width: 100%;
-}

@@ -62,6 +62,8 @@
     background: linear-gradient(to bottom, $gray-1, $gray-1);
     color: $gray-3;
 
+    cursor: pointer;
+
     &:after {
       @include font(symbol);
 

@@ -6,24 +6,53 @@
   @include outer-container;
   @include row;
   @include font(heading);
+
   text-align: center;
+
   &__previous {
     margin-right: $gutter;
   }
+
   &__jump {
     color: $gray;
     margin-right: $gutter;
     font-size: $h2-font-size;
   }
+
   &__current {
     color: $blue;
     margin-right: $gutter;
     font-size: $h2-font-size;
+
     &:visited {
       color: $blue;
     }
   }
+
   &__next {
     margin-right: 0;
+  }
+}
+
+.post-pagination {
+  @include outer-container;
+  @include row;
+
+  text-align: center;
+
+  &__previous {
+    margin-right: $gutter;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__next {
+    margin-left: $gutter;
+    
+    &:last-of-type {
+      margin-left: 0;
+    }
   }
 }
