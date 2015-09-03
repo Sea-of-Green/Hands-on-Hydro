@@ -61,11 +61,11 @@
       <!-- Posts (index) -->
       {block:Posts}
 
-        <!-- Text Posts -->
         {block:Text}
+        <!-- Text Posts -->
           <article class="text post">
             {block:Title}
-              <h2><a href="{permalink}">{Title}</a></h2>
+              <h1><a href="{permalink}">{Title}</a></h1>
             {/block:Title}
             {Body}
             {block:More}
@@ -75,8 +75,8 @@
           {/block:Text}
         </article>
 
-        <!-- Photo posts -->
         {block:Photo}
+        <!-- Photo posts -->
           <article class="post">
             <figure class="photo">
               <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo"
@@ -89,8 +89,8 @@
           </article>
         {/block:Photo}
 
-        <!-- Panorama posts -->
         {block:Panorama}
+        <!-- Panorama posts -->
           <article class="post">
             <figure class="panorama">
 
@@ -98,14 +98,14 @@
           </article>
         {/block:Panorama}
 
-        <!-- Photoset posts -->
         {block:Photoset}
+        <!-- Photoset posts -->
           <article class="post">
             <figure class="photoset">
               <div class="photoset__sizer"></div>
               <div class="photoset__gutter-sizer"></div>
-              {block:Photos}
-                {block:Photo}
+              <div class="photoset_photos">
+                {block:Photos}
                   {block:LinkURL}
                     <a href="">
                   {/block:LinkURL}
@@ -115,8 +115,8 @@
                   {block:LinkURL}
                     </a>
                   {/block:LinkURL}
-                {/block:Photo}
-              {/block:Photos}
+                {/block:Photos}
+              </div>
               {block:Caption}
                 <figcaption>{Caption}</figcaption>
               {/block:Caption}
@@ -124,43 +124,48 @@
           </article>
         {/block:Photoset}
 
-        <!-- Quote posts -->
         {block:Quote}
+        <!-- Quote posts -->
           <article class="post">
-
+            <blockquote class="quote">
+              {Quote}
+            </blockquote>
+            {block:Source}
+              <cite>{Source}</cite>
+            {/block:Source}
           </article>
         {/block:Quote}
 
-        <!-- Link posts -->
         {block:Link}
+        <!-- Link posts -->
           <article class="post">
 
           </article>
         {/block:Link}
 
-        <!-- Chat posts -->
         {block:Chat}
+        <!-- Chat posts -->
           <article class="post">
 
           </article>
         {/block:Chat}
 
-        <!-- Audio posts -->
         {block:Audio}
+        <!-- Audio posts -->
           <article class="post">
 
           </article>
         {/block:Audio}
 
-        <!-- Video posts -->
         {block:Video}
+        <!-- Video posts -->
           <article class="post">
 
           </article>
         {/block:Video}
 
-        <!-- Answer posts -->
         {block:Answer}
+        <!-- Answer posts -->
           <article class="post answer">
             <h4>{Asker} asks:</h4>
             <blockquote class="answer__question">
@@ -339,9 +344,18 @@
         columnWidth: '.photoset__sizer',
         itemSelector: '.photoset__photo',
         gutter: '.photoset__gutter-sizer',
-        percentPosition: true
+        percentPosition: true,
+        transitionDuration: '0.1s',
       });
-    </script>
+      msnry.masonry({
+        isInitLayout: false
+      });
+      // bind event
+      msnry.masonry( 'on', 'layoutComplete', function() {
+        console.log('layout is complete');
+      });
+      // manually trigger initial layout
+      msnry.masonry();
 
   </body>
 </html>

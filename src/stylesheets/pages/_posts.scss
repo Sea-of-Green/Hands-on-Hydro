@@ -4,6 +4,26 @@
 
 .post {
   @include row;
+  margin-bottom: $base-line-height * 4;
+  &:after {
+    content: '';
+    height: 2px;
+    width: 95%;
+    background: $blue;
+    margin: 0 auto;
+    position: relative;
+    top: $base-line-height * 2;
+  }
+  &:last-of-type {
+    margin-bottom: $base-line-height * 2;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+figure {
+  margin: 0;
 }
 
 .more-btn {
@@ -34,6 +54,7 @@
     max-height: 90vh;
     width: auto;
     max-width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -43,16 +64,20 @@
 
 .photoset {
 
+  width: 100%;
+  max-width: $measure;
+
+  &__photos {
+    @include row;
+  }
+
   &__sizer, &__photo {
-    width: percentage(1/2);
-    @include respond-to(small) {
-      width: percentage(1/3);
-    }
+    width: 100%;
     @include respond-to(medium) {
-      width: percentage(1/4);
+      width: calc(#{percentage(1/2)} - 0.5rem);
     }
     @include respond-to(huge) {
-      width: percentage(1/5);
+      width: calc(#{percentage(1/4)} - 0.25rem);
     }
   }
 
@@ -66,7 +91,32 @@
 }
 
 .quote {
+  @extend h2;
+  @include font(heading);
 
+  width: 90%;
+  border: none;
+  margin: 0 auto;
+
+  position: relative;
+
+  &:before {
+    content: "\201C";
+
+    @include font(heading, bold);
+    @include position(absolute, $base-line-height*3 null null $base-line-height*-2);
+
+    font-size: modular-scale(8);
+    line-height: 0;
+    color: $gray-1;
+
+    margin-bottom: -$h1-font-size;
+
+    z-index: -1;
+  }
+  & + cite {
+    font-size: $h3-font-size;
+  }
 }
 
 .link {
