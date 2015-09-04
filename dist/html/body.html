@@ -58,7 +58,7 @@
 
     <!-- Content -->
     <main role="content">
-      <!-- Posts (index) -->
+      <!-- Posts -->
       {block:Posts}
 
         {block:Text}
@@ -102,9 +102,9 @@
         <!-- Photoset posts -->
           <article class="post">
             <figure class="photoset">
-              <div class="photoset__sizer"></div>
-              <div class="photoset__gutter-sizer"></div>
-              <div class="photoset_photos">
+              <div class="photoset__photos">
+                <div class="photoset__sizer"></div>
+                <div class="photoset__gutter-sizer"></div>
                 {block:Photos}
                   {block:LinkURL}
                     <a href="">
@@ -186,6 +186,7 @@
       {/block:Posts}
     </main>
 
+    {block:Pagination}
     <!-- Index Pagination -->
       <div class="pagination">
         {block:PreviousPage}
@@ -205,14 +206,16 @@
       </div>
     {/block:Pagination}
 
-    <!-- Post Pagination -->
     {block:PermalinkPagination}
-      {block:PreviousPost}
-        <a class="post-pagination__previous btn btn--white btn--reverse" href="{PreviousPost}">Previous Post</a>
-      {/block:PreviousPost}
-      {block:NextPost}
-        <a class="post-pagination__next btn btn--white" href="{NextPost}">Next Post</a>
-      {/block:NextPost}
+    <!-- Post Pagination -->
+      <div class="post-pagination">
+        {block:PreviousPost}
+          <a class="post-pagination__previous btn btn--white btn--reverse" href="{PreviousPost}">Previous Post</a>
+        {/block:PreviousPost}
+        {block:NextPost}
+          <a class="post-pagination__next btn btn--white" href="{NextPost}">Next Post</a>
+        {/block:NextPost}
+      </div>
     {/block:PermalinkPagination}
 
     <!-- Footer -->
@@ -286,7 +289,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+
     <script type="text/javascript">
       // Send newsletter signup to Mailchimp
       function newsletterSignup() {
@@ -338,24 +344,19 @@
       }
 
       // Masonry for Photosets
-      var elem = document.querySelector('.photoset');
-      var msnry = new Masonry( elem, {
-        // options
-        columnWidth: '.photoset__sizer',
-        itemSelector: '.photoset__photo',
-        gutter: '.photoset__gutter-sizer',
-        percentPosition: true,
-        transitionDuration: '0.1s',
+      var photoset = $('.photoset__photos').imagesLoaded( function() {
+        photoset.masonry({
+          // options
+          columnWidth: '.photoset__sizer',
+          itemSelector: '.photoset__photo',
+          gutter: '.photoset__gutter-sizer',
+          percentPosition: true,
+          transitionDuration: '0.1s'
+        });
       });
-      msnry.masonry({
-        isInitLayout: false
+      $(window).resize( function() {
+        photoset.masonry('layout');
       });
-      // bind event
-      msnry.masonry( 'on', 'layoutComplete', function() {
-        console.log('layout is complete');
-      });
-      // manually trigger initial layout
-      msnry.masonry();
 
   </body>
 </html>

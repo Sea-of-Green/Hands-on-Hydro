@@ -7,10 +7,13 @@
   @include row;
   @include font(heading);
 
+  margin-top: $base-line-height * 2;
+
   text-align: center;
 
   &__previous {
     margin-right: $gutter;
+    color: $blue;
   }
 
   &__jump {
@@ -31,12 +34,30 @@
 
   &__next {
     margin-right: 0;
+    color: $blue;
+  }
+
+  &:before {
+    content: '';
+
+    height: 2px;
+    width: 95%;
+
+    margin: 0 auto;
+
+    display: block;
+    position: relative;
+    top: $base-line-height * -2;
+
+    background: $blue;
   }
 }
 
 .post-pagination {
   @include outer-container;
   @include row;
+
+  margin-top: $base-line-height * 2;
 
   text-align: center;
 
@@ -50,9 +71,24 @@
 
   &__next {
     margin-left: $gutter;
-    
+
     &:last-of-type {
       margin-left: 0;
     }
+  }
+
+  &:before {
+    content: '';
+
+    height: 2px;
+    width: 95%;
+
+    margin: 0 auto;  display: block;
+
+
+    position: relative;
+    top: $base-line-height * -2;
+
+    background: $blue;
   }
 }

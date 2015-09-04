@@ -11,7 +11,8 @@ footer {
   @include fill-parent;
   @include font(heading);
 
-  margin-top: $gutter;
+
+  margin-top: $base-line-height * 2;
   padding: $gutter 0 $h3-font-size 0;
 
   background: $blue;
