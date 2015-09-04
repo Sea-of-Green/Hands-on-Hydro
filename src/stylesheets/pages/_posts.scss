@@ -12,11 +12,11 @@
     width: 95%;
 
     margin: 0 auto;
-    
+
     position: relative;
     top: $base-line-height * 2;
 
-    background: $blue;
+    background: $gray-1;
   }
   &:last-of-type {
     margin-bottom: $base-line-height * 2;
@@ -30,29 +30,11 @@ figure {
   margin: 0;
 }
 
-.more-btn {
-  text-align: center;
-
-  &:before {
-    @include position(relative, -2.75rem null null null);
-
-    content: '';
-
-    width: 100%;
-    height: $base-line-height * 3;
-
-    margin: 0 auto;
-
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-  }
-}
-
 .text {
 
 }
 
 .photo {
-  margin: 0;
 
   &__photo{
     max-height: 90vh;
@@ -79,11 +61,8 @@ figure {
     @include respond-to(medium) {
       width: calc(50% - 0.25rem);
     }
-    @include respond-to(large) {
-      width: calc(33% - 0.375rem);
-    }
     @include respond-to(huge) {
-      width: calc(25% - 0.5rem);
+      width: calc(33% - 0.375rem);
     }
   }
 
@@ -97,31 +76,78 @@ figure {
 }
 
 .quote {
-  @extend h2;
-  @include font(heading);
+  &__blockquote {
+    width: 100%;
+    border: none;
+    margin: 0 auto;
+    padding: 0;
 
-  width: 90%;
-  border: none;
-  margin: 0 auto;
+    position: relative;
 
-  position: relative;
+    font-style: normal;
+    color: $black;
 
-  &:before {
-    content: "\201C";
+    p {
+      font-style: normal;
 
-    @include font(heading, bold);
-    @include position(absolute, $base-line-height*3 null null $base-line-height*-2);
+      em {
+        font-style: italic;
+      }
+    }
 
-    font-size: modular-scale(8);
-    line-height: 0;
-    color: $gray-1;
+    &--short {
+      @extend h1;
+      @include font(heading, bold);
+    }
 
-    margin-bottom: -$h1-font-size;
+    &--medium {
+      @extend h2;
+      @include font(heading, medium);
+    }
 
-    z-index: -1;
+    &--long {
+      @extend h2;
+      @include font(heading);
+    }
+
+    &:before {
+      content: "\201C";
+
+      @include font(heading, bold);
+      @include position(absolute, $base-line-height*2.5 null null $gutter);
+
+      font-size: modular-scale(8);
+      line-height: 0;
+      color: $gray-1;
+
+      margin-bottom: -$h1-font-size;
+
+      z-index: -1;
+
+      @include respond-to(large) {
+        left: $gutter * -1;
+      }
+    }
   }
-  & + cite {
+
+  &__cite {
+    @include font(body);
+
     font-size: $h3-font-size;
+  }
+
+  &__cite p {
+    @include font(body);
+
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-style: normal;
+    text-align: right;
+    text-transform: none;
+
+    em {
+      @include font(body, italic);
+    }
   }
 }
 

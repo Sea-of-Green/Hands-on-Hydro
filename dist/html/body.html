@@ -62,7 +62,7 @@
       {block:Posts}
 
         {block:Text}
-        <!-- Text Posts -->
+        <!-- Text Post -->
           <article class="text post">
             {block:Title}
               <h1><a href="{permalink}">{Title}</a></h1>
@@ -70,102 +70,99 @@
             {Body}
             {block:More}
               <br />
-              <a href="{Permalink}" class="text__more-btn more-btn btn btn--white">Read More</a></div>
+              <a href="{Permalink}" class="btn btn--white">Read More</a></div>
             {/block:More}
           {/block:Text}
         </article>
 
         {block:Photo}
-        <!-- Photo posts -->
-          <article class="post">
-            <figure class="photo">
-              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo"
-                srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
-                sizes="(min-width: 30rem) 500px, 100vw" />
-              {block:Caption}
-                <figcaption>{Caption}</figcaption>
-              {/block:Caption}
-            </figure>
+        <!-- Photo Post -->
+          <article class="post photo">
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo"
+              srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+              sizes="(min-width: 30rem) 500px, 100vw" />
+            {block:Caption}
+              <p>{Caption}</p>
+            {/block:Caption}
           </article>
         {/block:Photo}
 
         {block:Panorama}
-        <!-- Panorama posts -->
-          <article class="post">
-            <figure class="panorama">
+        <!-- Panorama Post -->
+          <article class="post panorama">
 
-            </figure>
           </article>
         {/block:Panorama}
 
         {block:Photoset}
-        <!-- Photoset posts -->
-          <article class="post">
-            <figure class="photoset">
-              <div class="photoset__photos">
-                <div class="photoset__sizer"></div>
-                <div class="photoset__gutter-sizer"></div>
-                {block:Photos}
-                  {block:LinkURL}
-                    <a href="">
-                  {/block:LinkURL}
-                  <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo"
-                    srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
-                    sizes="(min-width: 30rem) 500px, 100vw" />
-                  {block:LinkURL}
-                    </a>
-                  {/block:LinkURL}
-                {/block:Photos}
-              </div>
-              {block:Caption}
-                <figcaption>{Caption}</figcaption>
-              {/block:Caption}
-            </figure>
+        <!-- Photoset Post -->
+          <article class="post photoset">
+            <div class="photoset__photos">
+              <div class="photoset__sizer"></div>
+              <div class="photoset__gutter-sizer"></div>
+              {block:Photos}
+                {block:LinkURL}
+                  <a href="">
+                {/block:LinkURL}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo"
+                  srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                  sizes="(min-width: 30rem) 500px, 100vw" />
+                {block:LinkURL}
+                  </a>
+                {/block:LinkURL}
+              {/block:Photos}
+            </div>
+            {block:Caption}
+              <p>{Caption}</p>
+            {/block:Caption}
           </article>
         {/block:Photoset}
 
         {block:Quote}
-        <!-- Quote posts -->
-          <article class="post">
-            <blockquote class="quote">
+        <!-- Quote Post -->
+          <article class="post quote">
+            <blockquote class="quote__blockquote quote__blockquote--{length}">
               {Quote}
+              {block:Source}
+                <cite class="quote__cite">{Source}</cite>
+              {/block:Source}
             </blockquote>
-            {block:Source}
-              <cite>{Source}</cite>
-            {/block:Source}
+            {block:Caption}
+              <p>{Caption}</p>
+            {/block:Caption}
           </article>
         {/block:Quote}
 
         {block:Link}
-        <!-- Link posts -->
-          <article class="post">
+        <!-- Link Post -->
+          <article class="post link">
 
           </article>
         {/block:Link}
 
         {block:Chat}
-        <!-- Chat posts -->
-          <article class="post">
+        <!-- Chat Post -->
+          <article class="post chat">
 
           </article>
         {/block:Chat}
 
         {block:Audio}
-        <!-- Audio posts -->
-          <article class="post">
+        <!-- Audio Post -->
+          <article class="post audio">
 
           </article>
         {/block:Audio}
 
         {block:Video}
-        <!-- Video posts -->
-          <article class="post">
+        <!-- Video Post -->
+          <article class="post video">
 
           </article>
         {/block:Video}
 
         {block:Answer}
-        <!-- Answer posts -->
+        <!-- Answer Post -->
           <article class="post answer">
             <h4>{Asker} asks:</h4>
             <blockquote class="answer__question">
@@ -178,7 +175,7 @@
             {Answer}
             {block:More}
               <br />
-              <a href="{Permalink}" class="text__more-btn more-btn btn btn--white">Read More</a></div>
+              <a href="{Permalink}" class="btn btn--white">Read More</a></div>
             {/block:More}
           </article>
         {/block:Answer}
@@ -192,16 +189,18 @@
         {block:PreviousPage}
           <a href="{PreviousPage}" class="pagination__previous btn btn--white btn--reverse">Newer</a>
         {/block:PreviousPage}
-        {block:JumpPagination length=5}
-          {block:CurrentPage}
-            <span class="pagination__current">{PageNumber}</span>
-          {/block:CurrentPage}
-          {block:JumpPage}
-            <a class="pagination__jump" href="{URL}">{PageNumber}</a>
-          {/block:JumpPage}
-        {/block:JumpPagination}
+        <div class="pagination__nav">
+          {block:JumpPagination length=5}
+            {block:CurrentPage}
+              <a class="pagination__current" href="#">{PageNumber}</a>
+            {/block:CurrentPage}
+            {block:JumpPage}
+              <a class="pagination__jump" href="{URL}">{PageNumber}</a>
+            {/block:JumpPage}
+          {/block:JumpPagination}
+        </div>
         {block:NextPage}
-          <a href="{NextPage}" class="pagination__next btn btn--white btn--reverse">Older</a>
+          <a href="{NextPage}" class="pagination__next btn btn--white">Older</a>
         {/block:NextPage}
       </div>
     {/block:Pagination}

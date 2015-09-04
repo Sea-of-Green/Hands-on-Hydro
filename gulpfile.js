@@ -1,14 +1,22 @@
+//Base Utils
 var gulp = require('gulp');
 var merge = require('merge-stream');
+var del = require('del');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
+// Sass / CSS
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
 var csso = require('gulp-csso');
+// HTML
 var typogr = require('gulp-typogr');
-var concat = require('gulp-concat');
 
 gulp.task('default', ['build-theme']);
+
+gulp.task('clean', function() {
+  del('./dist');
+});
 
 gulp.task('typo', function() {
   return gulp.src('./src/*.html')
@@ -23,12 +31,12 @@ gulp.task('sass', ['typo'], function() {
     .pipe(sass().on('error', sass.logError))
     .pipe(sass({outputStyle: 'nested'}))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./src/css'));
+    .pipe(gulp.dest('./dist/css'));
   var compressed = gulp.src('./src/stylesheets/*.scss')
     .pipe(sass())
-    .pipe(uncss({
-        html: ['./dist/**/*.html']
-    }))
+    //.pipe(uncss({
+    //    html: ['./dist/**/*.html']
+    //}))
     .pipe(autoprefixer())
     .pipe(csso())
     .pipe(rename(function(path) {

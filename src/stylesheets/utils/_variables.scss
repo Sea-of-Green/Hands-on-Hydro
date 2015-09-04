@@ -144,19 +144,19 @@ $zindex: (
 $font-stack:
 
   (group: heading, id: regular, font: $heading-text, weight: 400, style: normal),
-  (group: heading, id: regular-italic, font: $heading-text, weight: 400, style: italic),
+  (group: heading, id: italic, font: $heading-text, weight: 400, style: italic),
   (group: heading, id: medium, font: $heading-text, weight: 500, style: normal),
   (group: heading, id: medium-italic, font: $heading-text, weight: 500, style: italic),
   (group: heading, id: bold, font: $heading-text, weight: 700, style: normal),
   (group: heading, id: bold-italic, font: $heading-text, weight: 700, style: italic),
 
   (group: body, id: regular, font: $body-text, weight: 400, style: normal),
-  (group: body, id: regular-italic, font: $body-text, weight: 400, style: italic),
+  (group: body, id: italic, font: $body-text, weight: 400, style: italic),
   (group: body, id: bold, font: $body-text, weight: 700, style: normal),
   (group: body, id: bold-italic, font: $body-text, weight: 700, style: italic),
 
   (group: monospace, id: regular, font: $monospace, weight: 400, style: normal),
-  (group: monospace, id: regular-italic, font: $monospace, weight: 400, style: italic),
+  (group: monospace, id: italic, font: $monospace, weight: 400, style: italic),
   (group: monospace, id: bold, font: $monospace, weight: 700, style: normal),
   (group: monospace, id: bold-italic, font: $monospace, weight: 700, style: italic),
 
