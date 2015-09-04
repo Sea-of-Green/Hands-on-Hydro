@@ -4,17 +4,7 @@
   "description": "Tumblr theme for Hands-on Hydro",
   "main": "gulpfile.js",
   "dependencies": {},
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-csso": "^1.0.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-rename": "^1.2.2",
-    "merge-stream": "^1.0.0",
-    "gulp-typogr": "^1.0.0",
-    "gulp-sass": "^2.0.4",
-    "gulp-uncss": "^1.0.3"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "gulp"
   },
