@@ -24,6 +24,66 @@
       display: none;
     }
   }
+
+  &__caption {
+    blockquote {
+      width: 100%;
+
+      padding: 0 $gutter;
+      margin: 0;
+      border-left: 2px solid $gray-1;
+
+      font-style: normal;
+
+      p {
+        &:first-of-type {
+          margin-top: 0;
+        }
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  &__info {
+    @include font(monospace);
+
+    min-height: 0;
+
+    margin-top: $base-line-height;
+    margin-bottom: 0;
+    padding: 0;
+
+    background: transparent;
+
+    font-size: $small-font-size;
+    color: $gray;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $gray;
+
+      &:visited {
+        color: $gray;
+      }
+
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
 }
 
 figure {
@@ -37,10 +97,22 @@ figure {
 .photo {
 
   &__photo{
-    max-height: 90vh;
-    width: auto;
+    display: block;
+
+    height: auto;
     max-width: 100%;
+
     margin: 0 auto;
+
+    &--index {
+      max-height: 90vh;
+      width: auto;
+    }
+
+    &--permalink {
+      width: auto;
+      max-height: none;
+    }
   }
 }
 
@@ -49,29 +121,68 @@ figure {
 }
 
 .photoset {
+  &__photos--2 { // photosets with 2 photos
 
-  &__photos {
-    @include row;
-    width: 100%;
-    max-width: $measure;
   }
 
-  &__sizer, &__photo {
-    width: 100%;
-    @include respond-to(medium) {
-      width: calc(50% - 0.25rem);
-    }
-    @include respond-to(huge) {
-      width: calc(33% - 0.375rem);
-    }
+  &__photos--3 { // photosets with 3 photos
+
   }
 
-  &__gutter-sizer {
-    width: 0.5rem;
+  &__photos--4 { // photosets with 4 photos
+
+  }
+
+  &__photos--5 { // photosets with 5 photos
+
+  }
+
+  &__photos--6 { // photosets with 6 photos
+
+  }
+
+  &__photos--7 { // photosets with 7 photos
+
+  }
+
+  &__photos--8 { // photosets with 8 photos
+
+  }
+
+  &__photos--9 { // photosets with 9 photos
+
+  }
+
+  &__photos--10 { // photosets with 10 photos
+
   }
 
   &__photo {
-    margin-bottom: 0.5rem;
+    max-width: 100%;
+    max-height: 90vh;
+
+    &--index {
+      background-position: center center;
+      background-size: cover;
+
+      width: 50%;
+      height: 250px;
+    }
+
+    &--permalink {
+      display: block;
+
+      width: auto;
+      height: auto;
+      max-height: none;
+
+      margin: 0 auto;
+      margin-bottom: $gutter;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
@@ -85,6 +196,7 @@ figure {
     position: relative;
 
     font-style: normal;
+    text-transform: none;
     color: $black;
 
     p {

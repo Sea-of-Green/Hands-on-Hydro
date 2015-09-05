@@ -34,6 +34,7 @@ gulp.task('sass', ['typo'], function() {
     .pipe(gulp.dest('./dist/css'));
   var compressed = gulp.src('./src/stylesheets/*.scss')
     .pipe(sass())
+    // Will bring this back, have to split the stylesheets so posts aren't affected
     //.pipe(uncss({
     //    html: ['./dist/**/*.html']
     //}))

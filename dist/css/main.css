@@ -1281,41 +1281,86 @@ main::after {
 .post:last-of-type:after {
   display: none; }
 
+.post__caption blockquote {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0;
+  border-left: 2px solid #e5e1db;
+  font-style: normal; }
+
+.post__caption blockquote p:first-of-type {
+  margin-top: 0; }
+
+.post__caption blockquote p:last-of-type {
+  margin-bottom: 0; }
+
+.post__caption blockquote em {
+  font-style: italic; }
+
+.post__caption blockquote:before {
+  display: none; }
+
+.post__info {
+  font-family: "Bitstream Vera Sans Mono", "Consolas", "Courier", monospace;
+  font-weight: 400;
+  font-style: normal;
+  min-height: 0;
+  margin-top: 1.75rem;
+  margin-bottom: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 0.75019rem;
+  color: #aea198; }
+
+.post__info p {
+  margin-bottom: 0; }
+
+.post__info a {
+  color: #aea198; }
+
+.post__info a:visited {
+  color: #aea198; }
+
+.post__info a:hover {
+  color: #0091b2; }
+
 figure {
   margin: 0; }
 
 .photo__photo {
-  max-height: 90vh;
-  width: auto;
+  display: block;
+  height: auto;
   max-width: 100%;
   margin: 0 auto; }
 
-.photoset__photos {
-  display: block;
-  width: 100%;
-  max-width: 55rem; }
+.photo__photo--index {
+  max-height: 90vh;
+  width: auto; }
 
-.photoset__photos::after {
-  clear: both;
-  content: "";
-  display: table; }
-
-.photoset__sizer, .photoset__photo {
-  width: 100%; }
-
-@media (min-width: 40rem) {
-  .photoset__sizer, .photoset__photo {
-    width: calc(50% - 0.25rem); } }
-
-@media (min-width: 120rem) {
-  .photoset__sizer, .photoset__photo {
-    width: calc(33% - 0.375rem); } }
-
-.photoset__gutter-sizer {
-  width: 0.5rem; }
+.photo__photo--permalink {
+  width: auto;
+  max-height: none; }
 
 .photoset__photo {
-  margin-bottom: 0.5rem; }
+  max-width: 100%;
+  max-height: 90vh; }
+
+.photoset__photo--index {
+  background-position: center center;
+  background-size: cover;
+  width: 50%;
+  height: 250px; }
+
+.photoset__photo--permalink {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: none;
+  margin: 0 auto;
+  margin-bottom: 1rem; }
+
+.photoset__photo--permalink:last-of-type {
+  margin-bottom: 0; }
 
 .quote__blockquote {
   width: 100%;
@@ -1324,6 +1369,7 @@ figure {
   padding: 0;
   position: relative;
   font-style: normal;
+  text-transform: none;
   color: #212620; }
 
 .quote__blockquote p {

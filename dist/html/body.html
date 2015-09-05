@@ -72,50 +72,52 @@
               <br />
               <a href="{Permalink}" class="btn btn--white">Read More</a></div>
             {/block:More}
-          {/block:Text}
-        </article>
+        {/block:Text}
 
         {block:Photo}
         <!-- Photo Post -->
           <article class="post photo">
-            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo"
-              srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
-              sizes="(min-width: 30rem) 500px, 100vw" />
-            {block:Caption}
-              <p>{Caption}</p>
-            {/block:Caption}
-          </article>
+            {block:IndexPage}
+              <a href="{Permalink}">
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo photo__photo--index"
+                  srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                  sizes="(min-width: 30rem) 500px, 100vw" />
+              </a>
+            {/block:IndexPage}
+
+            {block:PermalinkPage}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo photo__photo--permalink"
+                  srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                  sizes="(min-width: 30rem) 500px, 100vw" />
+            {/block:PermalinkPage}
         {/block:Photo}
 
         {block:Panorama}
         <!-- Panorama Post -->
           <article class="post panorama">
 
-          </article>
         {/block:Panorama}
 
         {block:Photoset}
         <!-- Photoset Post -->
           <article class="post photoset">
-            <div class="photoset__photos">
-              <div class="photoset__sizer"></div>
-              <div class="photoset__gutter-sizer"></div>
+
+            {block:IndexPage}
+              <a href="{Permalink}" class="photoset__photos photoset__photos--{PhotoCount}">
+                {block:Photos}
+                  <div class="photoset__photo photoset__photo--index" data-bg="{PhotoURL-500}" data-lg-bg="{PhotoURL-HighRes}"></div>
+                {/block:Photos}
+              </a>
+            {/block:IndexPage}
+
+            {block:PermalinkPage}
               {block:Photos}
-                {block:LinkURL}
-                  <a href="">
-                {/block:LinkURL}
-                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo"
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo photoset__photo--permalink"
                   srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
                   sizes="(min-width: 30rem) 500px, 100vw" />
-                {block:LinkURL}
-                  </a>
-                {/block:LinkURL}
               {/block:Photos}
-            </div>
-            {block:Caption}
-              <p>{Caption}</p>
-            {/block:Caption}
-          </article>
+            {/block:PermalinkPage}
+
         {/block:Photoset}
 
         {block:Quote}
@@ -127,38 +129,30 @@
                 <cite class="quote__cite">{Source}</cite>
               {/block:Source}
             </blockquote>
-            {block:Caption}
-              <p>{Caption}</p>
-            {/block:Caption}
-          </article>
         {/block:Quote}
 
         {block:Link}
         <!-- Link Post -->
           <article class="post link">
 
-          </article>
         {/block:Link}
 
         {block:Chat}
         <!-- Chat Post -->
           <article class="post chat">
 
-          </article>
         {/block:Chat}
 
         {block:Audio}
         <!-- Audio Post -->
           <article class="post audio">
 
-          </article>
         {/block:Audio}
 
         {block:Video}
         <!-- Video Post -->
           <article class="post video">
 
-          </article>
         {/block:Video}
 
         {block:Answer}
@@ -177,8 +171,32 @@
               <br />
               <a href="{Permalink}" class="btn btn--white">Read More</a></div>
             {/block:More}
-          </article>
         {/block:Answer}
+
+        <!-- Post Caption -->
+        {block:Caption}
+          <div class="post__caption">
+            {Caption}
+          </div>
+        {/block:Caption}
+
+        <!-- Post Source, Notes, tags, etc. -->
+        <footer class="post__info">
+
+          {block:ContentSource}
+            <div class="post__source">
+              <p>source <a href="{SourceURL}">{SourceTitle}</a></p>
+            </div>
+          {/block:ContentSource}
+
+          {block:RebloggedFrom}
+            <div class="post__reblog">
+              <p>via <a href="{ReblogParentURL}">{ReblogParentName}</a></p>
+            </div>
+          {/block:RebloggedFrom}
+
+        </footer>
+      </article>
 
       {/block:Posts}
     </main>
@@ -209,10 +227,10 @@
     <!-- Post Pagination -->
       <div class="post-pagination">
         {block:PreviousPost}
-          <a class="post-pagination__previous btn btn--white btn--reverse" href="{PreviousPost}">Previous Post</a>
+          <a class="post-pagination__previous btn btn--white btn--reverse" href="{PreviousPost}">Older Post</a>
         {/block:PreviousPost}
         {block:NextPost}
-          <a class="post-pagination__next btn btn--white" href="{NextPost}">Next Post</a>
+          <a class="post-pagination__next btn btn--white" href="{NextPost}">Newer Post</a>
         {/block:NextPost}
       </div>
     {/block:PermalinkPagination}
@@ -288,10 +306,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
-
     <script type="text/javascript">
       // Send newsletter signup to Mailchimp
       function newsletterSignup() {
@@ -342,19 +356,32 @@
         }
       }
 
-      // Masonry for Photosets
-      var photoset = $('.photoset__photos').imagesLoaded( function() {
-        photoset.masonry({
-          // options
-          columnWidth: '.photoset__sizer',
-          itemSelector: '.photoset__photo',
-          gutter: '.photoset__gutter-sizer',
-          percentPosition: true,
-          transitionDuration: '0.1s'
-        });
-      });
-      $(window).resize( function() {
-        photoset.masonry('layout');
+      // Set photoset images on index pages
+      function photoset() {
+        var photoset = document.getElementsByClassName('photoset__photo--index');
+        for(i = 0; i < photoset.length; i++) {
+          var bgURL = photoset[i].getAttribute('data-bg');
+          var bgLgURL = photoset[i].getAttribute('data-lg-bg');
+          if (window.matchMedia('(max-width: 500px)').matches) {
+            photoset[i].setAttribute("style", "background-image: url(" + bgURL + ")");
+          } else {
+            photoset[i].setAttribute("style", "background-image: url(" + bgLgURL + ")");
+          }
+        }
+      }
+
+      // Initialize photosets
+      photoset();
+
+      // Update photoset if Window becomes smaller or larger than 500px
+      var windowWidth = window.innerWidth;
+      var newWindowWidth;
+      window.addEventListener('resize', function(event){
+        newWindowWidth = window.innerWidth;
+        if ((windowWidth > 500 && newWindowWidth < 500) || (windowWidth < 500 && newWindowWidth > 500)) {
+          photosetBg();
+        }
+        windowWidth = newWindowWidth;
       });
 
   </body>
