@@ -10,11 +10,10 @@
     "gulp-autoprefixer": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^1.0.0",
-    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
     "gulp-typogr": "^1.0.0",
     "gulp-uncss": "^1.0.3",
-    "merge-stream": "^1.0.0"
+    "node-neat": "^1.7.2"
   },
   "scripts": {
     "test": "gulp"

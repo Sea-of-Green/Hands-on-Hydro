@@ -3,8 +3,8 @@
 // 1. Vendors
 @import
   'vendor/normalize',
-  'vendor/bower_components/bourbon/app/assets/stylesheets/bourbon', // @link bourbon.io
-    'vendor/bower_components/neat/app/assets/stylesheets/neat'; // @link neat.bourbon.io
+  'bourbon', // @link bourbon.io
+    'neat'; // @link neat.bourbon.io
 
 // 2. Configuration and helpers
 @import

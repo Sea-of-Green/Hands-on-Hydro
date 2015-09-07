@@ -86,10 +86,6 @@
   }
 }
 
-figure {
-  margin: 0;
-}
-
 .text {
 
 }
@@ -121,40 +117,266 @@ figure {
 }
 
 .photoset {
-  &__photos--2 { // photosets with 2 photos
+  $p: ".photoset__photo--index"; // selector #{$p}
 
+  &__photos {
+    @include row;
+  }
+  &__photos--2 { // photosets with 2 photos
+    #{$p} {
+      @include respond-to(small) {
+        width: calc(50% - 0.5rem);
+        height: 150px;
+      }
+      @include respond-to(medium) {
+        height: 250px;
+      }
+    }
+    #{$p}:nth-of-type(1) {
+      margin-right: $gutter;
+    }
+    #{$p}:nth-of-type(2) {
+      @include clearfix;
+    }
   }
 
   &__photos--3 { // photosets with 3 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
   }
 
   &__photos--4 { // photosets with 4 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+
+    }
   }
 
   &__photos--5 { // photosets with 5 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+
+    }
+    #{$p}:nth-of-type(5) {
+
+    }
   }
 
   &__photos--6 { // photosets with 6 photos
+    #{$p}:nth-of-type(1) {
+      @include respond-to(small) {
+        width: calc(50% - #{$gutter * 0.5});
+        height: 150px;
 
+        margin-right: $gutter;
+      }
+      @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
+    }
+    #{$p}:nth-of-type(2) {
+      @include respond-to(small) {
+        @include clearfix;
+
+        width: calc(50% - #{$gutter * 0.5});
+        height: 150px;
+
+        margin-right: 0;
+      }
+      @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+      @include respond-to(small) {
+        width: calc(33% - #{$gutter * 0.6725});
+        height: 100px;
+
+        margin-right: $gutter;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
+    }
+    #{$p}:nth-of-type(5) {
+      @include respond-to(small) {
+        width: calc(33% - #{$gutter * 0.6725});
+        height: 100px;
+
+        margin-right: $gutter;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
+    }
+    #{$p}:nth-of-type(6) {
+      @include respond-to(small) {
+        @include clearfix;
+
+        width: calc(33% - #{$gutter * 0.6725});
+        height: 100px;
+
+        margin-right: 0;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
+    }
   }
 
   &__photos--7 { // photosets with 7 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+
+    }
+    #{$p}:nth-of-type(5) {
+
+    }
+    #{$p}:nth-of-type(6) {
+
+    }
+    #{$p}:nth-of-type(7) {
+
+    }
   }
 
   &__photos--8 { // photosets with 8 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+
+    }
+    #{$p}:nth-of-type(5) {
+
+    }
+    #{$p}:nth-of-type(6) {
+
+    }
+    #{$p}:nth-of-type(7) {
+
+    }
+    #{$p}:nth-of-type(8) {
+
+    }
   }
 
   &__photos--9 { // photosets with 9 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+
+    }
+    #{$p}:nth-of-type(5) {
+
+    }
+    #{$p}:nth-of-type(6) {
+
+    }
+    #{$p}:nth-of-type(7) {
+
+    }
+    #{$p}:nth-of-type(8) {
+
+    }
+    #{$p}:nth-of-type(9) {
+
+    }
   }
 
   &__photos--10 { // photosets with 10 photos
+    #{$p}:nth-of-type(1) {
 
+    }
+    #{$p}:nth-of-type(2) {
+
+    }
+    #{$p}:nth-of-type(3) {
+
+    }
+    #{$p}:nth-of-type(4) {
+
+    }
+    #{$p}:nth-of-type(5) {
+
+    }
+    #{$p}:nth-of-type(6) {
+
+    }
+    #{$p}:nth-of-type(7) {
+
+    }
+    #{$p}:nth-of-type(8) {
+
+    }
+    #{$p}:nth-of-type(9) {
+
+    }
+    #{$p}:nth-of-type(10) {
+
+    }
   }
 
   &__photo {
@@ -162,11 +384,26 @@ figure {
     max-height: 90vh;
 
     &--index {
-      background-position: center center;
-      background-size: cover;
+      float: left;
+      overflow: hidden;
 
-      width: 50%;
-      height: 250px;
+      width: 100%;
+      height: auto;
+
+      margin: 0 auto;
+      margin-bottom: $gutter;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        border: none;
+      }
+
+      img {
+        width: 100%;
+      }
     }
 
     &--permalink {

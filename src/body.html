@@ -103,11 +103,15 @@
           <article class="post photoset">
 
             {block:IndexPage}
-              <a href="{Permalink}" class="photoset__photos photoset__photos--{PhotoCount}">
+              <div class="photoset__photos photoset__photos--{PhotoCount}">
                 {block:Photos}
-                  <div class="photoset__photo photoset__photo--index" data-bg="{PhotoURL-500}" data-lg-bg="{PhotoURL-HighRes}"></div>
+                  <a href="{Permalink}" class="photoset__photo photoset__photo--index" data-bg="{PhotoURL-500}" data-lg-bg="{PhotoURL-HighRes}">
+                    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"
+                      srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                      sizes="(min-width: 30rem) 500px, 100vw" />
+                  </a>
                 {/block:Photos}
-              </a>
+              <div>
             {/block:IndexPage}
 
             {block:PermalinkPage}
@@ -310,7 +314,7 @@
       // Send newsletter signup to Mailchimp
       function newsletterSignup() {
         var email = document.getElementById('footer__newsletter-signup-input').value;
-        var link = "http://sea-of-green.us7.list-manage2.com/subscribe?u=fdddde00588b5c6e72568d831&id=878c26efbd&MERGE0=";
+        var link  = "http://sea-of-green.us7.list-manage2.com/subscribe?u=fdddde00588b5c6e72568d831&id=878c26efbd&MERGE0=";
         window.location.replace(link+email);
       }
 
@@ -322,8 +326,9 @@
       // link: https://css-tricks.com/snippets/jquery/target-only-external-links/
       var ref = "utm_source=hands-on-hydro";
 
+      /*
       // Add 'utm_source=hands-on-hydro' to external links
-      var ref = "utm_source=hands-on-hydro";
+      var ref   = "utm_source=hands-on-hydro";
       var links = document.getElementsByTagName('a');
       for (i = 0; i < links.length; i++) {
         var a = new RegExp('/' + window.location.host + '/');
@@ -334,9 +339,9 @@
           if (link.search("#") != -1) {
 
             var linkParts = link.split("#"),
-                anchor = linkParts.pop(),
+                anchor    = linkParts.pop(),
                 linkParts = linkParts.pop(),
-                link = linkParts.toString().replace(",", "");
+                link      = linkParts.toString().replace(",", "");
 
             if (link.search("/?") != -1 && link.search("=") != -1) {
               links[i].href = link + '&' + ref + "#" + anchor;
@@ -360,12 +365,12 @@
       function photoset() {
         var photoset = document.getElementsByClassName('photoset__photo--index');
         for(i = 0; i < photoset.length; i++) {
-          var bgURL = photoset[i].getAttribute('data-bg');
+          var bgURL   = photoset[i].getAttribute('data-bg');
           var bgLgURL = photoset[i].getAttribute('data-lg-bg');
           if (window.matchMedia('(max-width: 500px)').matches) {
-            photoset[i].setAttribute("style", "background-image: url(" + bgURL + ")");
+            photoset[i].style.backgroundImage = "url(" + bgURL + ")";
           } else {
-            photoset[i].setAttribute("style", "background-image: url(" + bgLgURL + ")");
+            photoset[i].style.backgroundImage = "url(" + bgLgURL + ")";
           }
         }
       }
@@ -379,10 +384,11 @@
       window.addEventListener('resize', function(event){
         newWindowWidth = window.innerWidth;
         if ((windowWidth > 500 && newWindowWidth < 500) || (windowWidth < 500 && newWindowWidth > 500)) {
-          photosetBg();
+          photoset();
         }
         windowWidth = newWindowWidth;
       });
+      */
 
   </body>
 </html>
