@@ -186,12 +186,11 @@
   }
 
   &__photos--6 { // photosets with 6 photos
-    #{$p}:nth-of-type(1) {
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(2) {
       @include respond-to(small) {
-        width: calc(50% - #{$gutter * 0.5});
-        height: 150px;
+        @include span-columns(6);
 
-        margin-right: $gutter;
+        height: 150px;
       }
       @include respond-to(medium) {
         height: 200px;
@@ -202,43 +201,19 @@
     }
     #{$p}:nth-of-type(2) {
       @include respond-to(small) {
-        @include clearfix;
-
-        width: calc(50% - #{$gutter * 0.5});
-        height: 150px;
-
-        margin-right: 0;
-      }
-      @include respond-to(medium) {
-        height: 200px;
-      }
-      @include respond-to(large) {
-        height: 250px;
+        @include omega;
       }
     }
     #{$p}:nth-of-type(3) {
-
-    }
-    #{$p}:nth-of-type(4) {
       @include respond-to(small) {
-        width: calc(33% - #{$gutter * 0.6725});
-        height: 100px;
-
-        margin-right: $gutter;
-      }
-      @include respond-to(medium) {
-        height: 125px;
-      }
-      @include respond-to(large) {
-        height: 150px;
+        @include span-columns(12);
+        @include omega;
       }
     }
-    #{$p}:nth-of-type(5) {
+    #{$p}:nth-of-type(4), #{$p}:nth-of-type(5), #{$p}:nth-of-type(6) {
       @include respond-to(small) {
-        width: calc(33% - #{$gutter * 0.6725});
+        @include span-columns(4);
         height: 100px;
-
-        margin-right: $gutter;
       }
       @include respond-to(medium) {
         height: 125px;
@@ -249,18 +224,7 @@
     }
     #{$p}:nth-of-type(6) {
       @include respond-to(small) {
-        @include clearfix;
-
-        width: calc(33% - #{$gutter * 0.6725});
-        height: 100px;
-
-        margin-right: 0;
-      }
-      @include respond-to(medium) {
-        height: 125px;
-      }
-      @include respond-to(large) {
-        height: 150px;
+        @include omega;
       }
     }
   }

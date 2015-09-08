@@ -111,7 +111,7 @@
                       sizes="(min-width: 30rem) 500px, 100vw" />
                   </a>
                 {/block:Photos}
-              <div>
+              </div>
             {/block:IndexPage}
 
             {block:PermalinkPage}
@@ -282,10 +282,10 @@
             <h3>About Us</h3>
             <ul>
               <li><a href="//sea-of-green.com/locations.html">Locations</a></li>
-              <li><a href="//sea-of-green.com/shipping-policy.html">Shipping <span class="amp">&amp;</span> Return&nbsp;Policy</a></li>
+              <li><a href="//sea-of-green.com/shipping-policy.html">Shipping & Return Policy</a></li>
               <li><a href="//sea-of-green.com/faqs.html">FAQ</a></li>
               <li><a href="//sea-of-green.com/privacy-policy.html">Privacy Policy</a></li>
-              <li><a href="//sea-of-green.com/terms-and-conditions.html">Terms <span class="amp">&amp;</span> Conditions</a></li>
+              <li><a href="//sea-of-green.com/terms-and-conditions.html">Terms & Conditions</a></li>
             </ul>
           </div>
         </div>
@@ -304,7 +304,7 @@
           </form>
         </div>
         <div class="footer__info">
-          <p class="footer__copyright">&copy; 1992 &#8211; <span id="footer__copyright-year"></span> Sea of Green&nbsp;Hydrogardens</p>
+          <p class="footer__copyright">&copy; 1992 -- <span id="footer__copyright-year"></span> Sea of Green Hydrogardens</p>
         </div>
       </div>
     </footer>
@@ -322,11 +322,6 @@
       var year = new Date().getFullYear();
       document.getElementById('footer__copyright-year').innerHTML = year;
 
-      // Add 'utm_source=hands-on-hydro' to external links
-      // link: https://css-tricks.com/snippets/jquery/target-only-external-links/
-      var ref = "utm_source=hands-on-hydro";
-
-      /*
       // Add 'utm_source=hands-on-hydro' to external links
       var ref   = "utm_source=hands-on-hydro";
       var links = document.getElementsByTagName('a');
@@ -360,35 +355,6 @@
           }
         }
       }
-
-      // Set photoset images on index pages
-      function photoset() {
-        var photoset = document.getElementsByClassName('photoset__photo--index');
-        for(i = 0; i < photoset.length; i++) {
-          var bgURL   = photoset[i].getAttribute('data-bg');
-          var bgLgURL = photoset[i].getAttribute('data-lg-bg');
-          if (window.matchMedia('(max-width: 500px)').matches) {
-            photoset[i].style.backgroundImage = "url(" + bgURL + ")";
-          } else {
-            photoset[i].style.backgroundImage = "url(" + bgLgURL + ")";
-          }
-        }
-      }
-
-      // Initialize photosets
-      photoset();
-
-      // Update photoset if Window becomes smaller or larger than 500px
-      var windowWidth = window.innerWidth;
-      var newWindowWidth;
-      window.addEventListener('resize', function(event){
-        newWindowWidth = window.innerWidth;
-        if ((windowWidth > 500 && newWindowWidth < 500) || (windowWidth < 500 && newWindowWidth > 500)) {
-          photoset();
-        }
-        windowWidth = newWindowWidth;
-      });
-      */
-
+    </script>
   </body>
 </html>
