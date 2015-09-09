@@ -12,7 +12,12 @@ var csso = require('gulp-csso');
 // HTML
 var typogr = require('gulp-typogr');
 
-gulp.task('default', ['build']);
+var neatPaths = neat.includePaths;
+var ignoreRegEx = [/(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)/, /(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)+.+?(?=\s{)/];
+
+gulp.task('default', ['clean', 'build'], function() {
+  del(['./dist/html', './dist/css']);
+});
 
 gulp.task('clean', function() {
   del('./dist');
@@ -33,10 +38,10 @@ gulp.task('typo:debug', function() {
 
 gulp.task('sass', ['typo'], function() {
   return gulp.src('./src/stylesheets/*.scss')
-    .pipe(sass({ includePaths: neat.includePaths }))
+    .pipe(sass({ includePaths: neatPaths }))
     .pipe(sass().on('error', sass.logError))
     .pipe(uncss({
-      ignore: [/(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)/, /(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)+.+?(?=\s{)/],
+      ignore: ignoreRegEx,
       html: ['./dist/**/*.html']
     }))
     .pipe(autoprefixer())
@@ -49,11 +54,11 @@ gulp.task('sass:debug', ['typo'], function() {
   return gulp.src('./src/stylesheets/*.scss')
     .pipe(sass({
       outputStyle: 'nested',
-      includePaths: neat.includePaths
+      includePaths: neatPaths
     }))
     .pipe(sass().on('error', sass.logError))
     .pipe(uncss({
-      ignore: [/(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)/, /(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)+.+?(?=\s{)/],
+      ignore: ignoreRegEx,
       html: ['./dist/**/*.html']
     }))
     .pipe(autoprefixer())
@@ -61,14 +66,10 @@ gulp.task('sass:debug', ['typo'], function() {
     .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('theme', ['sass'], function() {
+gulp.task('build', ['sass'], function() {
   return gulp.src(['./dist/html/head.html', './dist/css/main.css', './dist/html/svg.html', './dist/html/body.html'])
     .pipe(concat('theme.html'))
     .pipe(gulp.dest('./dist/'));
-});
-
-gulp.task('build', ['clean', 'theme'], function() {
-  del(['./dist/html', './dist/css']);
 });
 
 gulp.task('watch', ['build'], function () {

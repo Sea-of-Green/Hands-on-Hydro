@@ -4,7 +4,9 @@
 
 .post {
   @include row;
-  margin-bottom: $base-line-height * 4;
+
+  margin-bottom: $base-line-height * 3;
+
   &:after {
     content: '';
 
@@ -14,12 +16,11 @@
     margin: 0 auto;
 
     position: relative;
-    top: $base-line-height * 2;
+    top: $base-line-height * 1.5;
 
     background: $gray-1;
   }
   &:last-of-type {
-    margin-bottom: $base-line-height * 2;
     &:after {
       display: none;
     }
@@ -54,10 +55,8 @@
     }
   }
 
-  &__info {
+  &__meta {
     @include font(monospace);
-
-    min-height: 0;
 
     margin-top: $base-line-height;
     margin-bottom: 0;
@@ -65,7 +64,6 @@
 
     background: transparent;
 
-    font-size: $small-font-size;
     color: $gray;
 
     p {
@@ -82,6 +80,59 @@
       &:hover {
         color: $blue;
       }
+    }
+  }
+
+  &__info {
+    position: relative;
+
+    min-height: 20px;
+
+    font-size: $small-font-size;
+
+    a {
+      color: $blue;
+
+      &:visited {
+        color: $blue;
+      }
+    }
+
+    a, span {
+      margin-right: $gutter;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__tumblr-buttons {
+    position: absolute;
+    top: 0; right: 0;
+
+    text-align: right;
+  }
+  &__tumblr-button {
+    width: 20px;
+
+    float: left;
+
+    fill: $gray-1;
+
+    &--like {
+      margin-right: $gutter;
+    }
+  }
+
+  &__tags {
+    font-size: $lg-small-font-size;
+    color: $gray-1;
+  }
+
+  &__tag {
+    &__hash {
+      margin-right: 0.1rem;
     }
   }
 }

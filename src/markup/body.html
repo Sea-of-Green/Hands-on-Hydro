@@ -185,19 +185,37 @@
         {/block:Caption}
 
         <!-- Post Source, Notes, tags, etc. -->
-        <footer class="post__info">
+        <footer class="post__meta">
+          <div class="post__info">
+            {block:Date}
+              <a href="{Permalink}" class="post__date">{TimeAgo}</a>
+            {/block:Date}
 
-          {block:ContentSource}
-            <div class="post__source">
-              <p>source <a href="{SourceURL}">{SourceTitle}</a></p>
-            </div>
-          {/block:ContentSource}
+            {block:ContentSource}
+              <span class="post__source">source <a href="{SourceURL}">{SourceTitle}</a></span>
+            {/block:ContentSource}
 
-          {block:RebloggedFrom}
-            <div class="post__reblog">
-              <p>via <a href="{ReblogParentURL}">{ReblogParentName}</a></p>
+            {block:RebloggedFrom}
+              <span class="post__reblog-source">via <a href="{ReblogParentURL}">{ReblogParentName}</a></span>
+            {/block:RebloggedFrom}
+
+            {block:NoteCount}
+              <a href="{Permalink}" class="post__note-count">{NoteCountWithLabel}</a>
+            {/block:NoteCount}
+
+            <div class="post__tumblr-buttons">
+              <div class="post__tumblr-button post__tumblr-button--like">{LikeButton}</div>
+              <div class="post__tumblr-button post__tumblr-button--reblog">{ReblogButton}</div>
             </div>
-          {/block:RebloggedFrom}
+          </div>
+
+          <div class="post__tags">
+            {block:HasTags}
+                {block:Tags}
+                  <a href="{TagURL}" class="post__tag"><span class="post__tag__hash">#</span>{Tag}</a>
+                {/block:Tags}
+            {/block:HasTags}
+          </div>
 
         </footer>
       </article>
@@ -322,36 +340,38 @@
       var year = new Date().getFullYear();
       document.getElementById('footer__copyright-year').innerHTML = year;
 
-      // Add 'utm_source=hands-on-hydro' to external links
-      var ref   = "utm_source=hands-on-hydro";
-      var links = document.getElementsByTagName('a');
-      for (i = 0; i < links.length; i++) {
-        var a = new RegExp('/' + window.location.host + '/');
-        if (!a.test(links[i].href) && links[i].href.search("handsonhydro") == -1) {
+      // Add analytics queries to external links
+      var ref = "utm_source=hands-on-hydro", // The query you want to pass to the external site
+          links = document.getElementsByTagName('a'); // Get all links on page
 
-          var link = links[i].href;
+      for (var i = 0; i < links.length; i++) { // For each link
 
-          if (link.search("#") != -1) {
+        var link = links[i].href, // Get this link
+            isRel = new RegExp('/' + window.location.host + '/'), // RegEx used to test if link's host name matches window's host name
+            hasAnchor = new RegExp(/(#)+?(?=\S)\w*/g), // RegEx used to test if link has anchor
+            hasQuery = new RegExp(/(\?)+(\S)+(\=?)+?(?=\S?)\w*/g); // RegEx used to test if link already has a query attached (searches for '?key{=}{value}')
 
-            var linkParts = link.split("#"),
-                anchor    = linkParts.pop(),
-                linkParts = linkParts.pop(),
-                link      = linkParts.toString().replace(",", "");
+        if (!isRel.test(link)) { // If link is not relative, or does not share a host name with the window
 
-            if (link.search("/?") != -1 && link.search("=") != -1) {
-              links[i].href = link + '&' + ref + "#" + anchor;
+          if (hasAnchor.test(link)) { // If link has an anchor
+
+            var linkParts = link.split("#"), // Split link at anchor
+                link = linkParts.shift().toString(), // Reassemble link
+                anchor = "#" + linkParts.shift().toString().split("/").shift().toString(); // Get anchor from link. Sanitizes the URL as well - doesn't grab more than one anchor and removes anything following a slash
+
+            if (hasQuery.test(link)) { // If query string in link
+              links[i].href = link + '&' + ref + anchor; // Add ref to existing query, and add anchor on end
             } else {
-              links[i].href = link + '?' + ref + "#" + anchor;
+              links[i].href = link + '?' + ref + anchor; // Add query, and add anchor on end
             }
 
-          } else {
+          } else { // If link has no anchor
 
-            if (link.search("/?") != -1 && link.search("=") != -1) {
-              links[i].href += '&' + ref;
+            if (hasQuery.test(link)) { // If query string in link
+              links[i].href += '&' + ref; // Add ref to existing query
             } else {
-              links[i].href += '?' + ref;
+              links[i].href += '?' + ref; // Add query
             }
-
           }
         }
       }

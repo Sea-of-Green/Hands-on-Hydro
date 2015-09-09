@@ -7,7 +7,7 @@
   @include row;
   @include font(heading);
 
-  margin-top: $base-line-height * 2;
+  margin-top: $gutter;
 
   text-align: center;
 
@@ -76,7 +76,7 @@
   @include outer-container;
   @include row;
 
-  margin-top: $base-line-height * 2;
+  margin-top: $gutter;
 
   text-align: center;
 
