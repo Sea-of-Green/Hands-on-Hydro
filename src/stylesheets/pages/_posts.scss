@@ -27,6 +27,8 @@
   }
 
   &__caption {
+    text-align: left;
+
     blockquote {
       width: 100%;
 
@@ -64,20 +66,16 @@
 
     background: transparent;
 
-    color: $gray;
+    text-align: left;
 
     p {
       margin-bottom: 0;
     }
 
     a {
-      color: $gray;
-
-      &:visited {
-        color: $gray;
-      }
-
       &:hover {
+        border-bottom: 0.1em solid currentColor;
+
         color: $blue;
       }
     }
@@ -89,6 +87,7 @@
     min-height: 20px;
 
     font-size: $small-font-size;
+    color: $gray;
 
     a {
       color: $blue;
@@ -118,16 +117,24 @@
 
     float: left;
 
-    fill: $gray-1;
-
     &--like {
       margin-right: $gutter;
     }
   }
 
   &__tags {
-    font-size: $lg-small-font-size;
-    color: $gray-1;
+    font-size: $small-font-size;
+    a {
+      color: $gray;
+
+      &:visited {
+        color: $gray;
+      }
+
+      &:hover {
+        color: $blue;
+      }
+    }
   }
 
   &__tag {
@@ -137,12 +144,17 @@
   }
 }
 
+/* **********
+ * TEXT POSTS
+ * **********/
 .text {
 
 }
 
+/* ***********
+ * PHOTO POSTS
+ * ***********/
 .photo {
-
   &__photo{
     display: block;
 
@@ -163,76 +175,151 @@
   }
 }
 
+/* **************
+ * PANORAMA POSTS
+ * **************/
 .panorama {
+  &__photo{
+    display: block;
 
+    height: auto;
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    &--index {
+      max-height: 90vh;
+      width: auto;
+    }
+
+    &--permalink {
+      width: auto;
+      max-height: none;
+    }
+  }
 }
 
+/* **************
+ * PHOTOSET POSTS
+ * **************/
 .photoset {
   $p: ".photoset__photo--index"; // selector #{$p}
 
   &__photos {
     @include row;
   }
+  // Photoset grid layouts
   &__photos--2 { // photosets with 2 photos
     #{$p} {
       @include respond-to(small) {
-        width: calc(50% - 0.5rem);
+        @include span-columns(6);
+
         height: 150px;
       }
       @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
         height: 250px;
       }
     }
-    #{$p}:nth-of-type(1) {
-      margin-right: $gutter;
-    }
     #{$p}:nth-of-type(2) {
+      @include omega;
       @include clearfix;
     }
   }
 
   &__photos--3 { // photosets with 3 photos
     #{$p}:nth-of-type(1) {
-
+      @include respond-to(small) {
+        @include span-columns(12);
+      }
     }
-    #{$p}:nth-of-type(2) {
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(3) {
+      @include respond-to(small) {
+        @include span-columns(6);
 
+        height: 150px;
+      }
+      @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
     }
-    #{$p}:nth-of-type(3) {
-
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(3) {
+      @include omega;
+      @include clearfix;
     }
   }
 
   &__photos--4 { // photosets with 4 photos
     #{$p}:nth-of-type(1) {
-
+      @include respond-to(small) {
+        @include span-columns(12);
+      }
     }
-    #{$p}:nth-of-type(2) {
-
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(4) {
+      @include respond-to(small) {
+        @include span-columns(4);
+        height: 100px;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
     }
-    #{$p}:nth-of-type(3) {
-
-    }
-    #{$p}:nth-of-type(4) {
-
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(4) {
+      @include respond-to(small) {
+        @include omega;
+        @include clearfix;
+      }
     }
   }
 
   &__photos--5 { // photosets with 5 photos
-    #{$p}:nth-of-type(1) {
+    @include respond-to(only-small) {
+      #{$p}:nth-of-type(1), #{$p}:nth-of-type(2), #{$p}:nth-of-type(4), #{$p}:nth-of-type(5) {
+        @include span-columns(6);
 
+        height: 150px;
+      }
+      #{$p}:nth-of-type(3) {
+        @include span-columns(12);
+      }
+      #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(5) {
+        @include omega;
+        @include clearfix;
+      }
     }
-    #{$p}:nth-of-type(2) {
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(2) {
+      @include respond-to(medium) {
+        @include span-columns(6);
 
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
     }
-    #{$p}:nth-of-type(3) {
+    #{$p}:nth-of-type(3), #{$p}:nth-of-type(4), #{$p}:nth-of-type(5) {
+      @include respond-to(medium) {
+        @include span-columns(4);
 
+        height: 100px;
+      }
+      @include respond-to(large) {
+        height: 125px;
+      }
     }
-    #{$p}:nth-of-type(4) {
-
-    }
-    #{$p}:nth-of-type(5) {
-
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(5) {
+      @include respond-to(medium) {
+        @include omega;
+        @include clearfix;
+      }
     }
   }
 
@@ -250,20 +337,15 @@
         height: 250px;
       }
     }
-    #{$p}:nth-of-type(2) {
-      @include respond-to(small) {
-        @include omega;
-      }
-    }
     #{$p}:nth-of-type(3) {
       @include respond-to(small) {
         @include span-columns(12);
-        @include omega;
       }
     }
     #{$p}:nth-of-type(4), #{$p}:nth-of-type(5), #{$p}:nth-of-type(6) {
       @include respond-to(small) {
         @include span-columns(4);
+
         height: 100px;
       }
       @include respond-to(medium) {
@@ -273,127 +355,177 @@
         height: 150px;
       }
     }
-    #{$p}:nth-of-type(6) {
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(6) {
       @include respond-to(small) {
         @include omega;
+        @include clearfix;
       }
     }
   }
 
   &__photos--7 { // photosets with 7 photos
-    #{$p}:nth-of-type(1) {
+    @include respond-to(only-small) {
+      #{$p}:nth-of-type(1), #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(5), #{$p}:nth-of-type(6), #{$p}:nth-of-type(7) {
+        @include span-columns(4);
 
+        height: 100px;
+      }
+      #{$p}:nth-of-type(4) {
+        @include span-columns(12);
+      }
+      #{$p}:nth-of-type(3), #{$p}:nth-of-type(7) {
+        @include omega;
+        @include clearfix;
+      }
     }
-    #{$p}:nth-of-type(2) {
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(2), #{$p}:nth-of-type(6), #{$p}:nth-of-type(7) {
+      @include respond-to(medium) {
+        @include span-columns(6);
 
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
     }
-    #{$p}:nth-of-type(3) {
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(5), #{$p}:nth-of-type(7) {
+      @include respond-to(medium) {
+        @include span-columns(4);
 
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
     }
-    #{$p}:nth-of-type(4) {
-
-    }
-    #{$p}:nth-of-type(5) {
-
-    }
-    #{$p}:nth-of-type(6) {
-
-    }
-    #{$p}:nth-of-type(7) {
-
+    #{$p}:nth-of-type(3), #{$p}:nth-of-type(4), #{$p}:nth-of-type(5) {
+      @include respond-to(medium) {
+        @include omega;
+        @include clearfix;
+      }
     }
   }
 
   &__photos--8 { // photosets with 8 photos
-    #{$p}:nth-of-type(1) {
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(2), #{$p}:nth-of-type(7), #{$p}:nth-of-type(8) {
+      @include respond-to(small) {
+        @include span-columns(6);
 
-    }
-    #{$p}:nth-of-type(2) {
-
+        height: 150px;
+      }
+      @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
     }
     #{$p}:nth-of-type(3) {
-
+      @include respond-to(small) {
+        @include span-columns(12);
+      }
     }
-    #{$p}:nth-of-type(4) {
+    #{$p}:nth-of-type(4), #{$p}:nth-of-type(5), #{$p}:nth-of-type(6) {
+      @include respond-to(small) {
+        @include span-columns(4);
 
+        height: 100px;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
     }
-    #{$p}:nth-of-type(5) {
-
-    }
-    #{$p}:nth-of-type(6) {
-
-    }
-    #{$p}:nth-of-type(7) {
-
-    }
-    #{$p}:nth-of-type(8) {
-
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(6), #{$p}:nth-of-type(8) {
+      @include respond-to(small) {
+        @include omega;
+        @include clearfix;
+      }
     }
   }
 
   &__photos--9 { // photosets with 9 photos
-    #{$p}:nth-of-type(1) {
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(2), #{$p}:nth-of-type(8), #{$p}:nth-of-type(9) {
+      @include respond-to(small) {
+        @include span-columns(6);
 
+        height: 150px;
+      }
+      @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
     }
-    #{$p}:nth-of-type(2) {
-
+    #{$p}:nth-of-type(3), #{$p}:nth-of-type(7) {
+      @include respond-to(small) {
+        @include span-columns(12);
+      }
     }
-    #{$p}:nth-of-type(3) {
+    #{$p}:nth-of-type(4), #{$p}:nth-of-type(5), #{$p}:nth-of-type(6) {
+      @include respond-to(small) {
+        @include span-columns(4);
 
+        height: 100px;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
     }
-    #{$p}:nth-of-type(4) {
-
-    }
-    #{$p}:nth-of-type(5) {
-
-    }
-    #{$p}:nth-of-type(6) {
-
-    }
-    #{$p}:nth-of-type(7) {
-
-    }
-    #{$p}:nth-of-type(8) {
-
-    }
-    #{$p}:nth-of-type(9) {
-
+    #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(6), #{$p}:nth-of-type(7), #{$p}:nth-of-type(9) {
+      @include respond-to(small) {
+        @include omega;
+        @include clearfix;
+      }
     }
   }
 
   &__photos--10 { // photosets with 10 photos
-    #{$p}:nth-of-type(1) {
+    #{$p}:nth-of-type(1), #{$p}:nth-of-type(2), #{$p}:nth-of-type(3), #{$p}:nth-of-type(8), #{$p}:nth-of-type(9), #{$p}:nth-of-type(10) {
+      @include respond-to(small) {
+        @include span-columns(4);
 
+        height: 100px;
+      }
+      @include respond-to(medium) {
+        height: 125px;
+      }
+      @include respond-to(large) {
+        height: 150px;
+      }
     }
-    #{$p}:nth-of-type(2) {
-
+    #{$p}:nth-of-type(4), #{$p}:nth-of-type(7) {
+      @include respond-to(small) {
+        @include span-columns(12);
+      }
     }
-    #{$p}:nth-of-type(3) {
+    #{$p}:nth-of-type(5), #{$p}:nth-of-type(6) {
+      @include respond-to(small) {
+        @include span-columns(6);
 
+        height: 150px;
+      }
+      @include respond-to(medium) {
+        height: 200px;
+      }
+      @include respond-to(large) {
+        height: 250px;
+      }
     }
-    #{$p}:nth-of-type(4) {
-
-    }
-    #{$p}:nth-of-type(5) {
-
-    }
-    #{$p}:nth-of-type(6) {
-
-    }
-    #{$p}:nth-of-type(7) {
-
-    }
-    #{$p}:nth-of-type(8) {
-
-    }
-    #{$p}:nth-of-type(9) {
-
-    }
-    #{$p}:nth-of-type(10) {
-
+    #{$p}:nth-of-type(3), #{$p}:nth-of-type(4), #{$p}:nth-of-type(6), #{$p}:nth-of-type(7), #{$p}:nth-of-type(10) {
+      @include respond-to(small) {
+        @include omega;
+        @include clearfix;
+      }
     }
   }
-
+  // Photoset photo styling
   &__photo {
     max-width: 100%;
     max-height: 90vh;
@@ -438,6 +570,9 @@
   }
 }
 
+/* ***********
+ * QUOTE POSTS
+ * ***********/
 .quote {
   &__blockquote {
     width: 100%;
@@ -499,38 +634,47 @@
 
     font-size: $h3-font-size;
   }
+}
 
-  &__cite p {
-    @include font(body);
+/* **********
+ * LINK POSTS
+ * **********/
+.link {
+  text-align: center;
 
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-style: normal;
-    text-align: right;
+  h2 {
     text-transform: none;
-
-    em {
-      @include font(body, italic);
-    }
+  }
+  
+  &__desc {
+    text-align: left;
   }
 }
 
-.link {
-
-}
-
+/* **********
+ * CHAT POSTS
+ * **********/
 .chat {
 
 }
 
+/* ***********
+ * AUDIO POSTS
+ * ***********/
 .audio {
 
 }
 
+/* ***********
+ * VIDEO POSTS
+ * ***********/
 .video {
 
 }
 
+/* ************
+ * ANSWER POSTS
+ * ************/
 .answer {
 
 }

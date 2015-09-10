@@ -13,7 +13,7 @@ var csso = require('gulp-csso');
 var typogr = require('gulp-typogr');
 
 var neatPaths = neat.includePaths;
-var ignoreRegEx = [/(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)/, /(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video)+.+?(?=\s{)/];
+var ignoreRegEx = [/(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video|\.search)/, /(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video|\.search)+.+?(?=\s{)/];
 
 gulp.task('default', ['clean', 'build'], function() {
   del(['./dist/html', './dist/css']);
@@ -73,5 +73,5 @@ gulp.task('build', ['sass'], function() {
 });
 
 gulp.task('watch', ['build'], function () {
-  gulp.watch(['./src/stylesheets/*.scss', './src/stylesheets/**/*.scss', './src/*.html'], ['build']);
+  gulp.watch('./src/**/*.{scss, html}', ['build']);
 });

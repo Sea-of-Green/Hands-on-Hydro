@@ -32,8 +32,8 @@
         </ul>
 
         <form action="/search" method="get" class="input-bar input-bar--search nav__search">
-          <input type="text" name="q" value="{SearchQuery}" placeholder="Search" />
-          <button type="submit" value="" />
+          <input type="text" name="q" value="{SearchQuery}" placeholder="Search" required />
+          <button type="submit" value=""></button>
         </form>
 
       </div>
@@ -86,15 +86,32 @@
             {/block:IndexPage}
 
             {block:PermalinkPage}
+              {LinkOpenTag}
                 <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo photo__photo--permalink"
                   srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
                   sizes="(min-width: 30rem) 500px, 100vw" />
+              {LinkCloseTag}
             {/block:PermalinkPage}
         {/block:Photo}
 
         {block:Panorama}
         <!-- Panorama Post -->
           <article class="post panorama">
+            {block:IndexPage}
+              <a href="{Permalink}">
+                <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama__photo panorama__photo--index"
+                  srcset="{PhotoURL-Panorama} 500w, {PhotoURL-500}"
+                  sizes="(min-width: 30rem) 500px, 100vw" />
+              </a>
+            {/block:IndexPage}
+
+            {block:PermalinkPage}
+              {LinkOpenTag}
+                <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama__photo panorama__photo--permalink"
+                  srcset="{PhotoURL-Panorama} 500w, {PhotoURL-500}"
+                  sizes="(min-width: 30rem) 500px, 100vw" />
+              {LinkCloseTag}
+            {/block:PermalinkPage}
 
         {/block:Panorama}
 
@@ -116,9 +133,11 @@
 
             {block:PermalinkPage}
               {block:Photos}
-                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo photoset__photo--permalink"
-                  srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
-                  sizes="(min-width: 30rem) 500px, 100vw" />
+                {LinkOpenTag}
+                  <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo photoset__photo--permalink"
+                    srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                    sizes="(min-width: 30rem) 500px, 100vw" />
+                {LinkCloseTag}
               {/block:Photos}
             {/block:PermalinkPage}
 
@@ -138,7 +157,13 @@
         {block:Link}
         <!-- Link Post -->
           <article class="post link">
-
+            <h2 class="link__title"><a href="{URL}">{Name}</a></h2>
+            {block:Host}
+              <a href="{URL}" class="link__host btn btn--white">{Host}</a>
+            {/block:Host}
+            {block:Description}
+              <div class="link__desc">{Description}</div>
+            {/block:Description}
         {/block:Link}
 
         {block:Chat}
@@ -177,8 +202,8 @@
             {/block:More}
         {/block:Answer}
 
-        <!-- Post Caption -->
         {block:Caption}
+        <!-- Post Caption -->
           <div class="post__caption">
             {Caption}
           </div>
@@ -221,6 +246,12 @@
       </article>
 
       {/block:Posts}
+
+      {block:SearchPage}
+        {block:NoSearchResults}
+          <h4 class="search__response">Sorry, there were no results for <code class="search__query">{SearchQuery}</code>. <a href="/random">Here's a random page instead!</a></h4>
+        {/block:NoSearchResults}
+      {/block:SearchPage}
     </main>
 
     {block:Pagination}
@@ -317,7 +348,7 @@
             <li><a href="{TumblrURL}"><i class="fa fa-tumblr"></i></a></li>
           </ul>
           <form class="footer__newsletter-signup input-bar input-bar--blue input-bar--email" action="javascript:newsletterSignup()">
-            <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" />
+            <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" required />
             <button type="submit"></button>
           </form>
         </div>

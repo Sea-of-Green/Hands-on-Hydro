@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the search page.
+// -----------------------------------------------------------------------------
+
+.search {
+  &__response {
+    text-transform: none;
+
+    a {
+      &:visited {
+        color: $blue;
+      }
+    }
+  }
+}

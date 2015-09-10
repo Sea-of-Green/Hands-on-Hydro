@@ -120,10 +120,6 @@ sub {
 small {
   font-size: $small-font-size;
   line-height: $small-line-height;
-
-  @include respond-to(medium) {
-    font-size: $lg-small-font-size;
-  }
 }
 
 code {
