@@ -645,7 +645,7 @@
   h2 {
     text-transform: none;
   }
-  
+
   &__desc {
     text-align: left;
   }
@@ -655,7 +655,50 @@
  * CHAT POSTS
  * **********/
 .chat {
+  &__line {
+    @include font(heading);
 
+    width: 90%;
+    max-width: $measure * 0.7;
+
+    margin-top: -$gutter;
+
+    &--2 {
+      margin-right: 0;
+      margin-left: auto;
+
+      text-align: right;
+    }
+
+    &:first-of-type {
+      margin-top: $base-line-height;
+    }
+  }
+  &__label {
+    @include font(heading, bold);
+
+    position: relative;
+    left: $gutter;
+
+    font-size: $small-font-size;
+
+    &--2 {
+      left: -$gutter;
+    }
+  }
+  &__text {
+    padding: 0 $gutter $gutter*0.25;
+    margin-top: 0;
+    border-radius: 7px;
+
+    background: $gray-1;
+
+    &--2 {
+      background: $blue;
+
+      color: $white;
+    }
+  }
 }
 
 /* ***********

@@ -169,7 +169,13 @@
         {block:Chat}
         <!-- Chat Post -->
           <article class="post chat">
-
+            {block:Title}<h1>{Title}</h1>{/block:Title}
+            {block:Lines}
+              <section class="chat__line chat__line--{UserNumber}">
+                {block:Label}<span class="chat__label chat__label--{UserNumber}">{Label}<br /></span>{/block:Label}
+                <p class="chat__text chat__text--{UserNumber}">{Line}</p>
+              </section>
+            {/block:Lines}
         {/block:Chat}
 
         {block:Audio}
