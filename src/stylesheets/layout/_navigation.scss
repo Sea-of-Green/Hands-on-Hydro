@@ -11,7 +11,59 @@
   }
 
   &__button {
-    display: none;
+    @include span-columns(2);
+
+    margin-top: 1.3rem;
+
+    cursor: pointer;
+
+    @include respond-to(medium) {
+      display: none;
+    }
+  }
+
+  &__button-line {
+    width: 45px;
+    height: 7px;
+
+    margin: 0 auto;
+    margin-bottom: 5px;
+    border-radius: 7px;
+
+    transition: transform 0.5s cubic-bezier(0.75, -0.2, 0.2, 1.25);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &--top {
+      background: $yellow;
+
+      transform: rotateZ(360deg);
+    }
+    &--middle {
+      background: $green;
+    }
+    &--bottom {
+      background: $blue;
+
+      transform: rotateZ(360deg);
+    }
+  }
+
+  &__button--close {
+
+    & .nav__button-line {
+      &--top {
+        transform: rotateZ(225deg) translate(-7px, -7px);
+      }
+      &--middle {
+        transform: rotateY(90deg);
+      }
+      &--bottom {
+        transform: rotateZ(135deg) translate(-10px, 10px);
+      }
+    }
   }
 
   &__content {
@@ -24,28 +76,72 @@
   }
 
   &__links {
-    @include span-columns(6);
-
     list-style-type: none;
 
-    margin-top: 1.5rem;
-    padding: 0;
+    @include respond-to(not-medium) {
+      @include position(absolute, -$base-line-height 0 0 0);
 
-    li {
-      display: inline;
+      width: calc(85% + #{$gutter});
+      height: 100vh;
 
-      margin: 0;
+      padding-top: $gutter;
+
+      background: $blue-5;
+      background: linear-gradient(to bottom, $blue, $blue-5);
+
+      font-size: $h3-font-size;
+      line-height: $h2-line-height;
+      color: $white;
+
+      transform: translateX(-100%);
+
+      a, a:hover, a:visited {
+        color: $white;
+      }
+    }
+    @include respond-to(medium) {
+      @include span-columns(6);
+
+      margin-top: 1.5rem;
       padding: 0;
-      margin-right: $gutter;
 
-      &:last-of-type {
-        margin-right: 0;
+      li {
+        display: inline;
+
+        margin: 0;
+        padding: 0;
+        margin-right: $gutter;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
     }
   }
 
+  &__links--open {
+
+  }
+
   &__search {
-    @include span-columns(6);
+    @include span-columns(10);
     @include omega;
+
+    @include respond-to(medium) {
+      @include span-columns(6);
+    }
+  }
+}
+
+.hoh {
+  transition: transform .3s cubic-bezier(0.4, 0.2, 0.2, 1.25);
+
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  &--close {
+    transform: translateX(85%);
+
+    overflow: hidden;
   }
 }

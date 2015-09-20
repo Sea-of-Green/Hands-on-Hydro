@@ -2,7 +2,9 @@
     <nav role="navigation" class="nav">
 
       <div class="nav__button">
-        <i class="fa fa-fw fa-navicon"></i>
+        <div class="nav__button-line nav__button-line--top"></div>
+        <div class="nav__button-line nav__button-line--middle"></div>
+        <div class="nav__button-line nav__button-line--bottom"></div>
       </div>
 
       <div class="nav__content">
@@ -57,7 +59,7 @@
     </header>
 
     <!-- Content -->
-    <main role="content">
+    <main role="content" class="content">
       <!-- Posts -->
       {block:Posts}
 
@@ -233,11 +235,11 @@
             {block:NoteCount}
               <a href="{Permalink}" class="post__note-count">{NoteCountWithLabel}</a>
             {/block:NoteCount}
+          </div>
 
-            <div class="post__tumblr-buttons">
-              <div class="post__tumblr-button post__tumblr-button--like">{LikeButton}</div>
-              <div class="post__tumblr-button post__tumblr-button--reblog">{ReblogButton}</div>
-            </div>
+          <div class="post__tumblr-buttons">
+            <div class="post__tumblr-button post__tumblr-button--like">{LikeButton}</div>
+            <div class="post__tumblr-button post__tumblr-button--reblog">{ReblogButton}</div>
           </div>
 
           <div class="post__tags">
@@ -301,6 +303,7 @@
           <div class="footer__list">
             <h3>Hands-on Hydro</h3>
             <ul>
+              <li><a href="#" class="footer__top-link">Back to Top</a></li>
               {block:HasPages}
                 {block:Pages}
                   <li><a href="{URL}">{Label}</a></li>
@@ -366,6 +369,69 @@
 
     <!-- Scripts -->
     <script type="text/javascript">
+      // Navigation
+      var navButton = document.querySelector('.nav__button'),
+          container = document.querySelector('.hoh');
+
+      if (window.matchMedia('(max-width: 39.99rem)')) {
+
+        navButton.onclick = function() {
+          navButton.classList.toggle('nav__button--close'); // Animate nav button
+          container.classList.toggle('hoh--close'); // Show links
+        };
+
+      }
+
+      var width = document.innerWidth;
+      window.addEventListener('resize', function(event) {
+        var newWidth = window.innerWidth;
+
+        if (width < 40*16 && newWidth > 40*16) { // if window is resized from below the nav breakpoint to above it, remove the classes added when navButton is clicked
+          if (navButton.classList.contains('nav__button--close')) { navButton.classList.remove('nav__button--close'); }
+          if (container.classList.contains('hoh--close')) { container.classList.remove('hoh--close'); }
+        }
+
+        width = newWidth;
+      });
+
+      // Smooth scrolling for 'Back to Top' link
+      // @link http://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation
+      // @link http://jsfiddle.net/62MTU/15/
+      // @link http://www.timotheegroleau.com/Flash/experiments/easing_function_generator.htm
+      document.querySelector('.footer__top-link').onclick = function () {
+         scrollTo(document.body, 0, 1000);
+      }
+
+      function scrollTo(element, to, duration) {
+          var start       = element.scrollTop,
+              change      = to - start,
+              currentTime = 0,
+              increment   = 20;
+
+          function animateScroll() {
+            currentTime += increment;
+
+            var val = cubicBezier(currentTime, start, change, duration);
+            element.scrollTop = val;
+
+            if(currentTime < duration) {
+              setTimeout(animateScroll, increment);
+            }
+          };
+
+          animateScroll();
+      }
+
+      //t = current time
+      //b = start value
+      //c = change in value
+      //d = duration
+      function cubicBezier(t, b, c, d) {
+      	var ts=(t/=d)*t;
+      	var tc=ts*t;
+      	return b+c*(5.4975*tc*ts + -14.1925*ts*ts + 8.695*tc + 1.1*ts + -0.1*t);
+      }
+
       // Send newsletter signup to Mailchimp
       function newsletterSignup() {
         var email = document.getElementById('footer__newsletter-signup-input').value;

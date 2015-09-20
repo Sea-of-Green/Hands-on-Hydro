@@ -40,10 +40,10 @@ gulp.task('sass', ['typo'], function() {
   return gulp.src('./src/stylesheets/*.scss')
     .pipe(sass({ includePaths: neatPaths }))
     .pipe(sass().on('error', sass.logError))
-    .pipe(uncss({
-      ignore: ignoreRegEx,
-      html: ['./dist/**/*.html']
-    }))
+    //.pipe(uncss({
+    //  ignore: ignoreRegEx,
+    //  html: ['./dist/**/*.html']
+    //}))
     .pipe(autoprefixer())
     .pipe(cmq())
     .pipe(csso())

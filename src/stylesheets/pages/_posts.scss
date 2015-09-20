@@ -60,6 +60,8 @@
   &__meta {
     @include font(monospace);
 
+    position: relative;
+
     margin-top: $base-line-height;
     margin-bottom: 0;
     padding: 0;
@@ -82,9 +84,8 @@
   }
 
   &__info {
-    position: relative;
-
     min-height: 20px;
+    max-width: calc(100% - 60px);
 
     font-size: $small-font-size;
     color: $gray;
@@ -111,6 +112,10 @@
     top: 0; right: 0;
 
     text-align: right;
+
+    a:hover {
+      border: none;
+    }
   }
   &__tumblr-button {
     width: 20px;
@@ -687,7 +692,7 @@
     }
   }
   &__text {
-    padding: 0 $gutter $gutter*0.25;
+    padding: $gutter*0.25 $gutter;
     margin-top: 0;
     border-radius: 7px;
 
