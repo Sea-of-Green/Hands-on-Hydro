@@ -122,21 +122,13 @@
           <article class="post photoset">
 
             {block:IndexPage}
-              <div class="photoset__photos photoset__photos--{PhotoCount}">
-                {block:Photos}
-                  <a href="{Permalink}" class="photoset__photo photoset__photo--index" data-bg="{PhotoURL-500}" data-lg-bg="{PhotoURL-HighRes}">
-                    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"
-                      srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
-                      sizes="(min-width: 30rem) 500px, 100vw" />
-                  </a>
-                {/block:Photos}
-              </div>
+              <div class="photoset__photoset">{Photoset}</div>
             {/block:IndexPage}
 
             {block:PermalinkPage}
               {block:Photos}
                 {LinkOpenTag}
-                  <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo photoset__photo--permalink"
+                  <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo"
                     srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
                     sizes="(min-width: 30rem) 500px, 100vw" />
                 {LinkCloseTag}
