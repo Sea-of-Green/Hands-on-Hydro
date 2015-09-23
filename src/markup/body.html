@@ -175,23 +175,27 @@
         {block:Audio}
         <!-- Audio Post -->
           <article class="post audio">
-
+            {block:AudioEmbed}
+              <div class="audio__player">{AudioEmbed-400}</div>
+            {/block:AudioEmbed}
+            {block:AudioPlayer}
+              <div class="audio__player">{AudioPlayer}</div>
+            {/block:AudioPlayer}
         {/block:Audio}
 
         {block:Video}
         <!-- Video Post -->
           <article class="post video">
-
+            <div class="video__player">{VideoEmbed-700}</div>
         {/block:Video}
 
         {block:Answer}
         <!-- Answer Post -->
           <article class="post answer">
-            <h4>{Asker} asks:</h4>
-            <blockquote class="answer__question">
-              {Question}
-            </blockquote>
-            <hr />
+            <div class="answer__question">
+              <h3 class="answer__asker">{Asker} asks:</h3>
+              <p class="answer__quote">{Question}</p>
+            </div>
             {block:Answerer}
               <h4>{Answerer} says:</h4>
             {/block:Answerer}

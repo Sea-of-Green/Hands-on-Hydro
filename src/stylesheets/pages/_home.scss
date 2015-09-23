@@ -5,7 +5,8 @@
 .hide {
   display: none;
 }
+$tumblr-width: ($gutter * 2) + rem(700);
 main {
-  @include outer-container;
+  @include outer-container($tumblr-width);
   padding: 0 $gutter;
 }

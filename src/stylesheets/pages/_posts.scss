@@ -22,7 +22,7 @@
   }
   &:last-of-type {
     &:after {
-      display: none;
+      // display: none;
     }
   }
 
@@ -354,10 +354,12 @@
     margin-top: 0;
     border-radius: 7px;
 
-    background: $gray-1;
+    border: 1px solid $gray-1;
 
     &--2 {
       background: $blue;
+
+      border-color: $blue;
 
       color: $white;
     }
@@ -368,19 +370,42 @@
  * AUDIO POSTS
  * ***********/
 .audio {
+  &__player {
+    max-width: 400px; // Tumblr iz dum
 
+    margin: 0 auto;
+  }
 }
 
 /* ***********
  * VIDEO POSTS
  * ***********/
 .video {
+  &__player {
+    max-width: 700px;
 
+    margin: 0 auto;
+  }
 }
 
 /* ************
  * ANSWER POSTS
  * ************/
 .answer {
+  &__question {
+    max-width: 100%;
 
+    margin: 0 auto;
+    padding: $gutter;
+    border: 1px solid $gray-1;
+    border-radius: 7px;
+  }
+  &__asker {
+    margin-top: 0;
+
+    text-transform: none;
+  }
+  &__quote {
+    margin-bottom: 0;
+  }
 }

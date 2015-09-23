@@ -55,21 +55,6 @@
       color: $blue;
     }
   }
-
-  &:before {
-    content: '';
-
-    height: 2px;
-    width: 95%;
-
-    margin: 0 auto;
-
-    display: block;
-    position: relative;
-    top: $base-line-height * -2;
-
-    background: $gray-1;
-  }
 }
 
 .post-pagination {
@@ -94,20 +79,5 @@
     &:last-of-type {
       margin-left: 0;
     }
-  }
-
-  &:before {
-    content: '';
-
-    height: 2px;
-    width: 95%;
-
-    margin: 0 auto;  display: block;
-
-
-    position: relative;
-    top: $base-line-height * -2;
-
-    background: $gray-1;
   }
 }

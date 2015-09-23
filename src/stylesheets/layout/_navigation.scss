@@ -11,7 +11,9 @@
   }
 
   &__button {
-    @include span-columns(2);
+    @include span-columns(5 of 24);
+
+    min-width: 45px;
 
     margin-top: 1.3rem;
 
@@ -26,7 +28,7 @@
     width: 45px;
     height: 7px;
 
-    margin: 0 auto;
+    margin-left: $gutter;
     margin-bottom: 5px;
     border-radius: 7px;
 
@@ -81,10 +83,10 @@
     @include respond-to(not-medium) {
       @include position(absolute, -$base-line-height 0 0 0);
 
-      width: calc(85% + #{$gutter});
+      width: 350px;
       height: 110vh;
 
-      padding-top: $gutter;
+      padding: 1.75rem 0 0 3.5rem;
 
       background: $blue-5;
       background: linear-gradient(to bottom, $blue, $blue-5);
@@ -124,7 +126,7 @@
   }
 
   &__search {
-    @include span-columns(10);
+    @include span-columns(19 of 24);
     @include omega;
 
     @include respond-to(medium) {
@@ -140,7 +142,7 @@
   overflow-y: visible;
 
   &--close {
-    transform: translateX(85%);
+    transform: translateX(325px);
 
     overflow: hidden;
   }
