@@ -34,7 +34,7 @@
         </ul>
 
         <form action="/search" method="get" class="input-bar input-bar--search nav__search">
-          <input type="text" name="q" value="{SearchQuery}" placeholder="Search" required />
+          <input type="text" name="q" value="{SearchQuery}" placeholder="Search {Title}" required />
           <button type="submit" value=""></button>
         </form>
 
@@ -60,6 +60,20 @@
 
     <!-- Content -->
     <main role="content" class="content">
+      <!-- Tag pages -->
+      {block:TagPage}
+        <h2>Posts tagged <code>{Tag}</code></h2>
+      {/block:TagPage}
+
+      <!-- Search Page -->
+      {block:SearchPage}
+        {block:NoSearchResults}
+          <h3 class="search__response">Sorry, there were no results for <code class="search__query">{SearchQuery}</code>.
+            <br />
+            <a href="/random">Here's a random page instead!</a></h3>
+        {/block:NoSearchResults}
+      {/block:SearchPage}
+
       <!-- Posts -->
       {block:Posts}
 
@@ -67,8 +81,14 @@
         <!-- Text Post -->
           <article class="text post">
             {block:Title}
-              <h1><a href="{permalink}">{Title}</a></h1>
+              {block:IndexPage}
+                <h1 class="text__title text__title--index"><a href="{permalink}">{Title}</a></h1>
+              {/block:IndexPage}
+              {block:PermalinkPage}
+                <h1 class="text__title">{Title}</h1>
+              {/block:PermalinkPage}
             {/block:Title}
+            <h4 class="text__author">{block:Date}posted <a href="{Permalink}">{TimeAgo}</a> {/block:Date}by <a href="{PostAuthorURL}">{PostAuthorName}</a></h4>
             {Body}
             {block:More}
               <br />
@@ -197,7 +217,7 @@
               <p class="answer__quote">{Question}</p>
             </div>
             {block:Answerer}
-              <h4>{Answerer} says:</h4>
+              <h4 class="answer_answerer">{Answerer} says:</h4>
             {/block:Answerer}
             {Answer}
             {block:More}
@@ -217,15 +237,19 @@
         <footer class="post__meta">
           <div class="post__info">
             {block:Date}
-              <a href="{Permalink}" class="post__date">{TimeAgo}</a>
+              <a href="{Permalink}" class="post__date">{ShortMonth}&nbsp;{Year}</a>
             {/block:Date}
 
+            {block:IfShowPoster}
+              <span class="post__author">posted&nbsp;by&nbsp;<a href="{PostAuthorURL}">{PostAuthorName}</a></span>
+            {/block:IfShowPoster}
+
             {block:ContentSource}
-              <span class="post__source">source <a href="{SourceURL}">{SourceTitle}</a></span>
+              <span class="post__source">source&nbsp;<a href="{SourceURL}">{SourceTitle}</a></span>
             {/block:ContentSource}
 
             {block:RebloggedFrom}
-              <span class="post__reblog-source">via <a href="{ReblogParentURL}">{ReblogParentName}</a></span>
+              <span class="post__reblog-source">via&nbsp;<a href="{ReblogParentURL}">{ReblogParentName}</a></span>
             {/block:RebloggedFrom}
 
             {block:NoteCount}
@@ -250,12 +274,6 @@
       </article>
 
       {/block:Posts}
-
-      {block:SearchPage}
-        {block:NoSearchResults}
-          <h4 class="search__response">Sorry, there were no results for <code class="search__query">{SearchQuery}</code>. <a href="/random">Here's a random page instead!</a></h4>
-        {/block:NoSearchResults}
-      {/block:SearchPage}
     </main>
 
     {block:Pagination}
@@ -327,30 +345,27 @@
             <ul>
               <li><a href="//sea-of-green.com/">Store Home</a></li>
               <li><a href="//sea-of-green.com/index.html?dispatch=products.search">Search</a></li>
-              <li><a href="//sea-of-green.com/">Featured Products</a></li>
+              <li><a href="//sea-of-green.com/featured.html">Featured Products</a></li>
               <li><a href="//sea-of-green.com/new-products.html">New Arrivals</a></li>
-              <li><a href="//sea-of-green.com/">Good Deals</a></li>
             </ul>
           </div>
           <div class="footer__list">
-            <h3>About Us</h3>
+            <h3>Sea of Green</h3>
             <ul>
               <li><a href="//sea-of-green.com/locations.html">Locations</a></li>
-              <li><a href="//sea-of-green.com/shipping-policy.html">Shipping & Return Policy</a></li>
-              <li><a href="//sea-of-green.com/faqs.html">FAQ</a></li>
-              <li><a href="//sea-of-green.com/privacy-policy.html">Privacy Policy</a></li>
-              <li><a href="//sea-of-green.com/terms-and-conditions.html">Terms & Conditions</a></li>
+              <li><a href="//sea-of-green.com/green-members.html">Green Members</a></li>
+              <li><a href="//sea-of-green.com/commercial-growers.html">Commercial Growers</a></li>
             </ul>
           </div>
         </div>
         <div class="footer__social">
           <ul class="footer__social-icons">
-            <li><a href="{FacebookURL}"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="{TwitterURL}"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="{InstagramURL}"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="{YouTubeURL}"><i class="fa fa-youtube-play"></i></a></li>
-            <li><a href="{GooglePlusURL}"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="{TumblrURL}"><i class="fa fa-tumblr"></i></a></li>
+            <li><a href="{text:Facebook URL}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{text:Twitter URL}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="{text:Instagram URL}"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="{text:YouTube URL}"><i class="fa fa-youtube-play"></i></a></li>
+            <li><a href="{text:Google Plus URL}"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="{text:Tumblr URL}"><i class="fa fa-tumblr"></i></a></li>
           </ul>
           <form class="footer__newsletter-signup input-bar input-bar--blue input-bar--email" action="javascript:newsletterSignup()">
             <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" required />
@@ -365,6 +380,22 @@
 
     <!-- Scripts -->
     <script type="text/javascript">
+      // Tumblr controls
+      window.onload = function() {
+        if (document.querySelector('.tumblr_controls') !== null && document.querySelector('.tumblr_controls') !== undefined) {
+          document.body.style.position = 'relative';
+          document.body.style.top = '26px';
+
+          var controls = document.querySelector('.tumblr_controls');
+          controls.classList.remove('sticky');
+          controls.style.top = '-26px';
+
+          var background = document.createElement('DIV');
+          background.className = "tumblr-controls__background";
+          document.body.appendChild(background);
+        }
+      }
+
       // Navigation
       var navButton = document.querySelector('.nav__button'),
           container = document.querySelector('.hoh');

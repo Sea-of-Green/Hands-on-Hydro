@@ -13,7 +13,6 @@
     "gulp-csso": "^1.0.0",
     "gulp-sass": "^2.0.4",
     "gulp-typogr": "^1.0.0",
-    "gulp-uncss": "^1.0.3",
     "node-neat": "^1.7.2"
   },
   "scripts": {

@@ -106,7 +106,7 @@ $symbol: 'Font Awesome', FontAwesome;
 // =============
 
 $gutter: $base-font-size !global;
-$max-width: $measure !global;
+$max-width: ($gutter * 2) + rem(700) !global; // stupid Tumblr loves 700px width
 
 // ============
 // LISTS & MAPS
@@ -135,7 +135,8 @@ $breakpoints: (
 
 $zindex: (
   header__background: -1,
-  nav: 1000
+  nav: 1000,
+  nav__button: 1100
 );
 
 // FONTS

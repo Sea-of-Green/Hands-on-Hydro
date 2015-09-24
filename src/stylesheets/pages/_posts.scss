@@ -22,7 +22,7 @@
   }
   &:last-of-type {
     &:after {
-      // display: none;
+      display: none;
     }
   }
 
@@ -153,7 +153,18 @@
  * TEXT POSTS
  * **********/
 .text {
+  &__title {
+    margin-bottom: 0;
+  }
+  &__author {
+    margin-top: 0;
 
+    text-transform: none;
+
+    a:visited {
+      color: $blue;
+    }
+  }
 }
 
 /* ***********
@@ -404,8 +415,19 @@
     margin-top: 0;
 
     text-transform: none;
+
+    a:visited {
+      color: $blue;
+    }
   }
   &__quote {
     margin-bottom: 0;
+  }
+  &__answerer {
+    text-transform: none;
+
+    a:visited {
+      color: $blue;
+    }
   }
 }

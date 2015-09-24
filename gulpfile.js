@@ -6,14 +6,12 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var neat = require('node-neat');
 var autoprefixer = require('gulp-autoprefixer');
-var uncss = require('gulp-uncss');
 var cmq = require('gulp-combine-media-queries');
 var csso = require('gulp-csso');
 // HTML
 var typogr = require('gulp-typogr');
 
 var neatPaths = neat.includePaths;
-var ignoreRegEx = [/(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video|\.search)/, /(\.post|\.text|\.photo|\.panorama|\.photoset|\.quote|\.link|\.chat|\.audio|\.video|\.search)+.+?(?=\s{)/];
 
 gulp.task('default', ['clean', 'build'], function() {
   del(['./dist/html', './dist/css']);
@@ -40,10 +38,6 @@ gulp.task('sass', ['typo'], function() {
   return gulp.src('./src/stylesheets/*.scss')
     .pipe(sass({ includePaths: neatPaths }))
     .pipe(sass().on('error', sass.logError))
-    //.pipe(uncss({
-    //  ignore: ignoreRegEx,
-    //  html: ['./dist/**/*.html']
-    //}))
     .pipe(autoprefixer())
     .pipe(cmq())
     .pipe(csso())
@@ -57,10 +51,6 @@ gulp.task('sass:debug', ['typo'], function() {
       includePaths: neatPaths
     }))
     .pipe(sass().on('error', sass.logError))
-    .pipe(uncss({
-      ignore: ignoreRegEx,
-      html: ['./dist/**/*.html']
-    }))
     .pipe(autoprefixer())
     .pipe(cmq())
     .pipe(gulp.dest('./dist/css'));

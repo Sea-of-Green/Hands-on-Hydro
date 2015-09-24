@@ -35,7 +35,7 @@ footer {
   }
 }
 .footer__content {
-  @include outer-container;
+  @include outer-container(55rem);
   padding: 0 $gutter;
 }
 
