@@ -382,18 +382,20 @@
     <script type="text/javascript">
       // Tumblr controls
       window.onload = function() {
-        if (document.querySelector('.tumblr_controls') !== null && document.querySelector('.tumblr_controls') !== undefined) {
-          document.body.style.position = 'relative';
-          document.body.style.top = '26px';
+        setTimeout( function() {
+          if (document.querySelector('.tumblr_controls').getAttribute('height') == '26') {
+            document.body.style.position = 'relative';
+            document.body.style.top = '26px';
 
-          var controls = document.querySelector('.tumblr_controls');
-          controls.classList.remove('sticky');
-          controls.style.top = '-26px';
+            var controls = document.querySelector('.tumblr_controls');
+            controls.classList.remove('sticky');
+            controls.style.top = '-26px';
 
-          var background = document.createElement('DIV');
-          background.className = "tumblr-controls__background";
-          document.body.appendChild(background);
-        }
+            var background = document.createElement('DIV');
+            background.className = "tumblr-controls__background";
+            document.body.appendChild(background);
+          }
+        }, 500);
       }
 
       // Navigation
