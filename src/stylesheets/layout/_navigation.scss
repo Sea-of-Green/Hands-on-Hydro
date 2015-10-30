@@ -15,7 +15,7 @@
 
     min-width: 45px;
 
-    margin-top: 1.3rem;
+    margin-top: 1.5rem;
 
     cursor: pointer;
 
@@ -26,44 +26,39 @@
 
   &__button-line {
     width: 45px;
-    height: 7px;
+    height: 5px;
 
     margin-left: $gutter;
-    margin-bottom: 5px;
     border-radius: 7px;
 
     transition: transform 0.5s cubic-bezier(0.75, -0.2, 0.2, 1.25);
 
-    &:last-of-type {
-      margin-bottom: 0;
+    &:not(:last-child) {
+      margin-bottom: 5px;
     }
 
-    &--top {
+    &:first-child {
       background: $yellow;
-
-      transform: rotateZ(360deg);
     }
-    &--middle {
+    &:nth-child(2) {
       background: $green;
     }
-    &--bottom {
+    &:last-child {
       background: $blue;
-
-      transform: rotateZ(360deg);
     }
   }
 
   &__button--close {
 
     & .nav__button-line {
-      &--top {
-        transform: rotateZ(225deg) translate(-7px, -7px);
+      &:first-child {
+        transform: rotateZ(135deg) translate(7px, -7px);
       }
-      &--middle {
+      &:nth-child(2) {
         transform: rotateY(90deg);
       }
-      &--bottom {
-        transform: rotateZ(135deg) translate(-10px, 10px);
+      &:last-child {
+        transform: rotateZ(-135deg) translate(7px, 7px);
       }
     }
   }

@@ -2,9 +2,9 @@
     <nav role="navigation" class="nav">
 
       <div class="nav__button">
-        <div class="nav__button-line nav__button-line--top"></div>
-        <div class="nav__button-line nav__button-line--middle"></div>
-        <div class="nav__button-line nav__button-line--bottom"></div>
+        <div class="nav__button-line"></div>
+        <div class="nav__button-line"></div>
+        <div class="nav__button-line"></div>
       </div>
 
       <div class="nav__content">
@@ -473,7 +473,7 @@
       document.getElementById('footer__copyright-year').innerHTML = year;
 
       // Add analytics queries to external links
-      var ref = "utm_source=hands-on-hydro", // The query you want to pass to the external site
+      var ref = "utm_source=hands-on-hydro&utm_medium=referral", // The query you want to pass to the external site
           links = document.getElementsByTagName('a'); // Get all links on page
 
       for (var i = 0; i < links.length; i++) { // For each link
