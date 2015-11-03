@@ -160,10 +160,9 @@
     margin-top: 0;
 
     text-transform: none;
-
-    a:visited {
-      color: $blue;
-    }
+  }
+  &__more {
+    text-align: center;
   }
 }
 
