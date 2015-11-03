@@ -182,7 +182,7 @@
                 <h1 class="text__title">{Title}</h1>
               {/block:PermalinkPage}
             {/block:Title}
-            <h4 class="text__author">{block:Date}posted <a href="{Permalink}">{TimeAgo}</a> {/block:Date}by <a href="{PostAuthorURL}">{PostAuthorName}</a></h4>
+            <h4 class="text__author">{block:Date}posted <a href="{Permalink}">{TimeAgo}</a> {/block:Date}{block:IfShowPoster}by <a href="{PostAuthorURL}">{PostAuthorName}</a>{/block:IfShowPoster}</h4>
             {Body}
             {block:More}
               <br />
@@ -567,7 +567,7 @@
       document.getElementById('footer__copyright-year').innerHTML = year;
 
       // Add analytics queries to external links
-      var ref = "utm_source=hands-on-hydro", // The query you want to pass to the external site
+      var ref = "utm_source=hands-on-hydro&utm_medium=referral", // The query you want to pass to the external site
           links = document.getElementsByTagName('a'); // Get all links on page
 
       for (var i = 0; i < links.length; i++) { // For each link
