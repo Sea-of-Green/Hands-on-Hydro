@@ -6,8 +6,8 @@
 // BODY TEXT & HEADERS
 // ===================
 
-body {
-  @include font(body);
+html, body {
+  @include font(body-text);
 
   font-size: $base-font-size;
   line-height: $base-line-height;
@@ -16,14 +16,10 @@ body {
 }
 
 h1 {
-  @include font(heading, bold);
+  @include font(heading-text, bold);
 
   font-size: $h1-font-size;
   line-height: $h1-line-height;
-
-  @include respond-to(medium) {
-    font-size: $lg-h1-font-size;
-  }
 
   text-transform: capitalize;
   color: $blue;
@@ -33,14 +29,10 @@ h1 {
   margin-bottom: $base-line-height;
 }
 h2 {
-  @include font(heading, bold);
+  @include font(heading-text, bold);
 
   font-size: $h2-font-size;
   line-height: $h2-line-height;
-
-  @include respond-to(medium) {
-    font-size: $lg-h2-font-size;
-  }
 
   text-transform: capitalize;
   letter-spacing: -0.025em;
@@ -49,15 +41,11 @@ h2 {
   margin-bottom: $base-line-height;
 }
 h3 {
-  @include font(heading, medium);
+  @include font(heading-text, medium);
 
   font-size: $h3-font-size;
   line-height: $h3-line-height;
   letter-spacing: 0.01em;
-
-  @include respond-to(medium) {
-    font-size: $lg-h3-font-size;
-  }
 
   text-transform: capitalize;
 
@@ -65,14 +53,10 @@ h3 {
   margin-bottom: $base-line-height;
 }
 h4, h5, h6 {
-  @include font(heading, medium);
+  @include font(heading-text, medium);
 
   font-size: $h4-font-size;
   line-height: $h4-line-height;
-
-  @include respond-to(medium) {
-    font-size: $lg-h4-font-size;
-  }
 
   margin-top: $base-line-height;
   margin-bottom: $base-line-height;
@@ -88,6 +72,8 @@ h6 {
   text-transform: uppercase;
 }
 p, ul, ol, pre, table, blockquote {
+  max-width: $measure;
+
   margin-top: $base-line-height;
   margin-bottom: $base-line-height;
 }
@@ -150,29 +136,35 @@ blockquote {
 
   border-left: 5px solid $gray-1;
 
-  font-style: italic;
+  p {
+    font-style: italic;
 
-  em {
-    font-style: normal;
-  }
+    em {
+      font-style: normal;
+    }
 
-  &:before {
-    content: "\201C";
-    font-size: $h1-font-size;
-    line-height: 0;
-    margin: 0 2.75rem 0 -3.8rem;
-    vertical-align: $h1-font-size * -0.3;
-    color: $gray-1;
+    &:first-of-type {
+      margin-top: 0;
+
+      &:before {
+        content: "\201C";
+        font-size: $h1-font-size;
+        line-height: 0;
+        margin: 0 2.75rem 0 -3.8rem;
+        vertical-align: $h1-font-size * -0.3;
+        color: $gray-1;
+      }
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   cite, & + cite {
     text-align: right;
     font-style: normal;
     display: block;
-
-    em {
-      font-style: italic;
-    }
 
     &:before {
       content: "\2014\0020";
@@ -187,10 +179,6 @@ a {
   text-decoration: none;
   color: $blue;
 
-  &:visited {
-    color: $gray;
-  }
-
   @include on-event {
     color: $blue;
     border-bottom: 0.1em solid currentColor;
@@ -198,5 +186,42 @@ a {
 
   &:active {
     color: $blue-5;
+  }
+}
+
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a,
+a > h2,
+a > h3,
+a > h4,
+a > h5,
+a > h6 {
+  color: $black;
+}
+
+table {
+  display: block;
+
+  overflow: auto;
+
+  td, th {
+    padding: 0.25rem $gutter;
+
+    &:nth-of-type(even) {
+      background: $gray-1;
+    }
+  }
+
+  tbody {
+    tr {
+      border-top: 1px solid $gray;
+    }
+  }
+
+  code {
+    background: none;
   }
 }
