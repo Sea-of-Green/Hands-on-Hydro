@@ -149,3 +149,6 @@
 button {
   @extend .btn;
 }
+button.btn {
+  padding: $gutter*0.5 $gutter*1.75;
+}
