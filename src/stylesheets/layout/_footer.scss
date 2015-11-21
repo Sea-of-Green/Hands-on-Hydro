@@ -9,7 +9,7 @@
 // General footer styles
 footer {
   @include fill-parent;
-  @include font(heading);
+  @include font(heading-text);
 
 
   margin-top: $base-line-height * 2;

@@ -271,23 +271,23 @@
 
     &--short {
       @extend h1;
-      @include font(heading, bold);
+      @include font(heading-text, bold);
     }
 
     &--medium {
       @extend h2;
-      @include font(heading, medium);
+      @include font(heading-text, medium);
     }
 
     &--long {
       @extend h2;
-      @include font(heading);
+      @include font(heading-text);
     }
 
     &:before {
       content: "\201C";
 
-      @include font(heading, bold);
+      @include font(heading-text, bold);
       @include position(absolute, $base-line-height*2.5 null null $gutter);
 
       font-size: modular-scale(8);
@@ -331,7 +331,7 @@
  * **********/
 .chat {
   &__line {
-    @include font(heading);
+    @include font(heading-text);
 
     width: 90%;
     max-width: $measure * 0.7;
@@ -350,7 +350,7 @@
     }
   }
   &__label {
-    @include font(heading, bold);
+    @include font(heading-text, bold);
 
     position: relative;
     left: $gutter;

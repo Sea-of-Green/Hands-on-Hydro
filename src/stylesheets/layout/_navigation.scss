@@ -4,7 +4,7 @@
 
 .nav {
   @include fill-parent;
-  @include font(heading);
+  @include font(heading-text);
 
   a:visited {
     color: $blue;

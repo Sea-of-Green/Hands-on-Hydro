@@ -7,7 +7,7 @@
 // ===================
 
 html, body {
-  @include font(body);
+  @include font(body-text);
 
   font-size: $base-font-size;
   line-height: $base-line-height;
@@ -16,7 +16,7 @@ html, body {
 }
 
 h1 {
-  @include font(heading, bold);
+  @include font(heading-text, bold);
 
   font-size: $h1-font-size;
   line-height: $h1-line-height;
@@ -29,7 +29,7 @@ h1 {
   margin-bottom: $base-line-height;
 }
 h2 {
-  @include font(heading, bold);
+  @include font(heading-text, bold);
 
   font-size: $h2-font-size;
   line-height: $h2-line-height;
@@ -41,7 +41,7 @@ h2 {
   margin-bottom: $base-line-height;
 }
 h3 {
-  @include font(heading, medium);
+  @include font(heading-text, medium);
 
   font-size: $h3-font-size;
   line-height: $h3-line-height;
@@ -53,7 +53,7 @@ h3 {
   margin-bottom: $base-line-height;
 }
 h4, h5, h6 {
-  @include font(heading, medium);
+  @include font(heading-text, medium);
 
   font-size: $h4-font-size;
   line-height: $h4-line-height;
@@ -132,18 +132,11 @@ pre {
 }
 
 blockquote {
-  position: relative;
-
-  padding: 0 $base-font-size;
+  padding: $base-font-size*0.5 $base-font-size;
 
   border-left: 5px solid $gray-1;
 
   p {
-    font-style: italic;
-
-    em {
-      font-style: normal;
-    }
 
     &:first-of-type {
       margin-top: 0;
@@ -151,13 +144,11 @@ blockquote {
       &:before {
         content: "\201C";
 
-        position: absolute;
-        top: $base-font-size;
-
-        margin: 0 0 0 -3.8rem;
+        margin: 0 2.75rem 0 -3.8rem;
 
         font-size: $h1-font-size;
         line-height: 0;
+        vertical-align: $h1-font-size * -0.3;
         color: $gray-1;
       }
     }
@@ -168,13 +159,19 @@ blockquote {
   }
 
   cite, & + cite {
-    text-align: right;
-    font-style: normal;
     display: block;
+
+    text-align: right;
 
     &:before {
       content: "\2014\0020";
     }
+  }
+}
+
+blockquote.no-quote {
+  p:first-of-type:before {
+    display: none;
   }
 }
 

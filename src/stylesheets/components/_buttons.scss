@@ -7,7 +7,7 @@
 // link: http://codepen.io/lowmess/full/WvYaZG/
 
 .btn {
-  @include font(heading);
+  @include font(heading-text);
 
   padding: $gutter*0.75 $gutter*1.75;
 
