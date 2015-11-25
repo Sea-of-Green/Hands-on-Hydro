@@ -40,7 +40,6 @@
     border-bottom-right-radius: 0;
 
     background: $gray-1;
-    color: $gray-5;
 
     &::placeholder {
       color: $gray-3;
@@ -92,7 +91,6 @@
     border-color: $blue-3;
 
     background: $blue-1;
-    color: $blue-5;
 
     &::placeholder {
       color: $blue-3;
@@ -124,7 +122,6 @@
     border-color: $green-3;
 
     background: $green-1;
-    color: $green-5;
 
     &::placeholder {
       color: $green-3;
@@ -160,7 +157,6 @@
     border-color: $warning;
 
     background: lighten($warning, 30%);
-    color: darken($warning, 10%);
 
     &::placeholder {
       color: $warning;
@@ -196,7 +192,6 @@
     border-color: $fail;
 
     background: lighten($fail, 25%);
-    color: darken($fail, 20%);
 
     &::placeholder {
       color: $fail;
