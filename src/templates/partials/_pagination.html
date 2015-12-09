@@ -1,0 +1,33 @@
+{block:Pagination}
+<!-- Index Pagination -->
+  <div class="pagination">
+    {block:PreviousPage}
+      <a href="{PreviousPage}" class="pagination__previous btn btn--white btn--reverse">Newer</a>
+    {/block:PreviousPage}
+    <div class="pagination__nav">
+      {block:JumpPagination length=5}
+        {block:CurrentPage}
+          <a class="pagination__current" href="#">{PageNumber}</a>
+        {/block:CurrentPage}
+        {block:JumpPage}
+          <a class="pagination__jump" href="{URL}">{PageNumber}</a>
+        {/block:JumpPage}
+      {/block:JumpPagination}
+    </div>
+    {block:NextPage}
+      <a href="{NextPage}" class="pagination__next btn btn--white">Older</a>
+    {/block:NextPage}
+  </div>
+{/block:Pagination}
+
+{block:PermalinkPagination}
+<!-- Post Pagination -->
+  <div class="post-pagination">
+    {block:PreviousPost}
+      <a class="post-pagination__previous btn btn--white btn--reverse" href="{PreviousPost}">Older Post</a>
+    {/block:PreviousPost}
+    {block:NextPost}
+      <a class="post-pagination__next btn btn--white" href="{NextPost}">Newer Post</a>
+    {/block:NextPost}
+  </div>
+{/block:PermalinkPagination}

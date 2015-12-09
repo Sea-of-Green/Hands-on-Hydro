@@ -13,17 +13,6 @@
 
     &:first-of-type {
       margin-top: 0;
-
-      &:before {
-        @include font(symbol);
-
-        position: absolute;
-        top: 1.25rem; left: -2.5rem;
-
-        font-size: $h3-font-size;
-        line-height: 0;
-        color: $gray-1;
-      }
     }
 
     &:last-of-type {
@@ -40,28 +29,39 @@
       content: "\2014\0020";
     }
   }
+
+  &:before {
+    @include font(symbol);
+
+    position: absolute;
+    top: 1.25rem; left: -2.5rem;
+
+    font-size: $h3-font-size;
+    line-height: 0;
+    color: $gray-1;
+  }
 }
 
 blockquote {
   @extend .blockquote;
 }
 
-blockquote p:first-of-type:before {
+blockquote:before {
   content: "\f10d";
 }
 
-.blockquote p:first-of-type:before {
+.blockquote:before {
   content: "\f10d";
 }
 
-.blockquote--no-quote p:first-of-type:before {
+.blockquote--no-quote:before {
   display: none;
 }
 
-.blockquote--question p:first-of-type:before {
+.blockquote--question:before {
   content: "\f128";
 }
 
-.blockquote--answer p:first-of-type:before {
+.blockquote--answer:before {
   content: "\f075";
 }

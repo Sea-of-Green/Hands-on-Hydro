@@ -1,0 +1,217 @@
+<!-- Content -->
+<main role="content" class="content">
+  <!-- Tag pages -->
+  {block:TagPage}
+    <h2>Posts tagged <code>{Tag}</code></h2>
+  {/block:TagPage}
+
+  <!-- Search Page -->
+  {block:SearchPage}
+    {block:NoSearchResults}
+      <h3 class="search__response">Sorry, there were no results for <code class="search__query">{SearchQuery}</code>.
+        <br />
+        <a href="/random">Here's a random page instead!</a></h3>
+    {/block:NoSearchResults}
+  {/block:SearchPage}
+
+  <!-- Posts -->
+  {block:Posts}
+
+    {block:Text}
+    <!-- Text Post -->
+      <article class="text post">
+        {block:Title}
+          {block:IndexPage}
+            <h1 class="text__title text__title--index"><a href="{permalink}">{Title}</a></h1>
+          {/block:IndexPage}
+          {block:PermalinkPage}
+            <h1 class="text__title">{Title}</h1>
+          {/block:PermalinkPage}
+        {/block:Title}
+        <h4 class="text__author">{block:Date}posted <a href="{Permalink}">{TimeAgo}</a> {/block:Date}{block:IfShowPoster}by <a href="{PostAuthorURL}">{PostAuthorName}</a>{/block:IfShowPoster}</h4>
+        {Body}
+        {block:More}
+          <br />
+          <div class="text__more"><a href="{Permalink}" class="btn btn--white">Read More</a></div>
+        {/block:More}
+    {/block:Text}
+
+    {block:Photo}
+    <!-- Photo Post -->
+      <article class="post photo">
+        {block:IndexPage}
+          <a href="{Permalink}">
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo photo__photo--index"
+              srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+              sizes="(min-width: 30rem) 500px, 100vw" />
+          </a>
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+          {LinkOpenTag}
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photo__photo photo__photo--permalink"
+              srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+              sizes="(min-width: 30rem) 500px, 100vw" />
+          {LinkCloseTag}
+        {/block:PermalinkPage}
+    {/block:Photo}
+
+    {block:Panorama}
+    <!-- Panorama Post -->
+      <article class="post panorama">
+        {block:IndexPage}
+          <a href="{Permalink}">
+            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama__photo panorama__photo--index"
+              srcset="{PhotoURL-Panorama} 500w, {PhotoURL-500}"
+              sizes="(min-width: 30rem) 500px, 100vw" />
+          </a>
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+          {LinkOpenTag}
+            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama__photo panorama__photo--permalink"
+              srcset="{PhotoURL-Panorama} 500w, {PhotoURL-500}"
+              sizes="(min-width: 30rem) 500px, 100vw" />
+          {LinkCloseTag}
+        {/block:PermalinkPage}
+
+    {/block:Panorama}
+
+    {block:Photoset}
+    <!-- Photoset Post -->
+      <article class="post photoset">
+
+        {block:IndexPage}
+          <div class="photoset__photoset">{Photoset}</div>
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+          {block:Photos}
+            {LinkOpenTag}
+              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="photoset__photo"
+                srcset="{PhotoURL-HighRes} 500w, {PhotoURL-500}"
+                sizes="(min-width: 30rem) 500px, 100vw" />
+            {LinkCloseTag}
+          {/block:Photos}
+        {/block:PermalinkPage}
+
+    {/block:Photoset}
+
+    {block:Quote}
+    <!-- Quote Post -->
+      <article class="post quote">
+        <blockquote class="quote__blockquote quote__blockquote--{length}">
+          {Quote}
+          {block:Source}
+            <cite class="quote__cite">{Source}</cite>
+          {/block:Source}
+        </blockquote>
+    {/block:Quote}
+
+    {block:Link}
+    <!-- Link Post -->
+      <article class="post link">
+        <h2 class="link__title"><a href="{URL}">{Name}</a></h2>
+        {block:Host}
+          <a href="{URL}" class="link__host btn btn--white">{Host}</a>
+        {/block:Host}
+        {block:Description}
+          <div class="link__desc">{Description}</div>
+        {/block:Description}
+    {/block:Link}
+
+    {block:Chat}
+    <!-- Chat Post -->
+      <article class="post chat">
+        {block:Title}<h1>{Title}</h1>{/block:Title}
+        {block:Lines}
+          <section class="chat__line chat__line--{UserNumber}">
+            {block:Label}<span class="chat__label chat__label--{UserNumber}">{Label}<br /></span>{/block:Label}
+            <p class="chat__text chat__text--{UserNumber}">{Line}</p>
+          </section>
+        {/block:Lines}
+    {/block:Chat}
+
+    {block:Audio}
+    <!-- Audio Post -->
+      <article class="post audio">
+        {block:AudioEmbed}
+          <div class="audio__player">{AudioEmbed-400}</div>
+        {/block:AudioEmbed}
+        {block:AudioPlayer}
+          <div class="audio__player">{AudioPlayer}</div>
+        {/block:AudioPlayer}
+    {/block:Audio}
+
+    {block:Video}
+    <!-- Video Post -->
+      <article class="post video">
+        <div class="video__player">{VideoEmbed-700}</div>
+    {/block:Video}
+
+    {block:Answer}
+    <!-- Answer Post -->
+      <article class="post answer">
+        <div class="answer__question">
+          <h3 class="answer__asker">{Asker} asks:</h3>
+          <p class="answer__quote">{Question}</p>
+        </div>
+        {block:Answerer}
+          <h4 class="answer_answerer">{Answerer} says:</h4>
+        {/block:Answerer}
+        {Answer}
+        {block:More}
+          <br />
+          <a href="{Permalink}" class="btn btn--white">Read More</a></div>
+        {/block:More}
+    {/block:Answer}
+
+    {block:Caption}
+    <!-- Post Caption -->
+      <div class="post__caption">
+        {Caption}
+      </div>
+    {/block:Caption}
+
+    <!-- Post Source, Notes, tags, etc. -->
+    <footer class="post__meta">
+      <div class="post__info">
+        {block:Date}
+          <a href="{Permalink}" class="post__date">{ShortMonth}&nbsp;{Year}</a>
+        {/block:Date}
+
+        {block:IfShowPoster}
+          <span class="post__author">posted&nbsp;by&nbsp;<a href="{PostAuthorURL}">{PostAuthorName}</a></span>
+        {/block:IfShowPoster}
+
+        {block:ContentSource}
+          <span class="post__source">source&nbsp;<a href="{SourceURL}">{SourceTitle}</a></span>
+        {/block:ContentSource}
+
+        {block:RebloggedFrom}
+          <span class="post__reblog-source">via&nbsp;<a href="{ReblogParentURL}">{ReblogParentName}</a></span>
+        {/block:RebloggedFrom}
+
+        {block:NoteCount}
+          <a href="{Permalink}" class="post__note-count">{NoteCountWithLabel}</a>
+        {/block:NoteCount}
+      </div>
+
+      <div class="post__tumblr-buttons">
+        <div class="post__tumblr-button post__tumblr-button--like">{LikeButton}</div>
+        <div class="post__tumblr-button post__tumblr-button--reblog">{ReblogButton}</div>
+      </div>
+
+      <div class="post__tags">
+        {block:HasTags}
+            {block:Tags}
+              <a href="{TagURL}" class="post__tag"><span class="post__tag__hash">#</span>{Tag}</a>
+            {/block:Tags}
+        {/block:HasTags}
+      </div>
+
+    </footer>
+  </article>
+
+  {/block:Posts}
+</main>

@@ -1,0 +1,67 @@
+<!-- Footer -->
+<footer>
+  <div class="footer__content">
+    <div class="footer__lists">
+      <div class="footer__list">
+        <h3>Hands-on Hydro</h3>
+        <ul>
+          <li><a href="#" class="footer__top-link">Back to Top</a></li>
+          {block:HasPages}
+            {block:Pages}
+              <li><a href="{URL}">{Label}</a></li>
+            {/block:Pages}
+          {/block:HasPages}
+          {block:AskEnabled}
+            <li><a href="/ask">Ask</a></li>
+          {/block:AskEnabled}
+          {block:SubmissionsEnabled}
+            <li><a href="/submit">Submit</a></li>
+          {/block:SubmissionsEnabled}
+          {block:IfShowArchive}
+            <li><a href="/archive">Archive</a></li>
+          {/block:IfShowArchive}
+          {block:IfShowRandom}
+            <li><a href="/random">Random</a></li>
+          {/block:IfShowRandom}
+          {block:IfShowRSS}
+            <li><a href="{RSS}">RSS</a></li>
+          {/block:IfShowRSS}
+        </ul>
+      </div>
+      <div class="footer__list">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="//sea-of-green.com/">Store Home</a></li>
+          <li><a href="//sea-of-green.com/index.html?dispatch=products.search">Search</a></li>
+          <li><a href="//sea-of-green.com/featured.html">Featured Products</a></li>
+          <li><a href="//sea-of-green.com/new-products.html">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer__list">
+        <h3>Sea of Green</h3>
+        <ul>
+          <li><a href="//sea-of-green.com/locations.html">Locations</a></li>
+          <li><a href="//sea-of-green.com/green-members.html">Green Members</a></li>
+          <li><a href="//sea-of-green.com/commercial-growers.html">Commercial Growers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__social">
+      <ul class="footer__social-icons">
+        <li><a href="{text:Facebook URL}"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="{text:Twitter URL}"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="{text:Instagram URL}"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="{text:YouTube URL}"><i class="fa fa-youtube-play"></i></a></li>
+        <li><a href="{text:Google Plus URL}"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="{text:Tumblr URL}"><i class="fa fa-tumblr"></i></a></li>
+      </ul>
+      <form class="footer__newsletter-signup input-bar input-bar--blue input-bar--email" action="javascript:newsletterSignup()">
+        <input type="email" placeholder="Sign Up for Our Newsletter" id="footer__newsletter-signup-input" required />
+        <button type="submit"></button>
+      </form>
+    </div>
+    <div class="footer__info">
+      <p class="footer__copyright">&copy; 1992 &ndash; <span id="footer__copyright-year"></span> Sea of Green Hydrogardens</p>
+    </div>
+  </div>
+</footer>

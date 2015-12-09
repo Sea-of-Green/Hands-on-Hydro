@@ -2,66 +2,120 @@
 var gulp = require('gulp');
 var del = require('del');
 var concat = require('gulp-concat');
+var include = require('gulp-file-include');
 // Sass / CSS
 var sass = require('gulp-sass');
-var neat = require('node-neat');
+var neat = require('node-neat').includePaths;
 var autoprefixer = require('gulp-autoprefixer');
 var cmq = require('gulp-combine-media-queries');
 var csso = require('gulp-csso');
-// HTML
-var typogr = require('gulp-typogr');
+// Coffeescript / Javascript
+var coffee = require('gulp-coffee');
+var uglify = require('gulp-uglify');
 
-var neatPaths = neat.includePaths;
+var paths = {
+  src: 'src',
+  dist: 'dist',
 
-gulp.task('default', ['clean', 'build'], function() {
-  del(['./dist/html', './dist/css']);
-});
+  sass: 'src/stylesheets/*.scss',
+  sassPath: 'src/stylesheets',
+  css: 'src/templates/assets/**/*.css',
 
-gulp.task('clean', function() {
-  del('./dist');
-});
+  coffee: 'src/scripts/**/*.coffee',
+  coffeePath: 'src/scripts',
+  js: 'src/templates/assets/**/*.js',
 
-gulp.task('typo', function() {
-  return gulp.src('./src/markup/*.html')
-    .pipe(typogr({
-      only: ['amp', 'widont', 'smartypants']
-    }))
-    .pipe(gulp.dest('./dist/html/'));
-});
+  templates: 'src/templates/*.html',
+  templatesPath: 'src/templates/',
+  partials: 'src/templates/partials/**/*.html',
+  partialsPath: 'src/templates/partials',
+  assets: 'src/templates/assets/**/*.+{js|css}',
+  assetsPath: 'src/templates/assets'
+}
 
-gulp.task('typo:debug', function() {
-  return gulp.src('./src/markup/*.html')
-    .pipe(gulp.dest('./dist/html/'));
-});
+gulp.task('default', ['html']);
 
-gulp.task('sass', ['typo'], function() {
-  return gulp.src('./src/stylesheets/*.scss')
-    .pipe(sass({ includePaths: neatPaths }))
+// Sass / CSS
+
+gulp.task('sass', function() {
+  return gulp.src(paths.sass)
+    .pipe(sass({ includePaths: neat }))
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cmq())
     .pipe(csso())
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest(paths.assetsPath));
 });
 
-gulp.task('sass:debug', ['typo'], function() {
-  return gulp.src('./src/stylesheets/*.scss')
+gulp.task('sass:debug', function() {
+  return gulp.src(paths.sass)
     .pipe(sass({
       outputStyle: 'nested',
-      includePaths: neatPaths
+      includePaths: neat
     }))
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cmq())
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest(paths.assetsPath));
 });
 
-gulp.task('build', ['sass'], function() {
-  return gulp.src(['./dist/html/head.html', './dist/css/main.css', './dist/html/svg.html', './dist/html/body.html'])
-    .pipe(concat('theme.html'))
-    .pipe(gulp.dest('./dist/'));
+// Coffee / Javascript
+
+gulp.task('coffee', function() {
+  return gulp.src(paths.coffee)
+    .pipe(coffee({
+      bare:true
+    }))
+    // Uglify is being fucking dumb atm
+    // .pipe(uglify())
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest(paths.assetsPath));
 });
 
-gulp.task('watch', ['build'], function () {
-  gulp.watch('./src/**/*.{scss, html}', ['build']);
+gulp.task('coffee:debug', function() {
+  return gulp.src(paths.coffee)
+    .pipe(coffee({
+      bare: true
+    }))
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest(paths.assetsPath));
+});
+
+// HTML
+
+gulp.task('html', ['sass', 'coffee'], function() {
+  return gulp.src(paths.templates)
+    .pipe(include({
+      prefix: '@@',
+      basepath: paths.partialsPath
+    }))
+    .pipe(include({
+      prefix: '##',
+      basepath: paths.assetsPath
+    }))
+    .pipe(gulp.dest(paths.dist));
+});
+
+// Clean
+
+gulp.task('clean', function() {
+  del(paths.dist);
+});
+
+gulp.task('clean:css', function() {
+  del(paths.css);
+});
+
+gulp.task('clean:js', function() {
+  del(paths.js);
+});
+
+gulp.task('clean:assets', function() {
+  del(paths.assetsPath);
+});
+
+// Watch
+
+gulp.task('watch', ['html'], function () {
+  gulp.watch('./src/**/*.+{scss|html|coffee}', ['html']);
 });

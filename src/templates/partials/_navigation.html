@@ -1,0 +1,42 @@
+<!-- Navigation -->
+<nav role="navigation" class="nav">
+
+  <div class="nav__button">
+    <div class="nav__button-line"></div>
+    <div class="nav__button-line"></div>
+    <div class="nav__button-line"></div>
+  </div>
+
+  <div class="nav__content">
+
+    <ul class="nav__links">
+      <li><a href="//sea-of-green.com/">Shop</a></li>
+      {block:HasPages}
+        {block:Pages}
+          <li><a href="{URL}">{Label}</a></li>
+        {/block:Pages}
+      {/block:HasPages}
+      {block:AskEnabled}
+        <li><a href="/ask">Ask</a></li>
+      {/block:AskEnabled}
+      {block:SubmissionsEnabled}
+        <li><a href="/submit">Submit</a></li>
+      {/block:SubmissionsEnabled}
+      {block:IfShowArchive}
+        <li><a href="/archive">Archive</a></li>
+      {/block:IfShowArchive}
+      {block:IfShowRandom}
+        <li><a href="/random">Random</a></li>
+      {/block:IfShowRandom}
+      {block:IfShowRSS}
+        <li><a href="{RSS}">RSS</a></li>
+      {/block:IfShowRSS}
+    </ul>
+
+    <form action="/search" method="get" class="input-bar input-bar--search nav__search">
+      <input type="text" name="q" value="{SearchQuery}" placeholder="Search {Title}" required />
+      <button type="submit" value=""></button>
+    </form>
+
+  </div>
+</nav>

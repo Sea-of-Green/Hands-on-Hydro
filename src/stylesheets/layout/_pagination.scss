@@ -5,7 +5,7 @@
 .pagination {
   @include outer-container;
   @include row;
-  @include font(heading);
+  @include font(heading-text);
 
   margin-top: $gutter;
 
