@@ -9,8 +9,7 @@ var neat = require('node-neat').includePaths;
 var autoprefixer = require('gulp-autoprefixer');
 var cmq = require('gulp-combine-media-queries');
 var csso = require('gulp-csso');
-// Coffeescript / Javascript
-var coffee = require('gulp-coffee');
+// Javascript
 var uglify = require('gulp-uglify');
 
 var paths = {
@@ -21,8 +20,8 @@ var paths = {
   sassPath: 'src/stylesheets',
   css: 'src/templates/assets/**/*.css',
 
-  coffee: 'src/scripts/**/*.coffee',
-  coffeePath: 'src/scripts',
+  scripts: 'src/scripts/**/*.js',
+  scriptsPath: 'src/scripts',
   js: 'src/templates/assets/**/*.js',
 
   templates: 'src/templates/*.html',
@@ -61,29 +60,23 @@ gulp.task('sass:debug', function() {
 
 // Coffee / Javascript
 
-gulp.task('coffee', function() {
-  return gulp.src(paths.coffee)
-    .pipe(coffee({
-      bare:true
-    }))
-    // Uglify is being fucking dumb atm
-    // .pipe(uglify())
+gulp.task('js', function() {
+  return gulp.src(paths.scripts)
     .pipe(concat('main.js'))
+    // Uglify is being dumb af rn
+    // .pipe(uglify())
     .pipe(gulp.dest(paths.assetsPath));
 });
 
-gulp.task('coffee:debug', function() {
-  return gulp.src(paths.coffee)
-    .pipe(coffee({
-      bare: true
-    }))
+gulp.task('js:debug', function() {
+  return gulp.src(paths.scripts)
     .pipe(concat('main.js'))
     .pipe(gulp.dest(paths.assetsPath));
 });
 
 // HTML
 
-gulp.task('html', ['sass', 'coffee'], function() {
+gulp.task('html', ['sass', 'js'], function() {
   return gulp.src(paths.templates)
     .pipe(include({
       prefix: '@@',
@@ -117,5 +110,5 @@ gulp.task('clean:assets', function() {
 // Watch
 
 gulp.task('watch', ['html'], function () {
-  gulp.watch('./src/**/*.+{scss|html|coffee}', ['html']);
+  gulp.watch('./src/**/*.+{scss|html|js}', ['html']);
 });
