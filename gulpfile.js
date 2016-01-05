@@ -7,7 +7,7 @@ var include = require('gulp-file-include');
 var sass = require('gulp-sass');
 var neat = require('node-neat').includePaths;
 var autoprefixer = require('gulp-autoprefixer');
-var cmq = require('gulp-combine-media-queries');
+var cmq = require('gulp-merge-media-queries');
 var csso = require('gulp-csso');
 // Javascript
 var uglify = require('gulp-uglify');
