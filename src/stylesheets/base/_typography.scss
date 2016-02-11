@@ -184,3 +184,14 @@ table {
     background: none;
   }
 }
+
+figcaption {
+  width: 100%;
+
+  border-top: 1px solid $gray-1;
+
+  font-size: $small-font-size;
+  text-align: center;
+  font-style: italic;
+  color: $gray;
+}

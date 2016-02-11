@@ -30,7 +30,7 @@ var paths = {
   partialsPath: 'src/templates/partials',
   assets: 'src/templates/assets/**/*.+{js|css}',
   assetsPath: 'src/templates/assets'
-}
+};
 
 gulp.task('default', ['html']);
 
