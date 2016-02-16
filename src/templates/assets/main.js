@@ -6,55 +6,6 @@ var $$ = function (nodeList) {
   return document.querySelectorAll(nodeList);
 };
 
-// Add 'utm_source=sea-of-green' to external links
-
-var ref   = 'utm_source=sea-of-green&utm_medium=referral';
-var links = $$('a');
-var host  = new RegExp('/' + window.location.host + '/');
-
-// Iterate over all <a> elements on page
-for ( i = 0; i < links.length; i++ ) {
-
-  // Get current link
-  var link = links[i];
-  // Get current link's href
-  var dest = link.href;
-
-  // If href does not match current url
-  if ( host.test(dest) === false ) {
-
-    // Check if link has an anchor
-    if ( dest.search('#') !== -1 ) {
-
-      // Split link at anchor and store parts in variables
-      var destParts = dest.split('#');
-      var anchor    = destParts.pop();
-      var destParts = destParts.pop();
-      var dest      = destParts.toString().replace(',', '');
-
-      // Check if link already has a query
-      if ( dest.search('/?') !== -1 && dest.search('=') !== -1 ) {
-        // Attach utm query to existing query and assemble link
-        link.href = dest + '&' + ref + '#' + anchor;
-      } else {
-        // Assemble link
-        link.href = dest + '?' + ref + '#' + anchor;
-      }
-
-    } else {
-
-      // Check if link already has a query
-      if ( dest.search('/?') !== -1 && dest.search('=') !== -1 ) {
-        // Attach utm query to existing query and assemble link
-        link.href += '&' + ref;
-      } else {
-        // Assemble link
-        link.href += '?' + ref;
-      }
-    }
-  }
-}
-
 // Send newsletter signup to Mailchimp
 var newsletterSignup = function() {
   var email = $('#footer__newsletter-signup-input').value;
@@ -98,6 +49,43 @@ window.addEventListener('resize', function () {
   width = newWidth;
 
 });
+
+// Add query strings to external links
+// @link https://gist.github.com/lowmess/473f4c425b5be8d26e00
+
+var addQueryString = function ( el, queryString ) {
+
+  // Check if el is a link
+  if ( !el.href ) {
+    console.log(el + ': \n this element is not a link or is missing an href');
+    return;
+  }
+
+  // Check if el uses an HTTP request
+  if ( el.protocol !== 'http:' && el.protocol !== 'https:' ) {
+    console.log(el.href + ': \n this link is not using an HTTP protocol');
+    return;
+  }
+
+  // Check if link host does not match current window host
+  if ( window.location.host !== el.host ) {
+
+    // If link already has a query string add to it, else create one
+    if ( el.search ) {
+      el.search += '&' + queryString;
+    } else {
+      el.search = queryString;
+    }
+  }
+};
+
+var links     = $$('a');
+var utmString = 'utm_source=sea-of-green&utm_medium=referral';
+
+for ( var i = 0; i < links.length; i++ ) {
+  // Add query string to valid links
+  addQueryString(links[i], utmString);
+}
 
 // Smooth scrolling for 'Back to Top' link
 // @link http://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation
